@@ -16,7 +16,7 @@
     
     
     
-    <input type="hidden" name="type" value="client"> 
+    <input type="hidden" name="type" value="<?= htmlspecialchars($type) ?>""> 
     
     <input type="submit" value="S'inscrire">
 </form>

@@ -32,4 +32,10 @@ class UserController extends Controller {
             
         }
     }
+
+    public function showSignupForm($type = 'client') {
+        
+        $type = in_array($type, ['client', 'partenaire']) ? $type : 'client';
+        $this->loadView("Authentification/signup", ['type' => $type]);
+    }
 }
