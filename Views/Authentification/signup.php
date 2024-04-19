@@ -1,7 +1,4 @@
 
-### `signup.php` - Formulaire d'inscription avec téléchargement d'image
-
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
