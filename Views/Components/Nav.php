@@ -13,6 +13,6 @@
         <a href=""><span>Partenaires</span></a>
         <a href="Clients"><button>Profile</button></a>
         <a href=""><button>Login</button></a>
-        <a href=""><button>SignUp</button></a>
+        <a href="Authentification/showSignupForm"><button>SignUp</button></a>
     </div>
 </nav>
