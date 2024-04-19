@@ -10,18 +10,17 @@ $url = '';
 if (isset($_GET['url'])) {
     $url = explode('/', $_GET['url']);
 }
-
 //instanciation de l objet contrôleur
-if ( isset($url[0]) && $url[0] != '') {
+if ( $url[0] != '') {
     $controller = ucfirst($url[0]);
     // Tester si le Controleur exist
-    if (file_exists(ROOT . 'controllers/' . $controller . '.php')) {
+    if (file_exists(ROOT . 'Controllers/' . $controller . '.php')) {
         if (isset($url[1])) {
             $action = $url[1];
         } else {
             $action =  'index';
         }
-        require_once ROOT . 'controllers/' . $controller . '.php';
+        require_once ROOT . 'Controllers/' . $controller . '.php';
 
         if (method_exists($controller, $action)) {            
             $controller = new $controller;
@@ -31,10 +30,10 @@ if ( isset($url[0]) && $url[0] != '') {
             call_user_func_array([$controller, $action], $url);
         }
     } else {
-        require ROOT . 'views/404.php';
+        echo "BNONPN";
     }
 } else {
-    require_once(ROOT . 'controllers/Main.php');
+    require_once(ROOT . 'Controllers/Main.php');
     $controller = new Main();
     $controller->index();
 }

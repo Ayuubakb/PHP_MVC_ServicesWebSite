@@ -11,7 +11,7 @@
     </div>
     <div class="auth">
         <a href=""><span>Partenaires</span></a>
-        <a href=""><button>Profile</button></a>
+        <a href="Client"><button>Profile</button></a>
         <a href=""><button>Login</button></a>
         <a href=""><button>SignUp</button></a>
     </div>
