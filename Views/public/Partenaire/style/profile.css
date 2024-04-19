@@ -11,8 +11,12 @@
 *
 */
 body {
-    background: #fbf6ee;
-    background: -webkit-linear-gradient(to right, #c1f2b0, #ffb534);
-    background: linear-gradient(to right, #65b741, #eaafc8);
-    min-height: 100vh;
+    background: #cac9b8;
+}
+h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-top: 1rem;
 }

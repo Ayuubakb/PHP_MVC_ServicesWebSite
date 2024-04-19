@@ -31,5 +31,26 @@ class Partenaire extends Model {
         $query = self::$instance->prepare($sql);
         $query->execute($data);
     }
+    public function getservices(int $id)
+    {
+        $sql = "SELECT * FROM Service WHERE id_partenaire = " . $id;
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+    public function getComments(int $id)
+    {
+        //select the top 5 comments of the partenaire by rating
+        $sql = "SELECT * FROM Comment WHERE id_partenaire = " . $id . " ORDER BY rating DESC LIMIT 5";
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+    public function getIntervention($id){
+        $sql = "SELECT * FROM reservation WHERE statut = 'en cours' AND id_partenaire = " . $id;
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
 }
 ?>
