@@ -1,18 +1,139 @@
-.profile-header {
-    transform: translateY(5rem);
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
-
-/*
-*
-* ==========================================
-* FOR DEMO PURPOSE
-* ==========================================
-*
-*/
-body {
-    background: #fbf6ee;
-    background: -webkit-linear-gradient(to right, #c1f2b0, #ffb534);
-    background: linear-gradient(to right, #65b741, #eaafc8);
+:root{
+    --orange:#FFB534;
+    --white:#FBF6EE;
+    --lightGreen:#C1F2B0;
+    --green:#65B741;
+    --fontSmall:'Trebuchet MS';
+    --fontBig:'Franklin Gothic Medium';
+}
+nav{
+    background-color: var(--orange);
+    padding: 0px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+nav .logoContainer{
+    width: 150px;
+    height: 100px;
+}
+nav .logoContainer img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+nav ul{
+    list-style: none;
+}
+nav li, span{
+    padding-inline: 18px;
+    font-family: var(--fontSmall);
+    float: left;
+    color:var(--white);
+    font-size: 19px;
+    font-weight: bold;
+}
+nav .auth{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 25%;
+}
+nav button{
+    background-color: var(--lightGreen);
+    color: black;
+    font-family: var(--fontBig);
+    border: none;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 17px;
+    cursor: pointer;
+}
+nav button:hover{
+    background-color: var(--green);
+}
+footer{
+    display: grid;
+    grid-template-columns: 20% 59% 20%;
+    grid-template-rows: auto;
+    gap: 20px;
+    padding: 25px;
+    background-color: var(--white);
+}
+footer .logoHolder{
+    position: relative;
+}
+footer .logoHolder div{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+footer .logoHolder img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+footer .middle{
+    padding-left: 25%;
+}
+footer ul{
+    list-style: none;
+}
+footer li{
+    padding-top: 10px;
+    font-family: var(--fontSmall);
+    font-size: 16px;
+}
+footer .mainList .title{
+    font-size: 19px;
+    font-family: var(--fontBig);
+    color: var(--green);
+}
+footer .mainList .subTitle{
+    font-family: var(--fontBig);
+    font-size: 18px;
+    color: black;
+}
+footer .mainList :not(.title){
+    margin-left: 15px;
+    color: rgb(83, 83, 83);
+}
+.sec{
     min-height: 100vh;
+}
+footer .end{
+    position: relative;
+    font-family: var(--fontBig);
+    font-size: 16px;
+}
+footer .end div{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+footer .end h1{
+    background-color: black;
+    width: fit-content;
+    padding-inline: 10px;
+    font-size: 35px;
+    font-style: italic;
+    color: var(--orange);
+    font-weight: bold;
+}
+footer .end p{
+    padding: 15px;
+    color: rgb(83, 83, 83);
+}
+footer .end i{
+    color: var(--green);
 }

@@ -16,11 +16,5 @@ C1F2B0 : light green
 <body>
 <h1>Partenaire </h1>
 <h3>Welcome: <?php echo $Partenaire['Firstname']+ " " + $Partenaire['Lastname'] ?></h3>
-
-
-
-
-
-
 </body>
 </html>

@@ -52,5 +52,6 @@ class Partenaire extends Model {
         $query->execute();
         return $query->fetchAll();
     }
+
 }
 ?>
