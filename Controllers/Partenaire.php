@@ -10,27 +10,28 @@ class Partenaire extends Controller{
         // compact permet de Créer un tableau à partir de variables et de leur valeur
         $this->loadView("index", compact('partenaire'));
     }
-    function update(){
+    function profile(){
         $this->loadModel("Partenaire");
-        $data = array(
-            'Lastname' => $_POST['Lastname'],
-            'Firstname' => $_POST['Firstname'],
-            'Metier' => $_POST['Metier'],
-            'Ville' => $_POST['Ville'],
-            'Crenaux' => $_POST['Crenaux'],
-            'YearExperience' => $_POST['YearExperience'],
-            'Note' => $_POST['Note'],
-            'Nbr_commande' => $_POST['Nbr_commande'],
-            'Email' => $_POST['Email'],
-            'Telephone' => $_POST['Telephone']
-        );
-        $this->Partenaire->UpdatePartenaire($data);
-        header('Location: /Partenaire/index?id='.$_POST['id']);
+        $id = $_GET['id'];
+        //get the partenaire from the database
+        $partenaire=$this->Partenaire->get($id);
+        //get services of the partenaire
+        $services = $this->Partenaire->getServices($id);
+        //get comments of the partenaire
+        $comments = $this->Partenaire->getComments($id);
+        $this->loadView("Profile", compact('partenaire', 'services', 'comments'));
     }
-    function delete(){
+    function updateProfile(){
         $this->loadModel("Partenaire");
-        $this->Partenaire->deletePartenaire($_GET['id']);
-        header('Location: /Home/index');
+        $id = $_GET['id'];
+        $partenaire=$this->Partenaire->get($id);
+        $this->loadView("EditProfile", compact('partenaire'));
+    }
+    function interventions(){
+        $this->loadModel("Partenaire");
+        $id = $_GET['id'];
+        $intervention= $this->Partenaire->getIntervention($id);
+        $this->loadView("Interventions", compact('intervention'));
     }
 }
 ?>
