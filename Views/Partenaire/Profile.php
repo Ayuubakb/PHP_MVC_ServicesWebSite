@@ -22,6 +22,12 @@
             </div>
         </div>
     </nav>
+    <div class="container">
+        <h2>Profile</h2>
+        <p>Name: <?php echo $partenaire['name']; ?></p>
+        <p>Email: <?php echo $partenaire['email']; ?></p>
+        <!-- Add more fields as necessary -->
+    </div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

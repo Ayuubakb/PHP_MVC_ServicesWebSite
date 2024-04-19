@@ -29,5 +29,30 @@ abstract class Model{
             //self::$instance = new self();
         }
     }
+    public function getAll()
+    {
+        $sql = "SELECT * FROM " . $this->table;
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+    public function get($id)
+    {
+        $sql = "SELECT * FROM " . $this->table . " WHERE id = :id";
+        $query = self::$instance->prepare($sql);
+        $query->execute(array('id' => $id));
+        return $query->fetch();
+    }
+    public function delete($id)
+    {
+        $sql = "DELETE FROM " . $this->table . " WHERE id = :id";
+        $query = self::$instance->prepare($sql);
+        $query->execute(array('id' => $id));
+    }
+    public function __destruct()
+    {
+        self::$instance = null;
+    }
+
 }
 ?>
