@@ -30,7 +30,7 @@ if ( $url[0] != '') {
             call_user_func_array([$controller, $action], $url);
         }
     } else {
-        echo "BNONPN";
+        echo "not found";
     }
 } else {
     require_once(ROOT . 'Controllers/Main.php');

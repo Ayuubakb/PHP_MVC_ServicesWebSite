@@ -1,6 +1,6 @@
 <nav>
     <div class="logoContainer">
-        <img src="<?php echo "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']."Views/public/images/logo.png"; ?>" /> 
+        <img src="<?php echo "http://" . $_SERVER['SERVER_NAME'] ."/Bricolini/Views/public/images/logo.png"; ?>" /> 
     </div>
     <div class="routes">
         <ul>
@@ -9,9 +9,9 @@
             <a href=""><li>Jardinage</li></a>
         </ul>
     </div>
-    <div class="auth">
+    <div class="auth"> 
         <a href=""><span>Partenaires</span></a>
-        <a href="Client"><button>Profile</button></a>
+        <a href="Clients"><button>Profile</button></a>
         <a href=""><button>Login</button></a>
         <a href=""><button>SignUp</button></a>
     </div>

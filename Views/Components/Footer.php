@@ -1,7 +1,7 @@
 <footer>
     <div class="logoHolder">
         <div>
-            <img src="<?php echo "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']."Views/public/images/logo.png";?>">
+            <img src="<?php echo "http://".$_SERVER['SERVER_NAME']."/Bricolini/Views/public/images/logo.png";?>">
         </div>
     </div>
     <div class="middle">
