@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Views/public/style/Style.css">
+    <link rel="stylesheet" href="Views/public/style/Client.css">
     <title>Profile</title>
 </head>
 <body>
@@ -19,16 +20,16 @@
                 <p><span>Nom:</span></p>
                 <p><span>Prenom:</span></p>
                 <p><span>Telephone:</span></p>
-                <p><span>:</span></p>
+                <p><span>Adresse:</span></p>
             </div>
             <div class="edit">
                 <p>E</p>
             </div>
         </div>
-        <div>
+        <div class="reservations">
 
         </div>
-        <div>
+        <div class="commentaire">
             
         </div>
     </section>
