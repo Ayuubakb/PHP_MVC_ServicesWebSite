@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cleaning Services Selection</title>
+    <link rel="stylesheet" href="Views/public/style/Style.css">
+    <link rel="stylesheet" href="../public/style/styleindex.css">
+    <style>
+        .service-card {
+            width: 150px; 
+            text-align: center;
+            padding: 1rem;
+            border: 1px solid #C1F2B0; 
+            border-radius: 4px;
+            margin: 0.5rem;
+            transition: box-shadow 0.3s ease-in-out;
+            background-color: #FFFFFF;
+            /* align them left */
+            display: inline-block;
+        }
+        .service-card:hover {
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            background-color: #FFB534; 
+        }
+        .service-card img {
+            max-width: 100px;
+            margin-bottom: 0.5rem;
+        }
+        .service-card h2 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .service-selection h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .services-grid {
+            justify-content: flex-start; /* Aligns boxes to the left */
+            max-width: 640px; /* Adjust as needed for size */
+            margin-left: auto; /* Centers the grid in a larger container if needed */
+            margin-right: auto;
+        }
+        .continue-button {
+            text-align: left;
+            margin-top: 2rem;
+            size: 1rem;
+        }
+        .continue-button button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            background-color: #FFB534; /* Yellow background for the button */
+            color: #FBF6EE; /* White text color */
+            border: none; /* Removes border */
+            border-radius: 4px; 
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 1rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: #65B741; 
+        }
+        h1, h2, p {
+            color: #65B741; /* green text */
+        }
+        body {
+            background-color: #FFFFFF; /* white background */
+        }
+        button {
+            background-color: #FFB534; /* yellow button background */
+            color: #FBF6EE; /* white text on buttons */
+        }
+        @media (max-width: 768px) {
+            .services-grid {
+                justify-content: center; /* Centers boxes on smaller screens */
+            }
+            .continue-button {
+                text-align: center; /* Centers the button on smaller screens */
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <?php include 'Views/Components/Nav.php'; ?>
+<main class="container">
+    <div class="service-selection">
+        <h1>Choisissez votre service</h1>
+        <p>Commencez par choisir le service qui correspond à vos besoins. Parcourez nos catégories de services et sélectionnez celui qui vous intéresse.</p>
+    </div>
+    <div class="services-grid">
+        <!-- Service Card 1 -->
+        <a href="Services/Net_maisons" style="text-decoration: none; color: inherit;">
+            <div class="service-card">
+                <img src="Views/public/images/menage_maison.png" alt="Ménage des Maisons">
+                <h2>Ménage des Maisons</h2>
+            </div>
+        </a>
+        <!-- Service Card 2 -->
+        <a href="Services/Net_gen" style="text-decoration: none; color: inherit;">
+            <div class="service-card">
+                <img src="Views/public/images/nettoyage_g.webp" alt="Nettoyage général">
+                <h2>Nettoyage général</h2>
+            </div>
+        </a>
+        <!-- Service Card 3 -->
+        <a href="Services/Net_surfaces" style="text-decoration: none; color: inherit;">
+            <div class="service-card">
+                <img src="Views/public/images/nettoyage_surfaces.webp" alt="Nettoyage des surfaces">
+                <h2>Nettoyage des surfaces</h2>
+            </div>
+        </a>
+        <!-- Service Card 4 -->
+        <a href="Services/netCanape" style="text-decoration: none; color: inherit;">
+            <div class="service-card">
+                <img src="Views/public/images/nettoyage_canap.webp" alt="Nettoyage de canapés">
+                <h2>Nettoyage de canapés</h2>
+            </div>
+        </a>
+
+    </div>
+</main>
+    <?php include 'Views/Components/Footer.php'; ?>
+</body>
+</html>
+
+
+
+
+
+        
