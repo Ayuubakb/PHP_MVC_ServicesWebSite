@@ -15,8 +15,8 @@
     <input type="number" name="YearExperience" placeholder="Années d'expérience">
     
     
-    <!-- Champ pour distinguer client/partenaire -->
-    <input type="hidden" name="type" value="client"> <!-- ou value="partenaire" selon le cas -->
+    
+    <input type="hidden" name="type" value="client"> 
     
     <input type="submit" value="S'inscrire">
 </form>
