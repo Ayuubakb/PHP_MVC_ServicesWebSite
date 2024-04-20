@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../public/style/styleindex.css">
     <style>
         .service-card {
-            width: 150px; 
+            width: 200px; 
+            height: 250px;
             text-align: center;
             padding: 1rem;
             border: 1px solid #C1F2B0; 
@@ -33,27 +34,23 @@
             margin-bottom: 0.5rem;
         }
         .service-selection h1 {
-            text-align: center;
-            margin-bottom: 2rem;
+            font-size: 2em; /* Sets the size of the title */
+            font-weight: bold; /* Makes the title bold */
+            margin-bottom: 0.5em;
+            text-align: left; /* Align the text to the left */
+            color: #000000; /* Sets the text color to black */
+        }
+        .service-selection p {
+            font-size: 1em; /* Sets the size of the paragraph */
+            margin-bottom: 1em;
+            text-align: left; /* Align the text to the left */
+            color: black; /* Sets the text color to blue */
         }
         .services-grid {
-            justify-content: flex-start; /* Aligns boxes to the left */
-            max-width: 640px; /* Adjust as needed for size */
-            margin-left: auto; /* Centers the grid in a larger container if needed */
-            margin-right: auto;
-        }
-        .continue-button {
-            text-align: left;
-            margin-top: 2rem;
-            size: 1rem;
-        }
-        .continue-button button {
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            background-color: #FFB534; /* Yellow background for the button */
-            color: #FBF6EE; /* White text color */
-            border: none; /* Removes border */
-            border-radius: 4px; 
+            display: flex; /* Use flexbox for horizontal alignment */
+            flex-wrap: wrap; /* Allows multiple lines if needed */
+            align-items: flex-start; /* Aligns items to the start of the flex container */
+            justify-content: flex-start; /* Aligns items to the left side of the container */
         }
         nav ul {
             list-style: none;
@@ -101,7 +98,7 @@
         <!-- Service Card 1 -->
         <a href="Services/Net_maisons" style="text-decoration: none; color: inherit;">
             <div class="service-card">
-                <img src="Views/public/images/menage_maison.png" alt="Ménage des Maisons">
+                <img src="Views/public/images/nettoyage_g.webp" alt="Ménage des Maisons">
                 <h2>Ménage des Maisons</h2>
             </div>
         </a>
@@ -132,9 +129,3 @@
     <?php include 'Views/Components/Footer.php'; ?>
 </body>
 </html>
-
-
-
-
-
-        
