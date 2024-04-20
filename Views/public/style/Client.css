@@ -1,0 +1,374 @@
+.sec{
+    overflow-y: hidden;
+}
+:root{
+    --orange:#FFB534;
+    --white:#FBF6EE;
+    --lightGreen:#C1F2B0;
+    --green:#65B741;
+    --fontSmall:'Trebuchet MS';
+    --fontBig:'Franklin Gothic Medium';
+}
+.informations{
+    background-color: var(--orange);
+    padding: 15px;
+    width: 75%;
+    margin-left: 12.5%;
+    border-radius: 20px;
+    position: relative;
+    margin-top: 75px;
+}
+.informations .fields{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.informations .fields p{
+    font-family:var(--fontSmall);
+    font-size: 20px;
+    color: var(--white);
+}
+.informations .fields span{
+    font-family:var(--fontBig);
+    font-size: 22px;
+    color: black;
+}
+.informations .fields div{
+    margin-bottom: 10px;
+}
+.informations  .edit{
+    background-color: var(--green);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    font-size: 20px;
+}
+.informations .image{
+    width: 100px;
+    height: 100px;
+    border: solid 3px black;
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #65B741;
+}
+.informations .image img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 15px;
+}
+.reservationsWrapper{
+    width: 85%;
+    margin-left: 7.5%;
+    margin-top: 25px;
+}
+.reservationsWrapper h1, .commentaire h1{
+    font-family: var(--fontBig);
+    font-size: 35px;
+    color: #65B741;
+}
+.reservations{
+    display: grid;
+    grid-template-columns: 49% 49%;
+    grid-template-rows: auto auto;
+    gap: 2%;
+    width: 90%;
+    margin-left: 5%;
+    gap: 10px;
+}
+.reservationCard{
+    background-color: var(--green);
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    align-items: center;
+    margin-top: 25px;
+}
+.reservationCard h1{
+    color: white;
+    font-size: 18px;
+    font-family: var(--fontBig);
+    margin-bottom: 7px;
+}
+.reservationCard p{
+    color: rgb(207, 207, 207);
+    font-size: 16px;
+    font-family: var(--fontSmall);
+    font-style: italic;
+}
+.reservationCard .image{
+    flex: 0 0 150px;
+    height: 150px;
+}
+.reservationCard .image img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.reservationCard .nameOfservice{
+    flex: 0 0 45%;
+    padding-left: 10px;
+}
+.reservationCard .additional{
+    flex: 0 0 30%;
+    padding-left: 10px;
+}
+.reservationCard .additional div:nth-child(1) p{
+   color: var(--white);
+   margin-bottom: 7px;
+   font-family: var(--fontBig);
+   font-style: normal;
+}
+.reservationCard .additional div:nth-child(2) p{
+   background-color: var(--white);
+   color: #65B741;
+   width: 70%;
+   text-align: center;
+}
+.allRes{
+    background:linear-gradient(45deg,var(--green),var(--orange));
+    color: #FBF6EE;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 150px;
+}
+.commentaire{
+    width: 85%;
+    margin-left: 7.5%;
+    margin-top: 25px;
+}
+.commentaires{
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    gap: 5px;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    margin-top: 15px;
+}
+.commentaireCard{
+    flex: 0 0 350px;
+    background-color: var(--lightGreen);
+    border-radius: 10px;
+    padding: 10px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.commentaireCard h1{
+    color: #a8761f;
+    margin-bottom: 9px;
+    font-size: 25px;
+}
+.commentaireCard .mess p{
+    padding-left: 15px;
+    color: rgb(50, 50, 50);
+    font-family: var(--fontSmall);
+    font-size: 18px;
+}
+.commentaireCard .rat .note{
+    font-family: var(--fontBig);
+    font-size: 18px;
+    text-align: end;
+    margin-bottom: 9px;
+    color: #FFB534;
+    background-color: #FBF6EE;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    margin-left: 25%;
+}
+.commentaireCard .rat .date{
+    font-family: var(--fontSmall);
+    color: gray;
+}
+.allComments{
+    font-size: 18px;
+    font-family: var(--fontSmall);
+    color: var(--green);
+    text-align: end;
+    margin-top: 7px;
+    font-weight: bold;
+}
+.modifier{
+    margin-top: 25px;
+    width: 60%;
+    margin-left: 20%;
+    background-color: var(--lightGreen);
+    padding: 30px;
+    border-radius: 25px;
+}
+.modifier h1{
+    margin-bottom: 25px;
+    font-family: var(--fontBig);
+    color: var(--orange);
+    font-size: 40px;
+    text-align: center;
+}
+.modifier .imageHolder{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    margin-left: 48%;
+}
+.modifier .imageHolder img{
+    width: 100%;
+    height: 100%;
+}
+.modifier .fieldsContainer .imgLabel{
+    background-color: var(--orange);
+    padding: 25px;
+    color: var(--white);
+    width: 100px;
+    margin-bottom: 25px;
+    margin-left: 48%;
+    text-align: center;
+    border-radius: 25px;
+}
+.modifier .fieldsContainer .imgLabel label{
+   position: relative;
+   cursor: pointer;
+}
+.modifier .fieldsContainer .imgLabel input{
+    position: absolute;
+    top: -10%;
+    z-index: -1;
+}
+.modifier .fieldsContainer div:not(.imgLabel){
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin-left: 12.5%;
+    margin-bottom: 15px;
+}
+.modifier .fieldsContainer div:not(.imgLabel) label{
+    font-family: var(--fontSmall);
+    font-size: 20px;
+    color: rgb(39, 38, 38);
+    margin-bottom: 7px;
+}
+.modifier .fieldsContainer div:not(.imgLabel) input{
+    border: none;
+    padding: 5px 10px;
+    outline: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: var(--fontSmall);
+}
+.modifier button{
+    border: none;
+    background-color: var(--green);
+    color: var(--white);
+    font-family: var(--fontBig);
+    font-size: 20px;
+    padding: 12px 20px;
+    margin-left: 75%;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+ .search{
+     width: 60%;
+     margin-left: 20%;
+     margin-top: 25px;
+     background-color: var(--orange);
+     padding: 15px;
+     padding-inline: 35px;
+     border-radius: 20px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+}
+ .search select{
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--fontSmall);
+    font-size: 20px;
+}
+ .search button{
+    padding: 8px 15px;
+    font-family: var(--fontBig);
+    font-size: 22px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+ .search button:hover{
+    background-color: var(--green);
+}
+.commande .commandesAll{
+    width: 95%;
+    margin-left: 2.5%;
+    display: flex;
+    gap: 1.2%;
+    flex-wrap: wrap;
+}
+.commande .commandesAll .reservationCard{
+    flex: 0 0 32%;
+}
+.commande .commandesAll .reservationCard h1{
+    font-size: 22px;
+}
+.commande .commandesAll .reservationCard p{
+    font-size: 16px;
+}
+.commande .commandesAll .err{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 30px;
+    font-family: var(--fontBig);
+    color: var(--orange);
+    width: 100%;
+}
+.comments{
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 22% 65%;
+    grid-template-rows: auto;
+    margin-left: 10%;
+
+}
+.comments .search{
+    flex-direction: column;
+    padding-inline: 25px;
+    padding-bottom: 20px;
+    height: 350px;
+    background-color: var(--green);
+}
+.comments .search select{
+    margin-top: 0px;
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+.comments .search button{
+    margin-top: 30px;
+}
+.comments .search button:hover{
+    background-color: var(--orange);
+}
+.comments  .commentaireCard{
+    margin-bottom: 20px;
+}

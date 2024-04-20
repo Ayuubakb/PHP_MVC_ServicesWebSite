@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 abstract class Controller
 {
     public function loadModel(string $model)

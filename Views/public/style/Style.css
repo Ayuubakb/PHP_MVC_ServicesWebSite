@@ -42,7 +42,7 @@ nav .auth{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 25%;
+    width: 32%;
 }
 nav button{
     background-color: var(--lightGreen);
@@ -59,7 +59,7 @@ nav button:hover{
 }
 footer{
     display: grid;
-    grid-template-columns: 20% 59% 20%;
+    grid-template-columns: 20% 55% 20%;
     grid-template-rows: auto;
     gap: 20px;
     padding: 25px;
@@ -108,6 +108,7 @@ footer .mainList :not(.title){
 }
 .sec{
     min-height: 100vh;
+    padding-bottom: 25px;
 }
 footer .end{
     position: relative;
