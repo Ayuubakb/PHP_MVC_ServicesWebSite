@@ -162,7 +162,7 @@
     overflow-x: scroll;
     margin-top: 15px;
 }
-.commentaires .commentaireCard{
+.commentaireCard{
     flex: 0 0 350px;
     background-color: var(--lightGreen);
     border-radius: 10px;
@@ -210,4 +210,165 @@
     text-align: end;
     margin-top: 7px;
     font-weight: bold;
+}
+.modifier{
+    margin-top: 25px;
+    width: 60%;
+    margin-left: 20%;
+    background-color: var(--lightGreen);
+    padding: 30px;
+    border-radius: 25px;
+}
+.modifier h1{
+    margin-bottom: 25px;
+    font-family: var(--fontBig);
+    color: var(--orange);
+    font-size: 40px;
+    text-align: center;
+}
+.modifier .imageHolder{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    margin-left: 48%;
+}
+.modifier .imageHolder img{
+    width: 100%;
+    height: 100%;
+}
+.modifier .fieldsContainer .imgLabel{
+    background-color: var(--orange);
+    padding: 25px;
+    color: var(--white);
+    width: 100px;
+    margin-bottom: 25px;
+    margin-left: 48%;
+    text-align: center;
+    border-radius: 25px;
+}
+.modifier .fieldsContainer .imgLabel label{
+   position: relative;
+   cursor: pointer;
+}
+.modifier .fieldsContainer .imgLabel input{
+    position: absolute;
+    top: -10%;
+    z-index: -1;
+}
+.modifier .fieldsContainer div:not(.imgLabel){
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin-left: 12.5%;
+    margin-bottom: 15px;
+}
+.modifier .fieldsContainer div:not(.imgLabel) label{
+    font-family: var(--fontSmall);
+    font-size: 20px;
+    color: rgb(39, 38, 38);
+    margin-bottom: 7px;
+}
+.modifier .fieldsContainer div:not(.imgLabel) input{
+    border: none;
+    padding: 5px 10px;
+    outline: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: var(--fontSmall);
+}
+.modifier button{
+    border: none;
+    background-color: var(--green);
+    color: var(--white);
+    font-family: var(--fontBig);
+    font-size: 20px;
+    padding: 12px 20px;
+    margin-left: 75%;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+ .search{
+     width: 60%;
+     margin-left: 20%;
+     margin-top: 25px;
+     background-color: var(--orange);
+     padding: 15px;
+     padding-inline: 35px;
+     border-radius: 20px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+}
+ .search select{
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--fontSmall);
+    font-size: 20px;
+}
+ .search button{
+    padding: 8px 15px;
+    font-family: var(--fontBig);
+    font-size: 22px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+ .search button:hover{
+    background-color: var(--green);
+}
+.commande .commandesAll{
+    width: 95%;
+    margin-left: 2.5%;
+    display: flex;
+    gap: 1.2%;
+    flex-wrap: wrap;
+}
+.commande .commandesAll .reservationCard{
+    flex: 0 0 32%;
+}
+.commande .commandesAll .reservationCard h1{
+    font-size: 22px;
+}
+.commande .commandesAll .reservationCard p{
+    font-size: 16px;
+}
+.commande .commandesAll .err{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 30px;
+    font-family: var(--fontBig);
+    color: var(--orange);
+    width: 100%;
+}
+.comments{
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 22% 65%;
+    grid-template-rows: auto;
+    margin-left: 10%;
+
+}
+.comments .search{
+    flex-direction: column;
+    padding-inline: 25px;
+    padding-bottom: 20px;
+    height: 350px;
+    background-color: var(--green);
+}
+.comments .search select{
+    margin-top: 0px;
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+.comments .search button{
+    margin-top: 30px;
+}
+.comments .search button:hover{
+    background-color: var(--orange);
+}
+.comments  .commentaireCard{
+    margin-bottom: 20px;
 }

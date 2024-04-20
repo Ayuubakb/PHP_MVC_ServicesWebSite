@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Views/public/style/Style.css">
-    <link rel="stylesheet" href="Views/public/style/Client.css">
     <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
+    <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
     <title>Profile</title>
 </head>
 <body>
@@ -32,7 +32,7 @@
                 </div> 
             </div>
             <div class="edit">
-                <i class="fa-solid fa-pen-to-square fa-xl"></i>
+                <a href="Clients/editProfile" style="color:white"><i class="fa-solid fa-pen-to-square fa-xl"></i></a>
             </div>
         </div>
         <div class="reservationsWrapper">
@@ -64,7 +64,7 @@
                 }
                 ?>
                 <div class="reservationCard allRes">
-                    <a href="" style="color:white"><i class="fa-solid fa-ellipsis fa-xl"></i></a>
+                    <a href="http://localhost/Bricolini/Clients/getAllCommandes/Tous/3/DESC" style="color:white"><i class="fa-solid fa-ellipsis fa-xl"></i></a>
                 </div>
             </div>
         </div> 
@@ -122,8 +122,7 @@
                     </div> 
                 </div>
             </div>
-            <p class="allComments">Voir Plus <i class="fa-solid fa-arrow-right"></i></p>
-        </div>
+            <a href="http://localhost/Bricolini/Clients/getAllComments/0/DESC" style="color:white"><p class="allComments">Voir Plus <i class="fa-solid fa-arrow-right"></i></p></a>        </div>
     </section>
     <?php
          require("Views/Components/Footer.php");
