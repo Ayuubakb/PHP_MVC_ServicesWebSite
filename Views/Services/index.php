@@ -103,10 +103,10 @@
             </div>
         </a>
         <!-- Service Card 2 -->
-        <a href="Services/Net_gen" style="text-decoration: none; color: inherit;">
+        <a href="Services/Net_canap" style="text-decoration: none; color: inherit;">
             <div class="service-card">
-                <img src="Views/public/images/nettoyage_g.webp" alt="Nettoyage général">
-                <h2>Nettoyage général</h2>
+                <img src="Views/public/images/nettoyage_canap.webp" alt="Nettoyage de canapés">
+                <h2>Nettoyage de canapés</h2>
             </div>
         </a>
         <!-- Service Card 3 -->
@@ -117,10 +117,10 @@
             </div>
         </a>
         <!-- Service Card 4 -->
-        <a href="Services/netCanape" style="text-decoration: none; color: inherit;">
+        <a href="Services/netGen" style="text-decoration: none; color: inherit;">
             <div class="service-card">
-                <img src="Views/public/images/nettoyage_canap.webp" alt="Nettoyage de canapés">
-                <h2>Nettoyage de canapés</h2>
+                <img src="Views/public/images/nettoyage_g.webp" alt="Nettoyage général">
+                <h2>Nettoyage général</h2>
             </div>
         </a>
 
