@@ -7,8 +7,12 @@
     <title>Partenaire Profile </title>
 </head>
 <body>
-<?php require "navbar.php"; ?>
+<?php require "navbar.php";
+?>
+<center>
+
 <h1>Profile </h1>
+</center>
 
 
 <div class="row py-6 px-4">
@@ -18,17 +22,20 @@
             <div class="px-2 pt-0 pb-4 bg-warning bg-gradient">
                 <div class="media align-items-end profile-header">
                     <div class="profile mr-3"><img src="https://bootstrapious.com/i/snippets/sn-profile/teacher.jpg"
-                                                   alt="..." width="160" class="rounded mb-2 img-thumbnail"><a href="../Partenaire/editprofile.php<?php echo '?id='.$partenaire['id']; ?> " class="btn btn-outline-dark btn-sm btn-block">Edit profile</a></div>
+                                                   alt="..." width="160" class="rounded mb-2 img-thumbnail">
+                        <a href="Partenaires/updateprofile" class="btn btn-dark btn-sm btn-block">Edit profile</a>
+
+                        </div>
                     <div class="media-body mb-5 text-black">
                         <h4 class="mt-0 mb-0"><?php
-                            if(isset($partenaire['Firstname']) && isset($partenaire['Lastname'])) {
-                                echo $partenaire['Lastname'].' '.$partenaire['Firstname'];
+                            if(isset($Partenaire['FirstName']) && isset($Partenaire['LastName'])) {
+                                echo $Partenaire['LastName'].' '.$Partenaire['FirstName'];
                             } else {
                                 echo "Firstname or Lastname is not set";
                             }
                             ?></h4>
-                        <p class="small mb-4"> <i class="fa fa-map-marker mr-2"></i><?php if (isset($partenaire['Ville'])) {
-                                echo $partenaire['Ville'];
+                        <p class="small mb-4"> <i class="fa fa-map-marker mr-2"></i><?php if (isset($Partenaire['Ville'])) {
+                                echo $Partenaire['Ville'];
                             } else {
                                 echo "Ville is not set";
                             } ?></p>
@@ -41,8 +48,8 @@
                     <li class="list-inline-item">
                         <h5 class="font-weight-bold mb-0 d-block">
                             <?php
-                            if(isset($partenaire['Nbr_commande'])) {
-                                echo $partenaire['Nbr_commande'];
+                            if(isset($Partenaire['Nbr_commande'])) {
+                                echo $Partenaire['Nbr_commande'];
                             } else {
                                 echo "Nbr_commande is not set";
                             }
@@ -52,8 +59,8 @@
                     <li class="list-inline-item">
                         <h5 class="font-weight-bold mb-0 d-block">
                             <?php
-                            if(isset($partenaire['Note'])) {
-                                echo $partenaire['Note'];
+                            if(isset($Partenaire['Note'])) {
+                                echo $Partenaire['Note'];
                             } else {
                                 echo "Note is not set";
                             }
@@ -70,7 +77,7 @@
                     <?php
                     if(isset($services)) {
                         foreach ($services as $service) {
-                            echo '<a href="#" class="btn btn-link text-primary"> '.$service['ServiceName'].' </a>';
+                            echo '<a href="#" class="btn btn-link text-primary"> '.$service['Nom'].' </a>';
                         }
                     } else {
                         echo "No services found";
@@ -85,10 +92,10 @@
                     <div class="p-4 bg-light rounded shadow-sm">
                         <!-- from comments    $comments  show each comment and it detail -->
                         <?php
-                        if(isset($comments)) {
-                            foreach ($comments as $comment) {
-                                echo '<p class="font-italic mb-0"> '.$comment['Comment'].' </p>';
-                                echo '<p class="font-italic mb-0"> '.$comment['Date'].' </p>';
+                        if(isset($commentaires)) {
+                            foreach ($commentaires as $comment) {
+                                echo '<p class="font-italic mb-0"> '.$comment['message'].' </p>';
+                                echo '<p class="font-italic mb-0"> '.$comment['Rating'].' </p>';
                             }
                         } else {
                             echo "No comments found";
