@@ -18,7 +18,7 @@
         <a class="nav-link" href="../home.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../Partenaire/Interventions<?php $Partenaire['id']?>">Mes Interventions</a>
+        <a class="nav-link" href="interventions">Mes Interventions</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="../Partenaire/Commentaires<?php $Partenaire['id']?>">Commentaires</a>

@@ -11,7 +11,7 @@
 ?>
 <center>
 
-<h1>Profile </h1>
+    <h1>Profile </h1>
 </center>
 
 
@@ -23,18 +23,19 @@
                 <div class="media align-items-end profile-header">
                     <div class="profile mr-3"><img src="https://bootstrapious.com/i/snippets/sn-profile/teacher.jpg"
                                                    alt="..." width="160" class="rounded mb-2 img-thumbnail">
-                        <a href="Partenaires/updateprofile" class="btn btn-dark btn-sm btn-block">Edit profile</a>
+                        <a href="updateprofile" class="btn btn-dark btn-sm btn-block">Edit profile</a>
 
-                        </div>
+                    </div>
                     <div class="media-body mb-5 text-black">
                         <h4 class="mt-0 mb-0"><?php
-                            if(isset($Partenaire['FirstName']) && isset($Partenaire['LastName'])) {
-                                echo $Partenaire['LastName'].' '.$Partenaire['FirstName'];
+                            if (isset($Partenaire['FirstName']) && isset($Partenaire['LastName'])) {
+                                echo $Partenaire['LastName'] . ' ' . $Partenaire['FirstName'];
                             } else {
                                 echo "Firstname or Lastname is not set";
                             }
                             ?></h4>
-                        <p class="small mb-4"> <i class="fa fa-map-marker mr-2"></i><?php if (isset($Partenaire['Ville'])) {
+                        <p class="small mb-4"><i
+                                    class="fa fa-map-marker mr-2"></i><?php if (isset($Partenaire['Ville'])) {
                                 echo $Partenaire['Ville'];
                             } else {
                                 echo "Ville is not set";
@@ -48,7 +49,7 @@
                     <li class="list-inline-item">
                         <h5 class="font-weight-bold mb-0 d-block">
                             <?php
-                            if(isset($Partenaire['Nbr_commande'])) {
+                            if (isset($Partenaire['Nbr_commande'])) {
                                 echo $Partenaire['Nbr_commande'];
                             } else {
                                 echo "Nbr_commande is not set";
@@ -59,7 +60,7 @@
                     <li class="list-inline-item">
                         <h5 class="font-weight-bold mb-0 d-block">
                             <?php
-                            if(isset($Partenaire['Note'])) {
+                            if (isset($Partenaire['Note'])) {
                                 echo $Partenaire['Note'];
                             } else {
                                 echo "Note is not set";
@@ -71,39 +72,53 @@
             </div>
 
             <div class="py-4 px-4">
+                <h5 class="mb-0">Services:</h5>
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h5 class="mb-0">Services:</h5>
-                        <!-- from services    $services  show each service and it detail -->
                     <?php
-                    if(isset($services)) {
+                    if (isset($services)) {
                         foreach ($services as $service) {
-                            echo '<a href="#" class="btn btn-link text-primary"> '.$service['Nom'].' </a>';
+                            ?>
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $service['Nom']; ?></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"><?php echo $service['Prix']; ?></h6>
+                                    <p class="card-text"><?php echo $service['Description']; ?></p>
+                                    <p class="card-text"><small
+                                                class="text-muted">Note: <?php echo $service['Note']; ?></small></p>
+                                    <p class="card-text"><small class="text-muted">Number of
+                                            orders: <?php echo $service['Nbr_commande']; ?></small></p>
+                                </div>
+                            </div>
+                            <?php
                         }
                     } else {
                         echo "No services found";
                     }
                     ?>
                 </div>
-                <div class="row">
+            </div>
+            <div class="row">
 
-                </div>
-                <div class="py-4">
-                    <h5 class="mb-3">Recents Comment :</h5>
-                    <div class="p-4 bg-light rounded shadow-sm">
-                        <!-- from comments    $comments  show each comment and it detail -->
-                        <?php
-                        if(isset($commentaires)) {
-                            foreach ($commentaires as $comment) {
-                                echo '<p class="font-italic mb-0"> '.$comment['message'].' </p>';
-                                echo '<p class="font-italic mb-0"> '.$comment['Rating'].' </p>';
-                            }
-                        } else {
-                            echo "No comments found";
-                        }
+            </div>
+            <div class="py-4">
+                <h5 class="mb-3">Recent Comments:</h5>
+                <?php
+                if (isset($commentaires)) {
+                    foreach ($commentaires as $comment) {
                         ?>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <p class="card-text font-italic mb-0"><?php echo $comment['message']; ?></p>
+                                <p class="card-text font-italic mb-0"><?php echo $comment['Rating']; ?></p>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    echo '<div class="alert alert-info" role="alert">No comments found</div>';
+                }
+                ?>
 
-                    </div>
-                </div>
             </div>
         </div><!-- End profile widget -->
 

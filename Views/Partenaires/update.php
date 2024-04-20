@@ -49,7 +49,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 <!--    cancel button -->
-    <a href="index.php?controller=partenaire&action=profile&id=<?php echo $Partenaire['id']; ?>" class="btn btn-danger">Cancel</a>
+    <a href="profil" class="btn btn-danger">Cancel</a>
 </form>
 </body>
 

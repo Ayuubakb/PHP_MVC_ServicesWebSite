@@ -17,6 +17,13 @@ class Partenaires extends Controller{
         $Partenaire = $this->Partenaire->find(1);
         $this->loadView("update", compact("Partenaire"));
     }
-    
+    public function interventions()
+    {
+        $this->loadModel("Partenaire");
+        $Partenaire = $this->Partenaire->find(1);
+        $interventions = $this->Partenaire->interventions(1);
+        $this->loadView("interventions", compact("Partenaire", "interventions"));
+    }
+
 
 }

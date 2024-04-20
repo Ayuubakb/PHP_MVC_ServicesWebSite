@@ -33,6 +33,12 @@ class Partenaire extends Model {
         $query= self::$instance->prepare($sql);
         $query->execute();
     }
+    public function interventions(int $id){
+        $sql= "SELECT * FROM reservation WHERE Id_S in (SELECT id FROM services WHERE Id_P = 1)";
+        $query= self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
 
 }
 ?>
