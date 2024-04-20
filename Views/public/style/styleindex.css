@@ -1,0 +1,50 @@
+.nettoyage {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nettoyage h2 {
+    margin-top: 0;
+  }
+  
+  .nettoyage ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nettoyage li {
+    margin-bottom: 10px;
+  }
+  
+  .nettoyage a {
+    text-decoration: none;
+    color: #337ab7;
+  }
+  
+  .nettoyage a:hover {
+    color: #23527c;
+  }
+  
+  .nettoyage button {
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .nettoyage button:hover {
+    background-color: #23527c;
+  }
+  
+  .nettoyage p:last-child {
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px;
+  }
