@@ -16,9 +16,20 @@ class Services extends Controller
         $Services = $this->Service->getService($nom);
         $this->loadView("Show", compact("Services")); 
     }
+
     public function netGen()
     {
         $this->loadView("Net_Gen"); 
+    }
+
+    public function netCanap()
+    {
+        $this->loadView("Net_Canap"); 
+    }
+
+    public function netSurf()
+    {
+        $this->loadView("Net_Surf"); 
     }
 
 }

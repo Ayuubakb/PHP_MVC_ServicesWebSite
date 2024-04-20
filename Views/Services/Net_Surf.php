@@ -125,17 +125,17 @@
     <section class="services-section">
 
     <div class="title-container">
-        <h1>Nettoyage général</h1>
+        <h1>Nettoyage de canapés</h1>
     </div>
-    <button class="dropdown">Nettoyage général</button>
+    <button class="dropdown">Nettoyage de surfaces</button>
     <div class="content">
         <div class="service-item">
             <div class="service-image">
-            <img src="<?php echo "http://".$_SERVER['SERVER_NAME']."/Bricolini/Views/public/images/Hany-overall-cleaning-1.webp";?>">
+            <img src="<?php echo "http://".$_SERVER['SERVER_NAME']."/Bricolini/Views/public/images/chandelier_cleaning.jpg";?>">
             </div>
             <div class="service-description">
-                <h3 class="service-title">Nettoyage à la journée pour une maison</h3>
-                <p>Réservez un service de femme de menage pour une journée de nettoyage de votre maison</p>
+                <h3 class="service-title">Nettoyage professionnel de lustre</h3>
+                <p>Réservez un service de nettoyage professionnel de lustre</p>
             </div>
             <p class="service-price">250 DH</p>
             <div class="service-add"></div>
@@ -143,11 +143,11 @@
 
         <div class="service-item">
             <div class="service-image">
-            <img src="<?php echo "http://".$_SERVER['SERVER_NAME']."/Bricolini/Views/public/images/nettoyage-fin-chantier-agadir.jpg";?>">
+            <img src="<?php echo "http://".$_SERVER['SERVER_NAME']."/Bricolini/Views/public/images/03-2016-window-washing-detail-1200x627.jpg";?>">
             </div>
             <div class="service-description">
-                <h2 class="service-title">Nettoyage fin de chantier appartement</h2>
-                <p>Nettoyage des murs, plafonds, sols, vitres, armoires, tapis et dépoussiérage complet</p>
+                <h2 class="service-title">Lavage de vitres</h2>
+                <p>Pour les fenêtres de maison normales, les fenêtres industrielles et les fenêtres de bâtiment</p>
             </div>
             <p class="service-price">500 DH</p>
             <div class="service-add"></div>
@@ -155,11 +155,11 @@
 
         <div class="service-item">
             <div class="service-image">
-            <img src="<?php echo "http://".$_SERVER['SERVER_NAME']."/Bricolini/Views/public/images/nettoyage-fin-chantier-agadir.jpg";?>">
+            <img src="<?php echo "http://".$_SERVER['SERVER_NAME']."/Bricolini/Views/public/images/pool_cleaning_tiles.jpg";?>">
             </div>
             <div class="service-description">
-                <h2 class="service-title">Nettoyage fin de chantier villa</h2>
-                <p>Nettoyage des murs, plafonds, sols, vitres, armoires, tapis et dépoussiérage complet</p>
+                <h2 class="service-title">Nettoyage Carrelage Piscine</h2>
+                <p>Nettoyez vos carreaux de piscine avec nos professionnels</p>
             </div>
             <p class="service-price">1000 DH</p>
             <div class="service-add"></div>

@@ -95,22 +95,16 @@
         <p>Commencez par choisir le service qui correspond à vos besoins. Parcourez nos catégories de services et sélectionnez celui qui vous intéresse.</p>
     </div>
     <div class="services-grid">
-        <!-- Service Card 1 -->
-        <a href="Services/Net_maisons" style="text-decoration: none; color: inherit;">
-            <div class="service-card">
-                <img src="Views/public/images/nettoyage_g.webp" alt="Ménage des Maisons">
-                <h2>Ménage des Maisons</h2>
-            </div>
-        </a>
         <!-- Service Card 2 -->
-        <a href="Services/Net_canap" style="text-decoration: none; color: inherit;">
+        <!-- smiya d fonction f lien href -->
+        <a href="Services/netCanap" style="text-decoration: none; color: inherit;">
             <div class="service-card">
                 <img src="Views/public/images/nettoyage_canap.webp" alt="Nettoyage de canapés">
                 <h2>Nettoyage de canapés</h2>
             </div>
         </a>
         <!-- Service Card 3 -->
-        <a href="Services/Net_surfaces" style="text-decoration: none; color: inherit;">
+        <a href="Services/netSurf" style="text-decoration: none; color: inherit;">
             <div class="service-card">
                 <img src="Views/public/images/nettoyage_surfaces.webp" alt="Nettoyage des surfaces">
                 <h2>Nettoyage des surfaces</h2>
