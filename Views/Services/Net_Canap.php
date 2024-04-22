@@ -127,7 +127,7 @@
     <div class="title-container">
         <h1>Nettoyage de canapés</h1>
     </div>
-    <button class="dropdown">Nettoyage canapés</button>
+    <button class="dropdown">Nettoyage de canapés</button>
     <div class="content">
         <div class="service-item">
             <div class="service-image">

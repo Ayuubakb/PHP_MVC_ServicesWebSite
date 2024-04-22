@@ -125,7 +125,7 @@
     <section class="services-section">
 
     <div class="title-container">
-        <h1>Nettoyage de canapés</h1>
+        <h1>Nettoyage des surfaces</h1>
     </div>
     <button class="dropdown">Nettoyage de surfaces</button>
     <div class="content">
