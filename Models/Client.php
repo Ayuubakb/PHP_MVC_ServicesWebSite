@@ -20,7 +20,7 @@ class Client extends Model{
             $query->execute();
             $objct->commandes=$query->fetchAll();
 
-            $sql="SELECT s.Nom, c.message, c.Rating, c.Date_post
+            $sql="SELECT s.Nom as nom, c.message as message, c.Rating as rating, c.Date_post as datePost
                   FROM ((services s INNER JOIN reservation r ON s.id=r.Id_S) INNER JOIN commentaire c ON r.id=c.Id_R)
                   WHERE r.Id_C=".$id." AND c.published=1 AND c.publisher='partenaire'";
             $query=self::$instance->prepare($sql);

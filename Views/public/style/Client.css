@@ -372,3 +372,16 @@
 .comments  .commentaireCard{
     margin-bottom: 20px;
 }
+.commentaireCard .rat .report{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 15px;
+    width: 35px;
+    height: 35px;
+    margin-left: 25%;
+    border-radius: 50%;
+    background-color: red;
+    cursor: pointer;
+}

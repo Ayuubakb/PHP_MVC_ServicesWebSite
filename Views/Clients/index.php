@@ -33,6 +33,7 @@
             </div>
             <div class="edit">
                 <a href="Clients/editProfile" style="color:white"><i class="fa-solid fa-pen-to-square fa-xl"></i></a>
+                <i class='fa-solid fa-flag fa-xl'></i>
             </div>
         </div>
         <div class="reservationsWrapper">
@@ -71,56 +72,22 @@
         <div class="commentaire">
             <h1 style="color:#FFB534">Commentaire :</h1>
             <div class="commentaires">
-                <div class="commentaireCard">
-                    <div class="mess">
-                        <h1>Nettoyage Genaral</h1>
-                        <p>Bon Client</p>
-                    </div> 
-                    <div class="rat">
-                        <p class="note">3/5</p>
-                        <p class="date">28/11/2023</p>
-                    </div> 
-                </div>
-                <div class="commentaireCard">
-                    <div class="mess">
-                        <h1>Nettoyage Genaral</h1>
-                        <p>Bon Client</p>
-                    </div> 
-                    <div class="rat">
-                        <p class="note">3/5</p>
-                        <p class="date">28/11/2023</p>
-                    </div> 
-                </div>
-                <div class="commentaireCard">
-                    <div class="mess">
-                        <h1>Nettoyage Genaral</h1>
-                        <p>Bon Client</p>
-                    </div> 
-                    <div class="rat">
-                        <p class="note">3/5</p>
-                        <p class="date">28/11/2023</p>
-                    </div> 
-                </div>
-                <div class="commentaireCard">
-                    <div class="mess">
-                        <h1>Nettoyage Genaral</h1>
-                        <p>Bon Client</p>
-                    </div> 
-                    <div class="rat">
-                        <p class="note">3/5</p>
-                        <p class="date">28/11/2023</p>
-                    </div> 
-                </div>
-                <div class="commentaireCard">
-                    <div class="mess">
-                        <h1>Nettoyage Genaral</h1>
-                        <p>Bon Client</p>
-                    </div> 
-                    <div class="rat">
-                        <p class="note">3/5</p>
-                        <p class="date">28/11/2023</p>
-                    </div> 
-                </div>
+                <?php
+                foreach($profile->commentaire as $comment){
+                    echo "
+                    <div class='commentaireCard'>
+                        <div class='mess'>
+                            <h1>$comment->nom</h1>
+                            <p>$comment->message</p>
+                        </div> 
+                        <div class='rat'>
+                            <p class='note'>$comment->rating</p>
+                            <p class='date'>$comment->datePost</p>
+                            <p class='report'><i class='fa-solid fa-flag fa-lg'></i></p>
+                        </div> 
+                    </div>";
+                }
+                ?>
             </div>
             <a href="http://localhost/Bricolini/Clients/getAllComments/0/DESC" style="color:white"><p class="allComments">Voir Plus <i class="fa-solid fa-arrow-right"></i></p></a>        </div>
     </section>
