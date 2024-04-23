@@ -40,5 +40,23 @@ class Partenaire extends Model {
         return $query->fetchAll();
     }
 
+    public function creerPartenaire($data) {
+        // Perform database insertion
+        // Ensure that you properly escape or prepare data to prevent SQL injection
+        // Example:
+        $query = "INSERT INTO partenaire (LastName, FirstName, Metier, Ville, Creneaux, YearExperience, Email, Telephone, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $params = [
+            $data['LastName'],
+            $data['FirstName'],
+            $data['Metier'],
+            $data['Ville'],
+            $data['Creneaux'],
+            $data['YearExperience'],
+            $data['Email'],
+            $data['Telephone'],
+            $data['password']
+        ];
+        $this->db->execute($query, $params);
+    }
 }
 ?>

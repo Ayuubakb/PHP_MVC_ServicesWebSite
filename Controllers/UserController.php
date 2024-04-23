@@ -35,8 +35,45 @@ class UserController extends Controller {
         }
     }
 
+    public function login() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Retrieve form data
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            
+            // Authenticate user
+            $user = $this->getUserByEmail($email);
+    
+            if ($user && password_verify($password, $user['password'])) {
+                // Authentication successful
+                // Check if the user has an Address field
+                if (isset($user['Address'])) {
+                    // User is a client
+                    header('Location: '); // Redirect to client dashboard
+                } else {
+                    // User is a partenaire
+                    header('Location: '); // Redirect to partenaire dashboard
+                }
+                exit();
+            } else {
+                // Authentication failed
+                echo "Invalid email or password";
+            }
+        }
+    }
+    
+
     public function showSignupForm() {
-        // Charger simplement la vue sans passer de type
+        
         $this->loadView("Authentification/signup");
     }
+
+    public function showLoginForm() {
+        
+        $this->loadView("Authentification/login");
+    }
+
+
+
+
 }
