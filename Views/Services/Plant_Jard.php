@@ -53,18 +53,20 @@
             font-size: 1.2rem;
         }
 
-        .service-add {
-            color: #65B741;
+        .reserve-button {
+            padding: 8px 16px;
+            background-color: #65B741; /* Green background */
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
+            font-weight: bold;
         }
 
-        /* Adjusting button and plus icon size for better visibility */
-        .service-add:before {
-            content: '+';
-            font-size: 1.5rem;
-            padding: 8px;
-            background-color: #FBF6EE; /* Very light yellowish-white */
-            border-radius: 50%;
+        /* Adjusting button for better visibility */
+        .reserve-button:hover {
+            background-color: #559F3B; /* Darker green for hover effect */
         }
 
         /* Smaller screens layout */
@@ -137,7 +139,7 @@
                     <p><?= $service['Description'] ?></p>
                 </div>
                 <p class="service-price"><?= $service['Prix'] ?> DH</p>
-                <div class="service-add"></div>
+                <button class="reserve-button">Réserver</button>
             </div>
     <?php endforeach; ?>
 
