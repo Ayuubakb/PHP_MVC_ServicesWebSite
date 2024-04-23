@@ -43,7 +43,7 @@ class Partenaire extends Model {
     public function creerPartenaire($data) {
         // Perform database insertion
         // Ensure that you properly escape or prepare data to prevent SQL injection
-        // Example:
+        
         $query = "INSERT INTO partenaire (LastName, FirstName, Metier, Ville, Creneaux, YearExperience, Email, Telephone, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $params = [
             $data['LastName'],
