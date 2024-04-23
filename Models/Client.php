@@ -87,4 +87,20 @@ class Client extends Model{
 
         return json_encode($objct);
     }
+    
+    public function creerClient($data) {
+        // Perform database insertion
+        // Ensure that you properly escape or prepare data to prevent SQL injection
+        // Example:
+        $query = "INSERT INTO client (LastName, FirstName, Address, Telephone, email, password) VALUES (?, ?, ?, ?, ?, ?)";
+        $params = [
+            $data['LastName'],
+            $data['FirstName'],
+            $data['Address'],
+            $data['Telephone'],
+            $data['Email'], // Adjust to use 'Email' instead of 'email'
+            $data['password'] // Adjust to use 'password' instead of 'password'
+        ];
+        $this->db->execute($query, $params);
+    }
 }
