@@ -55,4 +55,5 @@ class Clients extends Controller{
       $profile=json_decode($this->Client->getComments(1,$rating,$sort));
       $this->loadView("commentaires",compact('profile'));
    }
+   public function report
 }

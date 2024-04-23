@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 23 avr. 2024 à 18:23
+-- Généré le : mar. 23 avr. 2024 à 18:33
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `client` (
   `Telephone` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -43,9 +44,9 @@ CREATE TABLE IF NOT EXISTS `client` (
 -- Déchargement des données de la table `client`
 --
 
-INSERT INTO `client` (`id`, `LastName`, `FirstName`, `Address`, `Telephone`, `image`, `email`) VALUES
-(1, 'Akoubri', 'Ayoubos', 'Marrakechh', '0700824100', NULL, NULL),
-(2, 'jone', 'doe', 'england', '0662202873', NULL, NULL);
+INSERT INTO `client` (`id`, `LastName`, `FirstName`, `Address`, `Telephone`, `image`, `email`, `password`) VALUES
+(1, 'Akoubri', 'Ayoubos', 'Marrakechh', '0700824100', NULL, NULL, NULL),
+(2, 'jone', 'doe', 'england', '0662202873', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -112,6 +113,7 @@ CREATE TABLE IF NOT EXISTS `partenaire` (
   `Email` varchar(255) DEFAULT NULL,
   `Telephone` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -119,9 +121,9 @@ CREATE TABLE IF NOT EXISTS `partenaire` (
 -- Déchargement des données de la table `partenaire`
 --
 
-INSERT INTO `partenaire` (`id`, `LastName`, `FirstName`, `Metier`, `Ville`, `Creneaux`, `YearExperience`, `Note`, `Nbr_commande`, `Email`, `Telephone`, `image`) VALUES
-(1, 'lionel', 'messi', 'menage', 'Marrakech', NULL, 5, 3, 2, 'lionel@gmail.com', '0600284520', NULL),
-(2, 'cristiano', 'ronaldo', 'jardinage', 'marrakech', NULL, 12, 5, 15, 'cristiano@gmail.com', '0500241222', NULL);
+INSERT INTO `partenaire` (`id`, `LastName`, `FirstName`, `Metier`, `Ville`, `Creneaux`, `YearExperience`, `Note`, `Nbr_commande`, `Email`, `Telephone`, `image`, `password`) VALUES
+(1, 'lionel', 'messi', 'menage', 'Marrakech', NULL, 5, 3, 2, 'lionel@gmail.com', '0600284520', NULL, NULL),
+(2, 'cristiano', 'ronaldo', 'jardinage', 'marrakech', NULL, 12, 5, 15, 'cristiano@gmail.com', '0500241222', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -137,6 +139,8 @@ CREATE TABLE IF NOT EXISTS `reclamations` (
   `status` int NOT NULL,
   `Id_T` int NOT NULL,
   `motif` varchar(255) NOT NULL,
+  `id_Reclameur` int DEFAULT NULL,
+  `type_reclameur` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
