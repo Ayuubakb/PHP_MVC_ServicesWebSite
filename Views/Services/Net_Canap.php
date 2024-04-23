@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cleaning Service Selection</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Nettoyage de canapés</title>
+    <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <style>
         body {
-            background-color: #FBF6EE; /* Very light yellowish-white */
+            background-color: #FFFFFF; /* Very light yellowish-white */
         }
 
         .services-section {
@@ -82,7 +82,7 @@
             cursor: pointer;
             padding: 10px;
             border: none;
-            background: black;
+            background: white;
             text-align: left;
             width: 100%;
             border-top: 1px solid #FFB534;
@@ -100,7 +100,7 @@
 
         .content {
             padding: 0 10px;
-            max-height: 0;
+            max-height: none;
             overflow: hidden;
             transition: max-height 0.2s ease-out;
             background-color: #FFF;
@@ -122,48 +122,24 @@
     </style>
 </head>
 <body>
+<?php include 'Views/Components/Nav.php'; ?>
     <section class="services-section">
-
-    <div class="title-container">
-        <h1>Nettoyage de canapés</h1>
-    </div>
-    <button class="dropdown">Nettoyage de canapés</button>
+    <div class="dropdown active">Nettoyage de canapés</div>
     <div class="content">
-        <div class="service-item">
-            <div class="service-image">
-                <img src="<?php echo "http://".$_SERVER['SERVER_NAME']."/Bricolini/Views/public/images/nett_canap.jpg";?>">
-            </div>
-            <div class="service-description">
-                <h3 class="service-title">Nettoyage vapeur chaise en tissu</h3>
-                <p>Réservez un service de nettoyage vapeur chaise en tissu</p>
-            </div>
-            <p class="service-price">250 DH</p>
-            <div class="service-add"></div>
-        </div>
 
-        <div class="service-item">
-            <div class="service-image">
-            <img src="<?php echo "http://".$_SERVER['SERVER_NAME']."/Bricolini/Views/public/images/vap_faut.jpg";?>">
+    <?php foreach ($Services as $service): ?>
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="http://<?= $_SERVER['SERVER_NAME'] ?>/Bricolini/Views/public/images/<?= $service['image'] ?>">
+                </div>
+                <div class="service-description">
+                    <h2 class="service-title"><?= $service['Nom'] ?></h2>
+                    <p><?= $service['Description'] ?></p>
+                </div>
+                <p class="service-price"><?= $service['Prix'] ?> DH</p>
+                <div class="service-add"></div>
             </div>
-            <div class="service-description">
-                <h2 class="service-title">Nettoyage vapeur fauteuil</h2>
-                <p>Réservez un service de nettoyage vapeur fauteuil</p>
-            </div>
-            <p class="service-price">500 DH</p>
-            <div class="service-add"></div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-image">
-            <img src="<?php echo "http://".$_SERVER['SERVER_NAME']."/Bricolini/Views/public/images/vap_mat.jpg";?>">
-            </div>
-            <div class="service-description">
-                <h2 class="service-title">Nettoyage vapeur matelas</h2>
-                <p>Réservez un service de nettoyage vapeur matelas</p>
-            </div>
-            <p class="service-price">1000 DH</p>
-            <div class="service-add"></div>
-        </div>
+    <?php endforeach; ?>
 
         </div>
 
@@ -184,6 +160,6 @@
             });
     </script>
 
-
+<?php include 'Views/Components/Footer.php'; ?>
 </body>
 </html>

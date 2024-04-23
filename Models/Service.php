@@ -14,6 +14,16 @@ class Service extends Model {
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function get_Offre(String $nom){
+        
+        $sql = "SELECT * FROM " . $this->table . " WHERE sousCategorie = '" . $nom."'";
+        
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+    
     
 }
 ?>

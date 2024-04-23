@@ -60,8 +60,8 @@
             display: inline;
             margin-right: 1rem;
         }
-        nav a {
-            text-decoration: none;
+        nav a { 
+            text-decoration: none; 
             color: #65B741; 
         }
         h1, h2, p {
@@ -91,15 +91,55 @@
     <?php include 'Views/Components/Nav.php'; ?>
     <main>
     <div class="service-container">
-    <?php foreach ($Services as $service): ?>
-        <!-- Service Card -->
-        <a href="Services/<?php echo urlencode(str_replace(' ', '', strtolower(htmlspecialchars($service['Nom'])))); ?>" style="text-decoration: none; color: inherit;">
+        <div class="service-selection">
+            <h1>Choisissez votre service</h1>
+            <p>Commencez par choisir le service qui correspond à vos besoins. Parcourez nos catégories de services et sélectionnez celui qui vous intéresse.</p>
+        </div>
+        <div class="services-grid">
+            <!-- Display the services without the database-->
+
+            <a href="Services/nettoyagedecanapes" style="text-decoration: none; color: inherit;">
             <div class="service-card">
-                <img src="Views/public/images/<?php echo htmlspecialchars($service['image']); ?>" alt="<?php echo htmlspecialchars($service['Nom']); ?>">
-                <h2><?php echo htmlspecialchars($service['Nom']); ?></h2>
+                <img src="Views/public/images/nettoyage_canap.webp" alt="Couch Cleaning">
+                <h2>Nettoyage de canapés</h2>
             </div>
-        </a>
-    <?php endforeach; ?>
+            </a>
+
+            <a href="Services/nettoyagedessurfaces" style="text-decoration: none; color: inherit;">
+            <div class="service-card">
+                <img src="Views/public/images/nettoyage_surfaces.webp" alt="Couch Cleaning">
+                <h2>Nettoyage des surfaces</h2>
+            </div>
+            </a>
+
+            <a href="Services/nettoyagegeneral" style="text-decoration: none; color: inherit;">
+            <div class="service-card">
+                <img src="Views/public/images/nettoyage_g.webp" alt="Couch Cleaning">
+                <h2>Nettoyage général</h2>
+            </div>
+            </a>
+
+            <a href="Services/entretiengazon" style="text-decoration: none; color: inherit;">
+            <div class="service-card">
+                <img src="Views/public/images/entretienGAZON.webp" alt="Couch Cleaning">
+                <h2>Entretien de Gazon et Pelouse</h2>
+            </div>
+            </a>
+
+            <a href="Services/traitementjardin" style="text-decoration: none; color: inherit;">
+            <div class="service-card">
+                <img src="Views/public/images/traitementjardin.webp" alt="Couch Cleaning">
+                <h2>Traitement de jardin</h2>
+            </div>
+            </a>
+
+            <a href="Services/plantationjardin" style="text-decoration: none; color: inherit;">
+            <div class="service-card">
+                <img src="Views/public/images/plantationjardin.webp" alt="Couch Cleaning">
+                <h2>Plantation pour jardin</h2>
+            </div>
+            </a>
+
 </div>
 </main>
     <?php include 'Views/Components/Footer.php'; ?>
