@@ -46,13 +46,18 @@ class UserController extends Controller {
     
             if ($user && password_verify($password, $user['password'])) {
                 // Authentication successful
-                // Check if the user has an Address field
-                if (isset($user['Address'])) {
-                    // User is a client
-                    header('Location: '); // Redirect to client dashboard
+                // Start the session
+                session_start();
+                
+                // Store user data in session
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_type'] = isset($user['Address']) ? 'client' : 'partenaire';
+                
+                // Redirect based on user type
+                if ($_SESSION['user_type'] === 'client') {
+                    header('Location: /client/dashboard'); // Redirect to client dashboard
                 } else {
-                    // User is a partenaire
-                    header('Location: '); // Redirect to partenaire dashboard
+                    header('Location: /partenaire/dashboard'); // Redirect to partenaire dashboard
                 }
                 exit();
             } else {
@@ -61,6 +66,7 @@ class UserController extends Controller {
             }
         }
     }
+    
     
 
     public function showSignupForm() {
