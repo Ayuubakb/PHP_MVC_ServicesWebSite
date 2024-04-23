@@ -5,10 +5,10 @@
 </head>
 <body>
     <h1>Service Detail</h1>
-    <?php if ($service): ?>
-        <p>Name: <?= htmlspecialchars($services['Nom']) ?></p>
-        <p>Description: <?= htmlspecialchars($services['Description']) ?></p>
-        <p>Price: <?= htmlspecialchars($services['Prix']) ?></p>
+    <?php if ($Services): ?>
+        <p>Name: <?= htmlspecialchars($Services['Nom']) ?></p>
+        <p>Description: <?= htmlspecialchars($Services['Description']) ?></p>
+        <p>Price: <?= htmlspecialchars($Services['Prix']) ?></p>
     <?php else: ?>
         <p>No service found.</p>
     <?php endif; ?>

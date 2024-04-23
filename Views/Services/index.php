@@ -89,36 +89,18 @@
 <body>
 
     <?php include 'Views/Components/Nav.php'; ?>
-<main class="container">
-    <div class="service-selection">
-        <h1>Choisissez votre service</h1>
-        <p>Commencez par choisir le service qui correspond à vos besoins. Parcourez nos catégories de services et sélectionnez celui qui vous intéresse.</p>
-    </div>
-    <div class="services-grid">
-        <!-- Service Card 2 -->
-        <!-- smiya d fonction f lien href -->
-        <a href="Services/netCanap" style="text-decoration: none; color: inherit;">
+    <main>
+    <div class="service-container">
+    <?php foreach ($Services as $service): ?>
+        <!-- Service Card -->
+        <a href="Services/<?php echo urlencode(str_replace(' ', '', strtolower(htmlspecialchars($service['Nom'])))); ?>" style="text-decoration: none; color: inherit;">
             <div class="service-card">
-                <img src="Views/public/images/nettoyage_canap.webp" alt="Nettoyage de canapés">
-                <h2>Nettoyage de canapés</h2>
+                <img src="Views/public/images/<?php echo htmlspecialchars($service['image']); ?>" alt="<?php echo htmlspecialchars($service['Nom']); ?>">
+                <h2><?php echo htmlspecialchars($service['Nom']); ?></h2>
             </div>
         </a>
-        <!-- Service Card 3 -->
-        <a href="Services/netSurf" style="text-decoration: none; color: inherit;">
-            <div class="service-card">
-                <img src="Views/public/images/nettoyage_surfaces.webp" alt="Nettoyage des surfaces">
-                <h2>Nettoyage des surfaces</h2>
-            </div>
-        </a>
-        <!-- Service Card 4 -->
-        <a href="Services/netGen" style="text-decoration: none; color: inherit;">
-            <div class="service-card">
-                <img src="Views/public/images/nettoyage_g.webp" alt="Nettoyage général">
-                <h2>Nettoyage général</h2>
-            </div>
-        </a>
-
-    </div>
+    <?php endforeach; ?>
+</div>
 </main>
     <?php include 'Views/Components/Footer.php'; ?>
 </body>

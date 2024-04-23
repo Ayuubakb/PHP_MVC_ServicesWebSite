@@ -5,50 +5,37 @@ class Partenaire extends Model {
         $this->table = "Partenaire";
         self::getModel();
     }
-    public function UpdatePartenaire($data)
-    {
-        $sql = "UPDATE " . $this->table . " SET nom = :nom, prenom = :prenom, adresse = :adresse WHERE id = :id";
-        $query = self::$instance->prepare($sql);
-        $query->execute($data);
+    public function find(int $id){
+        $sql= "SELECT * FROM $this->table WHERE id = $id";
+        $query= self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetch();
     }
-    public function getcity(string $ville)
-    {
-        $sql = "SELECT * FROM " . $this->table . " WHERE adresse = '" . $ville."'";
-        $query = self::$instance->prepare($sql);
+    public function services(int $id){
+        $sql= "SELECT * FROM services WHERE Id_P = 1";
+        $query= self::$instance->prepare($sql);
         $query->execute();
         return $query->fetchAll();
     }
-    public function getMetier(string $metier)
-    {
-        $sql = "SELECT * FROM " . $this->table . " WHERE Metier = '" . $metier."'";
-        $query = self::$instance->prepare($sql);
+    public function commentaires(int $id){
+        $sql= "SELECT * FROM commentaire WHERE Id_S = 1";
+        $query= self::$instance->prepare($sql);
         $query->execute();
         return $query->fetchAll();
     }
-    public function updateNbr_commande($data)
-    {
-        $sql = "UPDATE " . $this->table . " SET nbr_commande = :nbr_commande WHERE id = :id";
-        $query = self::$instance->prepare($sql);
-        $query->execute($data);
-    }
-    public function getservices(int $id)
-    {
-        $sql = "SELECT * FROM Service WHERE id_partenaire = " . $id;
-        $query = self::$instance->prepare($sql);
+    public function update(int $id, array $data){
+        $sql= "UPDATE $this->table SET ";
+        foreach ($data as $key => $value){
+            $sql .= "$key = '$value',";
+        }
+        $sql = substr($sql, 0, -1);
+        $sql .= " WHERE id = $id";
+        $query= self::$instance->prepare($sql);
         $query->execute();
-        return $query->fetchAll();
     }
-    public function getComments(int $id)
-    {
-        //select the top 5 comments of the partenaire by rating
-        $sql = "SELECT * FROM Comment WHERE id_partenaire = " . $id . " ORDER BY rating DESC LIMIT 5";
-        $query = self::$instance->prepare($sql);
-        $query->execute();
-        return $query->fetchAll();
-    }
-    public function getIntervention($id){
-        $sql = "SELECT * FROM reservation WHERE statut = 'en cours' AND id_partenaire = " . $id;
-        $query = self::$instance->prepare($sql);
+    public function interventions(int $id){
+        $sql= "SELECT * FROM reservation WHERE Id_S in (SELECT id FROM services WHERE Id_P = 1)";
+        $query= self::$instance->prepare($sql);
         $query->execute();
         return $query->fetchAll();
     }

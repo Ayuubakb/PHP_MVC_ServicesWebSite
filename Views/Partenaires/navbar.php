@@ -7,7 +7,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-custom"> <!-- Replace with navbar-custom -->
   <a class="navbar-brand" href="#">
-    <img src="../public/images/logo.png" alt="Logo" style="width:120px;">
+    <img src="<?php echo "http://" . $_SERVER['SERVER_NAME'] ."/Bricolini/Views/public/images/logo.png"; ?>" alt="Logo" style="width:120px;">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -18,7 +18,7 @@
         <a class="nav-link" href="../home.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../Partenaire/Interventions<?php $Partenaire['id']?>">Mes Interventions</a>
+        <a class="nav-link" href="interventions">Mes Interventions</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="../Partenaire/Commentaires<?php $Partenaire['id']?>">Commentaires</a>
@@ -30,6 +30,9 @@
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="../Authentification/logout.php">Logout</a>
+      </li>
+<li class="nav-item">
+        <a class="nav-link" href="Partenaires/profil">Profile</a>
       </li>
     </ul>
   </div>
