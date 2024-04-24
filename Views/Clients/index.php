@@ -49,8 +49,24 @@
                 <?php
                 foreach($profile->commandes as $commande){
                     $status="";
-                    $commande->Statuts?$status="Faite":$status="En Attente";
-                    $commande->Statuts?$color="#65B741":$color="gray";
+                        switch ($commande->Statuts){
+                            case 0:
+                                $status="En Attente";
+                                $color="gray";
+                                break;
+                            case 1:
+                                $status="Accepté";
+                                $color="lightgreen";
+                                break;
+                            case 2:
+                                $status="Refusé";
+                                $color="red";
+                                break;
+                            case 3:
+                                $status="Faite";
+                                $color="#65B741";
+                                break;
+                        }
                     echo "
                     <div class='reservationCard'>
                         <div class='image'>

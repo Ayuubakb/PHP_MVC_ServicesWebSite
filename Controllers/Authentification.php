@@ -52,13 +52,15 @@ class Authentification extends Controller {
                 
                 // Store user data in session
                 $_SESSION['user_id'] = $user['id'];
-                $_SESSION['user_type'] = isset($user['Address']) ? 'client' : 'partenaire';
+                $_SESSION['user_type'] = isset($user['Address']) ? 'client' :(isset($user['Ville'])?'partenaire':'admin');
                 
                 // Redirect based on user type
                 if (!strcmp($_SESSION['user_type'],'client')) {
                     header('Location:http://localhost/Bricolini/Clients'); // Redirect to client dashboard
-                } else {
+                } else if(!strcmp($_SESSION['user_type'],'partenaire')) {
                     header('Location:http://localhost/Bricolini/Partenaires'); // Redirect to partenaire dashboard
+                }else{
+                    header('Location:http://localhost/Bricolini/Admin');
                 }
                 exit();
             } else {

@@ -385,3 +385,98 @@
     background-color: red;
     cursor: pointer;
 }
+.partenaire .leftBar{
+    position: absolute;
+    top: 0%;
+    left: 0;
+    /*transform: translateY(-50%);*/
+    height: 100%;
+    width: 20%;
+    background-color: #65B741;
+    padding: 25px;
+}
+.partenaire .leftBar form{
+    margin-top: 15%;
+}
+.partenaire .leftBar form div{
+    margin-bottom:25px;
+    width: 75%;
+    margin-left: 12.5%;
+}
+.partenaire .leftBar form div input, .partenaire .leftBar form div select{
+    outline: none;
+    padding: 5px 7px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: var(--fontSmall);
+}
+.partenaire .leftBar button{
+    padding: 10px 18px;
+    border: none;
+    background-color: var(--orange);
+    color: white;
+    font-family: var(--fontBig);
+    cursor: pointer;
+    margin-top: 35px;
+    width: 60%;
+    margin-left: 20%;
+    font-size: 25px;
+    border-radius: 15px;
+}
+.partenaire .main{
+    position: absolute;
+    top: 5%;
+    left: 25%;
+    width: 70%;
+}
+.partenaire .main .cardsHolder{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+.partenaireCard{
+    flex: 0 0 48%;
+    gap: 2%;
+    background-color: var(--orange);
+    padding: 15px;
+    border-radius: 25px;
+}
+.partenaireCard .header{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.partenaireCard .header .imageContainer{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+.partenaireCard .header .imageContainer img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.partenaireCard .infoContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+}
+.partenaireCard .infoContainer p{
+    color: var(--white);
+    font-family: var(--fontSmall);
+    font-size: 19px;
+}
+.partenaireCard .infoContainer span{
+    color: black;
+    margin-bottom: 15px;
+}
+.partenaireCard .header .note{
+    
+}

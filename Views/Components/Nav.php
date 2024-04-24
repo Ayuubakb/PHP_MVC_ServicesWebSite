@@ -26,7 +26,7 @@
                     echo "
                     <a href='http://localhost/Bricolini/Clients/getAllCommandes/Tous/4/DESC'><li>Commandes</li></a>
                     <a href='http://localhost/Bricolini/Clients/getAllComments/0/DESC'><li>Commentaires</li></a>
-                    <a href=''><span>Partenaires</span></a>";
+                    <a href='http://localhost/Bricolini/Clients/partenaires'><span>Partenaires</span></a>";
 
                 }
             }else if($islogged && !strcmp($type,"partenaire")){

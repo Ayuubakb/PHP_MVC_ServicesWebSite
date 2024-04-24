@@ -64,4 +64,13 @@ class Clients extends Controller{
       $this->loadModel("Reclamations");
       $this->Reclamations->reportFromClient($_POST["id_reclamateur"],$_POST["id_T"],$_POST["type_reclamation"],$_POST["type_reclamateur"],$_POST["motif"]);
    }
+   public function partenaires(){
+      $this->loadModel("Client");
+      if(isset($_POST["subBtn"])){
+         $partenaire=$this->Client->getPartenaires($_POST['nom'],$_POST['ville'],$_POST['rating'],$_POST['metier']);
+      }else{
+         $partenaire=$this->Client->getPartenaires("","",6,"");
+      }
+      $this->loadView("partenaires",compact("partenaire"));
+   }
 }
