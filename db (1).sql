@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 23 avr. 2024 à 18:33
+-- Généré le : mer. 24 avr. 2024 à 14:32
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -135,14 +135,23 @@ DROP TABLE IF EXISTS `reclamations`;
 CREATE TABLE IF NOT EXISTS `reclamations` (
   `id` int NOT NULL AUTO_INCREMENT,
   `type` varchar(255) NOT NULL,
-  `dateReclamations` int NOT NULL,
+  `dateReclamations` date NOT NULL,
   `status` int NOT NULL,
   `Id_T` int NOT NULL,
   `motif` varchar(255) NOT NULL,
   `id_Reclameur` int DEFAULT NULL,
   `type_reclameur` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `reclamations`
+--
+
+INSERT INTO `reclamations` (`id`, `type`, `dateReclamations`, `status`, `Id_T`, `motif`, `id_Reclameur`, `type_reclameur`) VALUES
+(1, 'commentaire', '2024-04-24', 0, 1, 'racism', 1, 'client'),
+(2, 'profile', '2024-04-24', 0, 1, 'Racism', 1, 'client'),
+(3, 'commentaire', '2024-04-24', 0, 12, 'Gros mots', 1, 'client');
 
 -- --------------------------------------------------------
 
@@ -205,11 +214,22 @@ CREATE TABLE IF NOT EXISTS `services` (
 --
 
 INSERT INTO `services` (`id`, `Id_P`, `Nom`, `Description`, `Prix`, `Note`, `Nbr_commande`, `image`, `categorie`, `sousCategorie`) VALUES
-(1, 1, 'Nettoyage general', 'nettoyer bien votre maison', 150, 4, 1, NULL, NULL, NULL),
-(2, 1, 'nettoyage de canape', 'nettoyer votre canape', 200, 2, 2, NULL, NULL, NULL),
-(3, 2, 'Entretien de Gazon et Pelouse', 'Prendre soin de votre jardin', 100, 5, 12, NULL, NULL, NULL),
-(4, 2, 'Traitement de jardin', 'prendre soin de tous votre jardin', 250, 5, 3, NULL, NULL, NULL);
-COMMIT;
+(1, 1, 'Nettoyage vapeur fauteuil', 'nettoyer bien votre maison', 150, 4, 1, 'vap_faut.jpg', 'nettoyage', 'Nettoyage de canapés'),
+(2, 1, 'Nettoyage vapeur chaise en tissu', 'nettoyer votre canape', 200, 2, 2, 'nett_canap.jpg', 'nettoyage', 'Nettoyage de canapés'),
+(5, 1, 'Nettoyage vapeur matelas', 'Nettoyage des matelas avec vapeur', 99.99, 4.5, 10, 'vap_mat.jpg', 'nettoyage', 'Nettoyage de canapés'),
+(6, 1, 'Nettoyage professionnel de lustre', 'Réservez un service de nettoyage professionnel de lustre', 99.99, 4.5, 10, 'chandelier_cleaning.jpg', 'nettoyage', 'Nettoyage des surfaces'),
+(7, 1, 'Lavage de vitres', 'Pour les fenêtres de maison normales, les fenêtres industrielles et les fenêtres de bâtiment', 99.99, 4.5, 10, '03-2016-window-washing-detail-1200x627.jpg', 'nettoyage', 'Nettoyage des surfaces'),
+(8, 1, 'Nettoyage Carrelage Piscine', 'Nettoyez vos carreaux de piscine avec nos professionnels', 99.99, 4.5, 10, 'pool_cleaning_tiles.jpg', 'nettoyage', 'Nettoyage des surfaces'),
+(9, 1, 'Nettoyage à la journée pour une maison', 'Réservez un service de femme de menage pour une journée de nettoyage de votre maison', 50, 4, 5, 'Hany-overall-cleaning-1.webp', 'nettoyage', 'Nettoyage général'),
+(10, 2, 'Nettoyage fin de chantier appartement', 'Nettoyage des murs, plafonds, sols, vitres, armoires, tapis et dépoussiérage complet', 75.5, 4.8, 20, 'nettoyage-fin-chantier-agadir.jpg', 'nettoyage', 'Nettoyage général'),
+(11, 3, 'Nettoyage fin de chantier villa', 'Nettoyage des murs, plafonds, sols, vitres, armoires, tapis et dépoussiérage complet', 120, 4.6, 15, 'nettoyage-fin-chantier-agadir.jpg', 'nettoyage', 'Nettoyage général'),
+(12, 1, 'Plantation de gazon et pelouse', 'Plantation de gazon et de pelouse dans votre jardin', 50, 4, 5, 'plantation_gazon_pelouse.webp', 'jardinage', 'Entretien de Gazon et Pelouse'),
+(13, 2, 'Tonte de gazon et pelouse', 'Tonte de gazon de votre jardin', 75.5, 4.8, 20, 'tonte_gazon.jpg', 'jardinage', 'Entretien de Gazon et Pelouse'),
+(14, 3, 'Fertilisation de gazon et pelouse', 'rendre le gazon fertile', 120, 4.6, 15, 'fertilisation_gazon.jpg', 'jardinage', 'Entretien de Gazon et Pelouse'),
+(15, 1, 'Application de produits phytosanitaires', 'Traitez votre jardin avec des pesticides ou des engrais. ', 50, 4, 5, 'Hany-jardinier-1.webp', 'jardinage', 'Traitement de jardin'),
+(16, 2, 'Diagnostic de traitement phytosanitaire', 'Obtenez un devis personnalisé pour vos besoins d’entretien du jardin.', 75.5, 4.8, 20, 'Hany-jardinier-1.webp', 'jardinage', 'Traitement de jardin'),
+(17, 1, 'Consultation sur la plantation', 'Obtenez un devis personnalisé pour vos besoins d’entretien du jardin.', 50, 4, 5, 'consu_plant.jpeg', 'jardinage', 'Plantation pour jardin'),
+(18, 2, 'Plantation : Palmiers', 'Planter les palmiers dans jardin', 75.5, 4.8, 20, 'plantation_palm_trees.webp', 'jardinage', 'Plantation pour jardin');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

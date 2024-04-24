@@ -5,7 +5,7 @@
     <div class="routes">
         <ul>
             <a href=""><li>Acceuil</li></a>
-            <a href=""><li>Services</li></a>
+            <a href="http://localhost/Bricolini/Services"><li>Services</li></a>
         </ul>
     </div>
     <div class="auth"> 

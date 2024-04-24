@@ -109,6 +109,7 @@ footer .mainList :not(.title){
 .sec{
     min-height: 100vh;
     padding-bottom: 25px;
+    position: relative;
 }
 footer .end{
     position: relative;
@@ -137,4 +138,96 @@ footer .end p{
 }
 footer .end i{
     color: var(--green);
+}
+.recla{
+    width:100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(245, 245, 245, 0.496);
+    display: none;
+}
+.reclaBanner{
+    position: absolute;
+    z-index: 3;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%,-35%);
+    padding: 25px;
+    background-color: var(--orange);
+    width: 40%;
+    border-radius: 15px;
+    border: solid 3px red;
+    padding-bottom: 40px;
+}
+.reclaBanner h1{
+    color: white;
+    font-family:var(--fontBig);
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.reclaBanner div{
+    margin-bottom: 10px;
+    width: 75%;
+    margin-left: 12.5%;
+    display: flex;
+    flex-direction: column;
+}
+.reclaBanner div label{
+    margin-bottom: 10px;
+    font-family: var(--fontSmall);
+    font-size: 18px;
+}
+.reclaBanner div input{
+    border: none;
+    padding: 5px;
+    font-family: var(--fontSmall);
+    font-size: 20px;
+}
+.reclaBanner .radios{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.reclaBanner .radios label{
+    display: flex;
+    flex-direction:row;
+}
+.reclaBanner .radios input{
+    margin-right: 10px;
+}
+.reclaBanner #autre{
+    opacity: 0;
+    
+}
+.reclaBanner textarea{
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+}
+.reclaBanner button{
+    padding: 8px 15px;
+    font-family: var(--fontBig);
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: red;
+    color: var(--white);
+    margin-left: 75%;
+    margin-top: 15px;
+}
+.reclaBanner .header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.reclaBanner .header h1{
+    padding: 10px;
+    background-color: red;
+    border-radius: 5px;
 }
