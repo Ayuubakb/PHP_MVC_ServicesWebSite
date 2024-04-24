@@ -134,8 +134,3 @@ require("Views/Components/Footer.php");
         });
     });
 </script>
-
-
-
-
-
