@@ -39,6 +39,10 @@
     </section>
 
 <?php include 'Views/Components/Footer.php'; ?>
+<div id="notificationModal" style="display:none; position: fixed; top: 20%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; padding: 20px; background-color: white; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <p id="notificationMessage" style="margin: 0;"></p>
+        <button onclick="document.getElementById('notificationModal').style.display='none'" style="margin-top: 10px; padding: 5px 10px; border: none; background-color: #007BFF; color: white; border-radius: 5px; cursor: pointer;">Close</button>
+</div>
 <script src="http://localhost/Bricolini/Views/public/js/Service.js"></script>
 </body>
 </html>
