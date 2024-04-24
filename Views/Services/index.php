@@ -83,6 +83,35 @@
             }
         }
 
+        .service-selection {
+            text-align: center; /* Center the text for a balanced look */
+            margin-bottom: 2rem; /* Add some space below the section */
+        }
+
+        .service-selection h1 {
+            text-align: center; /* Center the title */
+            font-size: 3em; /* Larger size for the main title */
+            color: #FFB534; /* A color that stands out, matching the theme */
+            font-weight: bold; /* Bold for emphasis */
+            margin-bottom: 0.25em; /* A tighter margin below the title */
+            text-transform: uppercase; /* Uppercase text for stylistic preference */
+            letter-spacing: 2px; /* Spacing out the letters for added effect */
+        }
+
+        .service-selection p {
+            font-size: 1.25em; /* Slightly larger paragraph size */
+            color: green; /* Darker text for contrast and readability */
+            max-width: 600px; /* Max width to avoid overly long lines */
+            margin-left: auto; /* Center the paragraph */
+            margin-right: auto; /* Center the paragraph */
+        }
+
+        @media (max-width: 768px) {
+            .service-selection h1 {
+                font-size: 2em; /* Slightly smaller font size on smaller screens */
+            }
+        }
+
 
     </style>
 </head>
@@ -95,6 +124,9 @@
             <h1>Choisissez votre service</h1>
             <p>Commencez par choisir le service qui correspond à vos besoins. Parcourez nos catégories de services et sélectionnez celui qui vous intéresse.</p>
         </div>
+
+        <section class="services-section">
+        <h2 class="services-title">Nettoyage</h2>
         <div class="services-grid">
             <!-- Display the services without the database-->
 
@@ -118,7 +150,12 @@
                 <h2>Nettoyage général</h2>
             </div>
             </a>
+            </div>
+        </section>
 
+
+        <section class="services-section">
+            <h2 class="services-title">Jardinage</h2>
             <a href="Services/entretiengazon" style="text-decoration: none; color: inherit;">
             <div class="service-card">
                 <img src="Views/public/images/entretienGAZON.webp" alt="Couch Cleaning">
@@ -139,8 +176,10 @@
                 <h2>Plantation pour jardin</h2>
             </div>
             </a>
+            </div>
+        </section>
 
-</div>
+
 </main>
     <?php include 'Views/Components/Footer.php'; ?>
 </body>
