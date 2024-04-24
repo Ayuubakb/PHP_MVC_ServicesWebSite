@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `client` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Déchargement des données de la table `client`
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   `Id_R` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `Id_R` (`Id_R`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `commentaire`
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `partenaire` (
   `image` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Déchargement des données de la table `partenaire`
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `reclamations` (
   `id_Reclameur` int DEFAULT NULL,
   `type_reclameur` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Déchargement des données de la table `reclamations`
@@ -169,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   PRIMARY KEY (`id`),
   KEY `Id_S` (`Id_S`),
   KEY `Id_C` (`Id_C`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `reservation`
@@ -207,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `services` (
   `sousCategorie` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `Id_P` (`Id_P`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Déchargement des données de la table `services`

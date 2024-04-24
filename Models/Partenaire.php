@@ -112,10 +112,9 @@ class Partenaire extends Model
     }
     public function updateStatus($id, $status)
     {
-        $sql = "UPDATE reservation SET Statuts = :status WHERE id = :id";
+        $sql = "UPDATE reservation SET Statuts = $status WHERE id = $id";
         $query = self::$instance->prepare($sql);
-        $parameters = array(':status' => $status, ':id' => $id);
-        $query->execute($parameters);
+        $query->execute();
     }
 
 }

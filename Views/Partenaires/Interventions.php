@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
     <title>Interactions</title>
@@ -12,25 +13,22 @@
 </head>
 <body>
 <?php
-require("navbar.php");
+require __DIR__ . "/../Components/Nav.php";
 ?>
 <div class="Traitement">
     <h1>Waiting : </h1>
-    <?php
-    foreach ($commandesnontraitees as $commande) {
-        echo "<div class='commande'>";
-        echo "<h2>Commande ID: {$commande['ID_reserv']}</h2>";
-        echo "<p>Date: {$commande['Date_reserv']}</p>";
-        echo "<p>Client Name: {$commande['FirstName']} {$commande['LastName']}</p>";
-        echo "<p>Service Name: {$commande['Nom']}</p>";
-        echo "<p>Note: {$commande['Note']}</p>";
-        echo "<p>Subcategory: {$commande['sousCategorie']}</p>";
-        echo "<button class='accept'>Accept</button>";
-        echo "<button class='refuse'>Refuse</button>";
-        echo "</div>";
-    }
-    ?>
+    <?php foreach ($commandesnontraitees as $commande): ?>
+        <div class='commande'>
+            <h2>Commande: <?= $commande['ID_reserv'] ?></h2>
+            <p>Service: <?= $commande['Nom'] ?></p>
+            <p>Date: <?= $commande['Date_reserv'] ?></p>
+            <p>Client: <?= $commande['FirstName'] ?> <?= $commande['LastName'] ?></p>
+            <button class='accept' data-id='<?= $commande['ID_reserv'] ?>'>Accepter</button>
+            <button class='refuse' data-id='<?= $commande['ID_reserv'] ?>'>Refuser</button>
+        </div>
+    <?php endforeach; ?>
 </div>
+
 <section class="sec">
     <div class="reservationsWrapper">
         <h1>Commandes :</h1>
@@ -38,8 +36,25 @@ require("navbar.php");
             <?php // Debugging
 foreach ($interventions as $commande) {
     $status = "";
-    $commande['Statuts'] ? $status = "Faite" : $status = "En Attente";
-    $commande['Statuts'] ? $color = "#65B741" : $color = "gray";
+            $status="";
+            switch ($commande['Statuts']){
+                case 0:
+                    $status="En Attente";
+                    $color="gray";
+                    break;
+                case 1:
+                    $status="Accepté";
+                    $color="lightgreen";
+                    break;
+                case 2:
+                    $status="Refusé";
+                    $color="red";
+                    break;
+                case 3:
+                    $status="Faite";
+                    $color="#65B741";
+                    break;
+            }
     echo "
         <div class='reservationCard'>
             <div class='image'>
@@ -63,28 +78,30 @@ foreach ($interventions as $commande) {
 
 </section>
 <?php
-require("Views/Components/Footer.php");
+require __DIR__ . "/../Components/Footer.php";
 ?>
 </body>
 </html>
 <style>
     .commande {
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 15px;
     margin-bottom: 20px;
-    background-color: #f9f9f9;
+    background-color: var(--yellow);
     box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
 .commande h2 {
     margin-top: 0;
-    color: #333;
+    color: var(--green);
+    text-align: center;
 }
 
 .commande p {
     color: #666;
-    margin: 10px 0;
+    margin: 10px 20px;
+
 }
 
 .accept, .refuse {
@@ -94,6 +111,8 @@ require("Views/Components/Footer.php");
     text-transform: uppercase;
     cursor: pointer;
     margin-top: 10px;
+    margin-right: 10px;
+    text-align: center;
 }
 
 .accept {
@@ -105,24 +124,48 @@ require("Views/Components/Footer.php");
     background-color: #f44336;
     color: white;
 }
+.Traitement{
+/*    make the div 70 % of the page and center it */
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+/*
+*/
+}
+h1{
+    margin-bottom: 9px;
+    font-size: 25px;
+    font-family: var(--fontBig);
+    font-size: 35px;
+    color: #65B741;
+}
 </style>
 <script>
-    document.querySelectorAll('.accept, .refuse').forEach(button => {
-        button.addEventListener('click', function() {
-            var id = this.parentElement.querySelector('h2').textContent.split(': ')[1];
-            var status = this.classList.contains('accept') ? 1 : 2;
+    $(document).ready(function() {
+        $('button.accept, button.refuse').on('click', function(e) {
+            e.preventDefault();
 
-            fetch('updateStatus.php', {
+            
+            var confirmAction = confirm("Est ce que vous etes sure de votre choix?\nCette action est irreversible.");
+            if (!confirmAction) {
+                return; 
+            }
+
+            var id = $(this).data('id');
+            var status = $(this).hasClass('accept') ? 1 : 2; 
+
+            $.ajax({
+                url: 'http://localhost/Bricolini/Partenaires/updateStatus', 
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                data: { id: id, status: status },
+                success: function(response) {
+                    console.log(response);
+                    
+                    location.reload(); 
                 },
-                body: `id=${id}&status=${status}`,
-            })
-            .then(response => response.text())
-            .then(data => console.log(data))
-            .catch((error) => {
-                console.error('Error:', error);
+                error: function() {
+                    alert('Error updating status. Please try again.');
+                }
             });
         });
     });
