@@ -41,5 +41,18 @@ class Partenaires extends Controller{
         $this->loadView("addservice", compact("Partenaire"));
     }
 
+    public function updateStatus() {
+        $this->loadModel("Partenaire");
+        if (isset($_POST['id']) && isset($_POST['status'])) {
+            $id = $_POST['id'];
+            $status = $_POST['status'];
+            $this->Partenaire->updateStatus($id, $status);
+            echo "Success"; 
+        } else {
+            echo "Error"; 
+        }
+    }
+    
+
 
 }

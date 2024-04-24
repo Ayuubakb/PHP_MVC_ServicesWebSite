@@ -17,24 +17,18 @@ require("navbar.php");
 ?>
 <div class="Traitement">
     <h1>Waiting : </h1>
-    <?php
-foreach ($commandesnontraitees as $commande) {
-    echo "
-    <form id='form-{$commande['ID_reserv']}' method='post' class='ajax-form'>
+    <?php foreach ($commandesnontraitees as $commande): ?>
         <div class='commande'>
-            <p style='display:none'>{$commande['ID_reserv']}</p>
-            <h2>Commande: {$commande['ID_reserv']}</h2>
-            <p>Service: {$commande['Nom']}</p>
-            <p>Date: {$commande['Date_reserv']}</p>
-            <p>Client: {$commande['FirstName']} {$commande['LastName']}</p>
-            <button class='accept'>Accepter</button>
-            <button class='refuse'>Refuser</button>
+            <h2>Commande: <?= $commande['ID_reserv'] ?></h2>
+            <p>Service: <?= $commande['Nom'] ?></p>
+            <p>Date: <?= $commande['Date_reserv'] ?></p>
+            <p>Client: <?= $commande['FirstName'] ?> <?= $commande['LastName'] ?></p>
+            <button class='accept' data-id='<?= $commande['ID_reserv'] ?>'>Accepter</button>
+            <button class='refuse' data-id='<?= $commande['ID_reserv'] ?>'>Refuser</button>
         </div>
-    </form>
-    ";
-}
-?>
+    <?php endforeach; ?>
 </div>
+
 <section class="sec">
     <div class="reservationsWrapper">
         <h1>Commandes :</h1>
@@ -110,25 +104,38 @@ require("Views/Components/Footer.php");
     color: white;
 }
 </style>
-
 <script>
     $(document).ready(function() {
-    $('.ajax-form button').on('click', function(e) {
-        e.preventDefault();
-        var form = $(this).closest('ajax-form');
-        var id = form.find('p').text();
-        var status = $(this).hasClass('accept') ? 1 : 2;
-        $.ajax({
-            url: 'http://localhost/Bricolini/Views/Partenaires/updateStatus.php',
-            method: 'POST',
-            data: {
-                id: id,
-                status: status
-            },
-            success: function(response) {
-                console.log(response);
-                form.remove();
+        $('button.accept, button.refuse').on('click', function(e) {
+            e.preventDefault();
+
+            
+            var confirmAction = confirm("Est ce que vous etes sure de votre choix?\nCette action est irreversible.");
+            if (!confirmAction) {
+                return; 
             }
+
+            var id = $(this).data('id');
+            var status = $(this).hasClass('accept') ? 1 : 2; 
+
+            $.ajax({
+                url: 'http://localhost/Bricolini/Partenaires/updateStatus', 
+                method: 'POST',
+                data: { id: id, status: status },
+                success: function(response) {
+                    console.log(response);
+                    
+                    location.reload(); 
+                },
+                error: function() {
+                    alert('Error updating status. Please try again.');
+                }
+            });
         });
-});
+    });
 </script>
+
+
+
+
+
