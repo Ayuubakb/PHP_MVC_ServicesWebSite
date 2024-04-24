@@ -2,10 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
+    <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
+    <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/addservice.css">
+    <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
+
     <title>Add Service</title>
 </head>
 <body>
+<?php
+require("Views/Components/Nav.php");
+?>
     <h1>Add Service</h1>
+<div class="container">
     <form action="http://localhost/Bricolini/Partenaires/addservice" method="post">
         <label for="serviceName">Service Name:</label><br>
         <input type="text" id="serviceName" name="serviceName"><br>
@@ -35,7 +44,11 @@
 
         <input type="submit" value="Add Service">
     </form>
+</div>
 </body>
+<?php
+require 'Views/Components/Footer.php';
+?>
 </html>
 <script>
     // Define the sous categories for each category

@@ -10,7 +10,7 @@
 </head>
 <body>
 <?php
-require('navbar.php');
+require("Views/Components/Nav.php");
 ?>
 <section class="sec">
     <div class="informations">
