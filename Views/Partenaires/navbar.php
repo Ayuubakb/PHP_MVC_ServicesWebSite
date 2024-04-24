@@ -18,10 +18,10 @@
         <a class="nav-link" href="http://localhost/Bricolini/home.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="interventions">Mes Interventions</a>
+        <a class="nav-link" href="http://localhost/Bricolini/Partenaires/interventions">Mes Interventions</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="http://localhost/Bricolini/Partenaire/Commentaires<?php $Partenaire['id']?>">Commentaires</a>
+        <a class="nav-link" href="http://localhost/Bricolini/Partenaires/commentaires/0/DESC">Commentaires</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="http://localhost/Bricolini/Partenaire/Historique<?php $Partenaire['id']?>">Historique</a>

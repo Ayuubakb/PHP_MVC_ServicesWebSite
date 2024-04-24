@@ -23,6 +23,7 @@ class Partenaire extends Model
         $query->execute();
         return $query->fetchAll();
     }
+
     public function update(int $id, array $data)
     {
         $sql = "UPDATE $this->table SET ";
@@ -37,7 +38,10 @@ class Partenaire extends Model
 
     public function interventions(int $id)
     {
-        $sql = "SELECT * FROM reservation WHERE Id_S in (SELECT id FROM services WHERE Id_P = 1)";
+        $sql = "SELECT * FROM reservation 
+                INNER JOIN services ON reservation.Id_S = services.id
+             INNER JOIN client ON reservation.Id_C = client.id
+         WHERE Id_S in (SELECT id FROM services WHERE Id_P = 1)";
         $query = self::$instance->prepare($sql);
         $query->execute();
         return $query->fetchAll();
@@ -62,36 +66,57 @@ class Partenaire extends Model
         ];
         $this->db->execute($query, $params);
     }
-    public function getallcomments(int $id,int $note,string $order){
-    //check if the order is DESC or ASC
-    if($order == "DESC" || $order == "ASC"){
-        $sql= "SELECT commentaire.* ,services.*,reservation.*,client.*
+
+    public function getallcomments(int $id, int $note, string $order)
+    {
+        //check if the order is DESC or ASC
+        if ($order == "DESC" || $order == "ASC") {
+            $sql = "SELECT commentaire.* ,services.*,reservation.*,client.*
                 FROM commentaire 
                INNER JOIN reservation ON commentaire.Id_R = reservation.id
                INNER JOIN services ON reservation.Id_S = services.id
                 INNER JOIN client ON reservation.Id_C = client.id
                WHERE services.Id_P = 1 AND commentaire.Rating >= $note and commentaire.publisher = 'client'
                ORDER BY commentaire.Date_post $order";
-    }else{
-        $sql= "SELECT commentaire.* FROM commentaire 
+        } else {
+            $sql = "SELECT commentaire.* FROM commentaire 
                INNER JOIN reservation ON commentaire.Id_R = reservation.id
                 INNER JOIN services ON reservation.Id_S = services.id
                WHERE services.Id_P = 1 AND commentaire.Rating >= $note AND commentaire.publisher = 'client' ";
 
+        }
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
     }
-    $query= self::$instance->prepare($sql);
-    $query->execute();
-    return $query->fetchAll();
-}
-public function commandes(int $id){
-    $sql= "SELECT reservation.*, client.*,services.* FROM reservation 
+
+    public function commandes(int $id)
+    {
+        $sql = "SELECT reservation.*, client.*,services.* FROM reservation 
               INNER JOIN services ON reservation.Id_S = services.id
            INNER JOIN client ON reservation.Id_C = client.id 
            WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = 1) limit 3";
-    $query= self::$instance->prepare($sql);
-    $query->execute();
-    return $query->fetchAll();
-}
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+    public function commandesnontraitees(int $id)
+    {
+        $sql = "SELECT reservation.id as ID_reserv,reservation.*, client.*,services.* FROM reservation 
+              INNER JOIN services ON reservation.Id_S = services.id
+           INNER JOIN client ON reservation.Id_C = client.id 
+           WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = 1) AND reservation.Statuts = 0";
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+    public function updateStatus($id, $status)
+    {
+        $sql = "UPDATE reservation SET Statuts = :status WHERE id = :id";
+        $query = self::$instance->prepare($sql);
+        $parameters = array(':status' => $status, ':id' => $id);
+        $query->execute($parameters);
+    }
 
 }
 

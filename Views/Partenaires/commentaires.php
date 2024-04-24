@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
     <script src="http://localhost/Bricolini/Views/public/js/Partenaire.js"></script>
-    <title>Document</title>
+    <title>Commentaires</title>
 </head>
 <body>
 <?php
