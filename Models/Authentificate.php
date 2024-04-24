@@ -7,6 +7,7 @@
         public function getUserByEmail(String $email){
             $sqlClient="SELECT * FROM client where email='$email'";
             $sqlPartenaire="SELECT * FROM partenaire where email='$email'";
+            $sqlAdmin="SELECT * FROM admin where login='$email'";
             $query=self::$instance->prepare($sqlClient);
             $query->execute();
             $user=$query->fetch();

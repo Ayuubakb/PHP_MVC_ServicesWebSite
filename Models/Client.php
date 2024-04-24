@@ -103,4 +103,40 @@ class Client extends Model{
         ];
         $this->db->execute($query, $params);
     }
+    public function getPartenaires(String $nom,String $ville, int $rating, String $metier){
+        $flag=false;
+        $sql="SELECT LastName , FirstName, Metier, Ville, YearExperience, Note, Telephone FROM partenaire";
+        if(strcmp($nom,"")!=0){
+            if(!$flag)
+                $sql.="WHERE LastName LIKE %$nom% OR FisrtName LIKE %$nom%";
+            else
+                $sql.="AND LastName LIKE %$nom% OR FisrtName LIKE %$nom%";
+            $flag=true;
+        }
+        if(strcmp($ville,"")!=0){
+            if(!$flag)
+                $sql.="WHERE LastName LIKE %$ville% OR FisrtName LIKE %$ville%";
+            else
+                $sql.="AND LastName LIKE %$ville% OR FisrtName LIKE %$ville%";
+            $flag=true;
+        }
+        if($rating!=6){
+            if(!$flag)
+                $sql.="WHERE Note=$rating";
+            else
+                $sql.="AND Note=$rating";
+            $flag=true;
+        }
+        if(strcmp($metier,"")!=0){
+            if(!$flag)
+                $sql.="WHERE Metier='$metier'";
+            else
+                $sql.="AND Metier='$metier'";
+            $flag=true;
+        }
+        $query=self::$instance->prepare($sql);
+        $query->execute();
+        $partenaires=$query->fetchAll();
+        return $partenaires;
+    }  
 }
