@@ -17,7 +17,14 @@
                 $query=self::$instance->prepare($sqlPartenaire);
                 $query->execute();
                 $user=$query->fetch();
-                return $user;
+                if($user)
+                    return $user;
+                else{
+                    $query=self::$instance->prepare($sqlAdmin);
+                    $query->execute();
+                    $user=$query->fetch();
+                    return $user;
+                }
             }
         }
     }

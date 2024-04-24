@@ -442,19 +442,21 @@
     background-color: var(--orange);
     padding: 15px;
     border-radius: 25px;
+    margin-bottom: 30px;
 }
 .partenaireCard .header{
     position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-bottom: 30px;
 }
 .partenaireCard .header .imageContainer{
     width: 75px;
     height: 75px;
     border-radius: 50%;
+    background-color: var(--white);
 }
 .partenaireCard .header .imageContainer img{
     width: 100%;
@@ -471,12 +473,21 @@
 .partenaireCard .infoContainer p{
     color: var(--white);
     font-family: var(--fontSmall);
-    font-size: 19px;
+    font-size: 20px;
 }
 .partenaireCard .infoContainer span{
     color: black;
     margin-bottom: 15px;
 }
 .partenaireCard .header .note{
-    
+    width: 55px;
+    height: 55px;
+    background-color: var(--white);
+    color: var(--green);
+    font-family: var(--fontBig);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 50%;
+    font-size: 20px;
 }

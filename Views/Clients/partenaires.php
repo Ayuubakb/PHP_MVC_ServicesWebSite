@@ -42,26 +42,31 @@
         </div>
         <div class="main">
             <div class="cardsHolder">
-                <div class="partenaireCard">
-                    <div class="header">
-                        <div class="imageContainer">
-                            <img src="../Views/public/clientPic/icon-admin.png"/>
+                <?php
+                foreach($partenaires as $partenaire ){
+                    echo "
+                    <div class='partenaireCard'>
+                        <div class='header'>
+                            <div class='imageContainer'>
+                                <img src='../Views/public/clientPic/icon-admin.png'/>
+                            </div>
+                            <div class='note'>
+                                <p>".$partenaire['Note']."/5</p>
+                            </div>
                         </div>
-                        <div class="note">
-                            <p>3/5</p>
+                        <div class='infoContainer'>
+                            <div>
+                                <p><span>Prenom : </span>".$partenaire['FirstName']."</p>
+                                <p><span>Nom : </span>".$partenaire['LastName']."</p>
+                            </div>
+                            <div>
+                                <p><span>Metier : </span>".$partenaire['Metier']."</p>
+                                <p><span>Ville : </span>".$partenaire['Ville']."</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="infoContainer">
-                        <div>
-                            <p><span>Prenom : </span>Ayoub</p>
-                            <p><span>Nom : </span>Akoubri</p>
-                        </div>
-                        <div>
-                            <p><span>Metier : </span>Jardinage</p>
-                            <p><span>Ville : </span>Marrakech</p>
-                        </div>
-                    </div>
-                </div>
+                    </div>";
+                }
+                ?>
             </div>
         </div>
     </section>

@@ -108,30 +108,30 @@ class Client extends Model{
         $sql="SELECT LastName , FirstName, Metier, Ville, YearExperience, Note, Telephone FROM partenaire";
         if(strcmp($nom,"")!=0){
             if(!$flag)
-                $sql.="WHERE LastName LIKE %$nom% OR FisrtName LIKE %$nom%";
+                $sql.=" WHERE LastName LIKE '%$nom%' OR FirstName LIKE '%$nom%' ";
             else
-                $sql.="AND LastName LIKE %$nom% OR FisrtName LIKE %$nom%";
+                $sql.=" AND LastName LIKE '%$nom%' OR FirstName LIKE '%$nom%' ";
             $flag=true;
         }
         if(strcmp($ville,"")!=0){
             if(!$flag)
-                $sql.="WHERE LastName LIKE %$ville% OR FisrtName LIKE %$ville%";
+                $sql.=" WHERE Ville LIKE '%$ville%'";
             else
-                $sql.="AND LastName LIKE %$ville% OR FisrtName LIKE %$ville%";
+                $sql.=" AND Ville LIKE '%$ville%'";
             $flag=true;
         }
         if($rating!=6){
             if(!$flag)
-                $sql.="WHERE Note=$rating";
+                $sql.=" WHERE Note=$rating";
             else
-                $sql.="AND Note=$rating";
+                $sql.=" AND Note=$rating";
             $flag=true;
         }
         if(strcmp($metier,"")!=0){
             if(!$flag)
-                $sql.="WHERE Metier='$metier'";
+                $sql.=" WHERE Metier='$metier'";
             else
-                $sql.="AND Metier='$metier'";
+                $sql.=" AND Metier='$metier'";
             $flag=true;
         }
         $query=self::$instance->prepare($sql);

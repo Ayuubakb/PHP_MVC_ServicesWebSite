@@ -67,10 +67,10 @@ class Clients extends Controller{
    public function partenaires(){
       $this->loadModel("Client");
       if(isset($_POST["subBtn"])){
-         $partenaire=$this->Client->getPartenaires($_POST['nom'],$_POST['ville'],$_POST['rating'],$_POST['metier']);
+         $partenaires=$this->Client->getPartenaires($_POST['nom'],$_POST['ville'],$_POST['rating'],$_POST['metier']);
       }else{
-         $partenaire=$this->Client->getPartenaires("","",6,"");
+         $partenaires=$this->Client->getPartenaires("","",6,"");
       }
-      $this->loadView("partenaires",compact("partenaire"));
+      $this->loadView("partenaires",compact("partenaires"));
    }
 }
