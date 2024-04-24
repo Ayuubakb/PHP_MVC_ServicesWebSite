@@ -8,6 +8,10 @@ $(document).ready(function() {
             
             $('#notificationMessage').text("Réservation ajoutée avec succès");
             $('#notificationModal').css('display', 'block');
+            
+            setTimeout(function() {
+                $('#notificationModal').css('display', 'none');
+            }, 3000);
         });
     });
 });
