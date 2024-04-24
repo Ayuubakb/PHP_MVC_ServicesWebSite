@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
+
     <script src="http://localhost/Bricolini/Views/public/js/Partenaire.js"></script>
     <title>Commentaires</title>
 </head>
 <body>
 <?php
-require("navbar.php");
+require __DIR__ . "/../Components/Nav.php";
 ?>
 <section class="sec">
     <div class="comments">
@@ -67,7 +68,7 @@ require("navbar.php");
     </div>
 </section>
 <?php
-require("Views/Components/Footer.php");
+require __DIR__ . "/../Components/Footer.php";
 ?>
 </body>
 </html>

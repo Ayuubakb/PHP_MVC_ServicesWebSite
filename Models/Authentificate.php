@@ -10,7 +10,7 @@
             $query=self::$instance->prepare($sqlClient);
             $query->execute();
             $user=$query->fetch();
-            if(count($user)!=0){
+            if($user){
                 return $user;
             }else{
                 $query=self::$instance->prepare($sqlPartenaire);
