@@ -14,7 +14,7 @@ class Clients extends Controller{
    public function updateInfos(){
       if(isset($_POST['subButton'])){
          $this->loadModel("Client");
-         if(!filesize($_FILES["pic"]["size"])){
+         if(filesize($_FILES["pic"]["size"]) == 0){
             $updated=$this->Client->updateInfos("null",$_POST['firstName'],$_POST['lastName'],$_POST['address'],$_POST['telephone'],1);
          }else{
             $updated=$this->Client->updateInfos(basename($_FILES["pic"]["name"]),$_POST['firstName'],$_POST['lastName'],$_POST['address'],$_POST['telephone'],1);
@@ -55,5 +55,13 @@ class Clients extends Controller{
       $profile=json_decode($this->Client->getComments(1,$rating,$sort));
       $this->loadView("commentaires",compact('profile'));
    }
-   public function report
+   /*public function report($id_t,$type,$motif){
+      $this->loadModel("Reclamations");
+      $result=$this->Reclamations->reportFromClient(1,$id_t,$type,$motif);
+      header("Location:http://localhost/Bricolini/Clients/index?msg=1");
+   }*/
+   public function report(){
+      $this->loadModel("Reclamations");
+      $this->Reclamations->reportFromClient($_POST["id_reclamateur"],$_POST["id_T"],$_POST["type_reclamation"],$_POST["type_reclamateur"],$_POST["motif"]);
+   }
 }
