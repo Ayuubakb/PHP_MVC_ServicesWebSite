@@ -23,6 +23,11 @@
                     <p><?= $service['Description'] ?></p>
                 </div>
                 <p class="service-price"><?= $service['Prix'] ?> DH</p>
+                <input type="hidden" name="service_id" value="<?= $service['id'] ?>">
+                <input type="hidden" name="date" value="<?= date('Y-m-d') ?>">
+                <!--<input type="hidden" name="client_id" value="<?= //$_SESSION['id'] ?>">-->
+                <input type="hidden" name="client_id" value="1">
+                <input type="hidden" name="staus" value="0">
                 <button class="reserve-button">Réserver</button>
             </div>
     <?php endforeach; ?>
