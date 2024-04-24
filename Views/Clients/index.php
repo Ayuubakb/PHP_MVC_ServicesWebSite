@@ -14,7 +14,7 @@
         require('Views/Components/Nav.php');
     ?>
     <section class="sec">
-        <?php require('Views/Components/Reclam.php') ?>
+    <?php require('Views/Components/Reclam.php') ?>
         <div class="informations">
             <div class="image">
                 <img src="Views/public/clientPic/icon-admin.png"/>
