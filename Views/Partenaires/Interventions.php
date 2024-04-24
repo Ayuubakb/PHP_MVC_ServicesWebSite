@@ -13,7 +13,7 @@
 </head>
 <body>
 <?php
-require("navbar.php");
+require __DIR__ . "/../Components/Nav.php";
 ?>
 <div class="Traitement">
     <h1>Waiting : </h1>
@@ -36,8 +36,25 @@ require("navbar.php");
             <?php // Debugging
 foreach ($interventions as $commande) {
     $status = "";
-    $commande['Statuts'] ? $status = "Faite" : $status = "En Attente";
-    $commande['Statuts'] ? $color = "#65B741" : $color = "gray";
+            $status="";
+            switch ($commande['Statuts']){
+                case 0:
+                    $status="En Attente";
+                    $color="gray";
+                    break;
+                case 1:
+                    $status="Accepté";
+                    $color="lightgreen";
+                    break;
+                case 2:
+                    $status="Refusé";
+                    $color="red";
+                    break;
+                case 3:
+                    $status="Faite";
+                    $color="#65B741";
+                    break;
+            }
     echo "
         <div class='reservationCard'>
             <div class='image'>
@@ -61,28 +78,30 @@ foreach ($interventions as $commande) {
 
 </section>
 <?php
-require("Views/Components/Footer.php");
+require __DIR__ . "/../Components/Footer.php";
 ?>
 </body>
 </html>
 <style>
     .commande {
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 15px;
     margin-bottom: 20px;
-    background-color: #f9f9f9;
+    background-color: var(--yellow);
     box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
 .commande h2 {
     margin-top: 0;
-    color: #333;
+    color: var(--green);
+    text-align: center;
 }
 
 .commande p {
     color: #666;
-    margin: 10px 0;
+    margin: 10px 20px;
+
 }
 
 .accept, .refuse {
@@ -92,6 +111,8 @@ require("Views/Components/Footer.php");
     text-transform: uppercase;
     cursor: pointer;
     margin-top: 10px;
+    margin-right: 10px;
+    text-align: center;
 }
 
 .accept {
@@ -102,6 +123,21 @@ require("Views/Components/Footer.php");
 .refuse {
     background-color: #f44336;
     color: white;
+}
+.Traitement{
+/*    make the div 70 % of the page and center it */
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+/*
+*/
+}
+h1{
+    margin-bottom: 9px;
+    font-size: 25px;
+    font-family: var(--fontBig);
+    font-size: 35px;
+    color: #65B741;
 }
 </style>
 <script>
