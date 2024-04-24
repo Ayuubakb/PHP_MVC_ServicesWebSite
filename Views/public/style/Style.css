@@ -41,8 +41,8 @@ nav li, span{
 nav .auth{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 32%;
+    justify-content: space-around;
+    width: 25%;
 }
 nav button{
     background-color: var(--lightGreen);
@@ -201,7 +201,7 @@ footer .end i{
 }
 .reclaBanner #autre{
     opacity: 0;
-    
+
 }
 .reclaBanner textarea{
     outline: none;

@@ -118,7 +118,7 @@
 <body>
 
     <?php include 'Views/Components/Nav.php'; ?>
-    <main>
+    <main class="sec">
     <div class="service-container">
         <div class="service-selection">
             <h1>Choisissez votre service</h1>
