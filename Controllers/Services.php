@@ -62,6 +62,7 @@ class Services extends Controller
         $Services = $this->Service->get_Offre($sousCategorie);
         $this->loadView("Plant_Jard", compact("Services"));
     }
+    
 
 }
 
