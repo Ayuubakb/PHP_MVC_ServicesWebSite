@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Login</h1>
-    <form action="/user/login" method="post">
+    <form action="http://localhost/Bricolini/Authentification/login" method="post">
         <input type="text" name="email" placeholder="Email" required>
         <input tyape="password" name="password" placeholder="Password" required>
         <input type="submit" value="Login">
