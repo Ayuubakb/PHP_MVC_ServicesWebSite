@@ -24,8 +24,8 @@
                     <a href='http://localhost/Bricolini/Services'><li>Services</li></a>";
                 if($islogged){
                     echo "
-                    <a href='http://localhost/Bricolini/Clients/commandes'><li>Commandes</li></a>
-                    <a href='http://localhost/Bricolini/Clients/commentaires'><li>Commentaires</li></a>
+                    <a href='http://localhost/Bricolini/Clients/getAllCommandes/Tous/4/DESC'><li>Commandes</li></a>
+                    <a href='http://localhost/Bricolini/Clients/getAllComments/0/DESC'><li>Commentaires</li></a>
                     <a href=''><span>Partenaires</span></a>";
 
                 }

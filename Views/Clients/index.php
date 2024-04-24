@@ -72,7 +72,7 @@
                 }
                 ?>
                 <div class="reservationCard allRes">
-                    <a href="http://localhost/Bricolini/Clients/getAllCommandes/Tous/3/DESC" style="color:white"><i class="fa-solid fa-ellipsis fa-xl"></i></a>
+                    <a href="http://localhost/Bricolini/Clients/getAllCommandes/Tous/4/DESC" style="color:white"><i class="fa-solid fa-ellipsis fa-xl"></i></a>
                 </div>
             </div>
         </div> 

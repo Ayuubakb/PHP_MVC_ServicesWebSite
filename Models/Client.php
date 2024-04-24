@@ -61,7 +61,7 @@ class Client extends Model{
         if(strcmp($type,"Tous")){
             $sql.=" AND p.Metier='$type'";
         }
-        if($status!=3){
+        if($status!=4){
             $sql.=" AND r.Statuts=$status";
         }
         $sql.=" ORDER BY r.id $sort";
