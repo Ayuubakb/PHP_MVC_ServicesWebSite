@@ -18,11 +18,19 @@ class Partenaires extends Controller{
         $this->loadModel("Partenaire");
         $Partenaire = $this->Partenaire->find(1);
         $interventions = $this->Partenaire->interventions(1);
-        $this->loadView("interventions", compact("Partenaire", "interventions"));
+        $commandesnontraitees=$this->Partenaire->commandesnontraitees(1);
+        $this->loadView("interventions", compact("Partenaire", "interventions","commandesnontraitees"));
     }
     public function commentaires($rating, $order)
     {
         $this->loadModel("Partenaire");
+        if (isset($_POST['rating']) && isset($_POST['sort'])) {
+            $rating = $_POST['rating'];
+            $order = $_POST['sort'];
+        }else{
+            $rating = 0;
+            $order = "DESC";
+        }
         $commentaires = $this->Partenaire->getallcomments(1, $rating, $order);
         $this->loadView("commentaires", compact( "commentaires"));
     }

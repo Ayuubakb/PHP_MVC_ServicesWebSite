@@ -155,7 +155,7 @@ foreach ($commandes as $commande) {
 }
 ?>
             <div class="reservationCard allRes">
-                <a href="http://localhost/Bricolini/Partenaires/commentaires/0/DESC" style="color:white"><i
+                <a href="http://localhost/Bricolini/Partenaires/interventions" style="color:white"><i
                             class="fa-solid fa-ellipsis fa-xl"></i></a>
             </div>
         </div>
