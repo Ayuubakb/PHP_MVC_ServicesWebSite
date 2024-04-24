@@ -1,10 +1,11 @@
 
 
-    <div class="reclaBanner" id="recBanner">
-        <div class="header">
-            <h1>Reclamer</h1>
-            <h1 onclick="closeReclam()">X</h1>
-        </div>
+    <div class="recla" id="recBanner">
+        <div class="reclaBanner">
+            <div class="header">
+                <h1>Reclamer</h1>
+                <h1 onclick="closeReclam()" style="cursor : pointer">X</h1>
+            </div>
             <input type="hidden" id="id_reclamateur" name="id_reclamateur"/>
             <input type="hidden" id="id_T" name="id_T"/>
             <input type="hidden" id="type_reclamation" name="type_reclamation"/>
@@ -22,4 +23,5 @@
                 <textarea name="autre" col="50" rows="5" id="autreText"></textarea>
             </div>
             <button onclick="sendReclamation()">Reclamer</button>
+        </div>
     </div>

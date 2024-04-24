@@ -109,6 +109,7 @@ footer .mainList :not(.title){
 .sec{
     min-height: 100vh;
     padding-bottom: 25px;
+    position: relative;
 }
 footer .end{
     position: relative;
@@ -138,19 +139,28 @@ footer .end p{
 footer .end i{
     color: var(--green);
 }
+.recla{
+    width:100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(245, 245, 245, 0.496);
+    display: none;
+}
 .reclaBanner{
     position: absolute;
     z-index: 3;
-    top: 50%;
+    top: 35%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-35%);
     padding: 25px;
     background-color: var(--orange);
     width: 40%;
     border-radius: 15px;
     border: solid 3px red;
     padding-bottom: 40px;
-    display: none;
 }
 .reclaBanner h1{
     color: white;
@@ -190,7 +200,8 @@ footer .end i{
     margin-right: 10px;
 }
 .reclaBanner #autre{
-    display: none;
+    opacity: 0;
+    
 }
 .reclaBanner textarea{
     outline: none;

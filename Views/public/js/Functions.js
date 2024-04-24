@@ -9,9 +9,9 @@ const showReclam=(id_reclamateur,type_reclamateur,type_reclamation,id_t)=>{
 const addEvent=()=>{
     document.getElementById("autreRadio").addEventListener("change",()=>{
         if(document.getElementById("autreRadio").checked){
-            document.getElementById("autre").style.display="block";
+            document.getElementById("autre").style.opacity="1";
         }else{
-            document.getElementById("autre").style.display="none";
+            document.getElementById("autre").style.opacity="0";
         }
     })
 }

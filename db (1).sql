@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 23 avr. 2024 à 18:33
+-- Généré le : mer. 24 avr. 2024 à 14:32
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -135,14 +135,23 @@ DROP TABLE IF EXISTS `reclamations`;
 CREATE TABLE IF NOT EXISTS `reclamations` (
   `id` int NOT NULL AUTO_INCREMENT,
   `type` varchar(255) NOT NULL,
-  `dateReclamations` int NOT NULL,
+  `dateReclamations` date NOT NULL,
   `status` int NOT NULL,
   `Id_T` int NOT NULL,
   `motif` varchar(255) NOT NULL,
   `id_Reclameur` int DEFAULT NULL,
   `type_reclameur` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `reclamations`
+--
+
+INSERT INTO `reclamations` (`id`, `type`, `dateReclamations`, `status`, `Id_T`, `motif`, `id_Reclameur`, `type_reclameur`) VALUES
+(1, 'commentaire', '2024-04-24', 0, 1, 'racism', 1, 'client'),
+(2, 'profile', '2024-04-24', 0, 1, 'Racism', 1, 'client'),
+(3, 'commentaire', '2024-04-24', 0, 12, 'Gros mots', 1, 'client');
 
 -- --------------------------------------------------------
 
