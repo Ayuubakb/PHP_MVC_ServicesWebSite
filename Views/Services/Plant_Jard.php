@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Nettoyage des surfaces</title>
+    <title>Plantation pour jardin</title>
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <style>
         body {
@@ -124,7 +124,7 @@
 <body>
 <?php include 'Views/Components/Nav.php'; ?>
     <section class="services-section">
-    <div class="dropdown active">Nettoyage des surfaces</div>
+    <div class="dropdown active">Plantation pour jardin</div>
     <div class="content">
 
     <?php foreach ($Services as $service): ?>

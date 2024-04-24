@@ -15,24 +15,24 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="../home.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="http://localhost/Bricolini/home.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="interventions">Mes Interventions</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../Partenaire/Commentaires<?php $Partenaire['id']?>">Commentaires</a>
+        <a class="nav-link" href="http://localhost/Bricolini/Partenaire/Commentaires<?php $Partenaire['id']?>">Commentaires</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../Partenaire/Historique<?php $Partenaire['id']?>">Historique</a>
+        <a class="nav-link" href="http://localhost/Bricolini/Partenaire/Historique<?php $Partenaire['id']?>">Historique</a>
       </li>
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="../Authentification/logout.php">Logout</a>
+        <a class="nav-link" href="http://localhost/Bricolini/Authentification/logout.php">Logout</a>
       </li>
 <li class="nav-item">
-        <a class="nav-link" href="Partenaires/profil">Profile</a>
+        <a class="nav-link" href="http://localhost/Bricolini/Partenaires">Profile</a>
       </li>
     </ul>
   </div>
