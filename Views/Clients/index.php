@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,8 +35,12 @@
                 </div> 
             </div>
             <div class="edit">
-                <a href="Clients/editProfile" style="color:white"><i class="fa-solid fa-pen-to-square fa-xl"></i></a>
-                <i class='fa-solid fa-flag fa-xl' onClick=<?php echo "showReclam(1,'client','profile','".$profile->infos->id."')"?>></i>
+                <?php
+                if($islogged)
+                    echo "<a href='Clients/editProfile' style='color:white'><i class='fa-solid fa-pen-to-square fa-xl'></i></a>";
+                else
+                    echo "<i class='fa-solid fa-flag fa-xl' onClick=\"showReclam(1,'client','profile','".$profile->infos->id."')\"></i>";
+                ?>
             </div>
         </div>
         <div class="reservationsWrapper">
@@ -67,7 +72,7 @@
                 }
                 ?>
                 <div class="reservationCard allRes">
-                    <a href="http://localhost/Bricolini/Clients/getAllCommandes/Tous/3/DESC" style="color:white"><i class="fa-solid fa-ellipsis fa-xl"></i></a>
+                    <a href="http://localhost/Bricolini/Clients/getAllCommandes/Tous/4/DESC" style="color:white"><i class="fa-solid fa-ellipsis fa-xl"></i></a>
                 </div>
             </div>
         </div> 
@@ -76,18 +81,32 @@
             <div class="commentaires">
                 <?php
                 foreach($profile->commentaire as $comment){
-                    echo "
-                    <div class='commentaireCard'>
-                        <div class='mess'>
-                            <h1>$comment->nom</h1>
-                            <p>$comment->message</p>
-                        </div> 
-                        <div class='rat'>
-                            <p class='note'>$comment->rating</p>
-                            <p class='date'>$comment->datePost</p>
-                            <p class='report' onclick=\"showReclam(1,'client','commentaire',".$comment->id.")\"><i class='fa-solid fa-flag fa-lg'></i></p>
-                        </div> 
-                    </div>";
+                    if(!$islogged){
+                        echo "
+                        <div class='commentaireCard'>
+                            <div class='mess'>
+                                <h1>$comment->nom</h1>
+                                <p>$comment->message</p>
+                            </div> 
+                            <div class='rat'>
+                                <p class='note'>$comment->rating</p>
+                                <p class='date'>$comment->datePost</p>
+                                <p class='report' onclick=\"showReclam(1,'client','commentaire',".$comment->id.")\"><i class='fa-solid fa-flag fa-lg'></i></p>
+                            </div> 
+                        </div>";
+                    }else{
+                        echo "
+                        <div class='commentaireCard'>
+                            <div class='mess'>
+                                <h1>$comment->nom</h1>
+                                <p>$comment->message</p>
+                            </div> 
+                            <div class='rat'>
+                                <p class='note'>$comment->rating</p>
+                                <p class='date'>$comment->datePost</p>
+                            </div> 
+                        </div>";
+                    }
                 }
                 ?>
             </div>

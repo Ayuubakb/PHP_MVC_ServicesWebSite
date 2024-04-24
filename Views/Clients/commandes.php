@@ -24,9 +24,11 @@
                 </div>
                 <div>
                     <select name="status" id="status">
-                        <option value=3 default>Tous</option>
-                        <option value=1 default>Faite</option>
+                        <option value=4 default>Tous</option>
                         <option value=0>En Attente</option>
+                        <option value=1>Accepté</option>
+                        <option value=2 default>Refusé</option>
+                        <option value=3 default>Faite</option>
                     </select>
                 </div>
                 <div>
@@ -44,8 +46,24 @@
                 if(count($profile->commandes)!=0){
                     foreach($profile->commandes as $commande){
                         $status="";
-                        $commande->Statuts?$status="Faite":$status="En Attente";
-                        $commande->Statuts?$color="#65B741":$color="gray";
+                        switch ($commande->Statuts){
+                            case 0:
+                                $status="En Attente";
+                                $color="gray";
+                                break;
+                            case 1:
+                                $status="Accepté";
+                                $color="lightgreen";
+                                break;
+                            case 2:
+                                $status="Refusé";
+                                $color="red";
+                                break;
+                            case 3:
+                                $status="Faite";
+                                $color="#65B741";
+                                break;
+                        }
                         echo "
                         <div class='reservationCard'>
                             <div class='image'>

@@ -6,7 +6,12 @@ $(document).ready(function() {
 
         $.post('http://localhost/Bricolini/Views/Services/reservationHandler.php', postData, function(response) {
             
-            alert("Réservation ajoutée avec succès"); 
+            $('#notificationMessage').text("Réservation ajoutée avec succès");
+            $('#notificationModal').css('display', 'block');
+            
+            setTimeout(function() {
+                $('#notificationModal').css('display', 'none');
+            }, 3000);
         });
     });
 });

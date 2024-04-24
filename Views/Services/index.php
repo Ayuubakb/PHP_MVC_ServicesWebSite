@@ -18,7 +18,6 @@
             margin: 0.5rem;
             transition: box-shadow 0.3s ease-in-out;
             background-color: #FFFFFF;
-            /* align them left */
             display: inline-block;
         }
         .service-card:hover {
@@ -34,23 +33,23 @@
             margin-bottom: 0.5rem;
         }
         .service-selection h1 {
-            font-size: 2em; /* Sets the size of the title */
-            font-weight: bold; /* Makes the title bold */
+            font-size: 2em; 
+            font-weight: bold; 
             margin-bottom: 0.5em;
-            text-align: left; /* Align the text to the left */
-            color: #000000; /* Sets the text color to black */
+            text-align: left; 
+            color: #000000; 
         }
         .service-selection p {
-            font-size: 1em; /* Sets the size of the paragraph */
+            font-size: 1em; 
             margin-bottom: 1em;
-            text-align: left; /* Align the text to the left */
-            color: black; /* Sets the text color to blue */
+            text-align: left; 
+            color: black; 
         }
         .services-grid {
-            display: flex; /* Use flexbox for horizontal alignment */
-            flex-wrap: wrap; /* Allows multiple lines if needed */
-            align-items: flex-start; /* Aligns items to the start of the flex container */
-            justify-content: flex-start; /* Aligns items to the left side of the container */
+            display: flex; 
+            flex-wrap: wrap; 
+            align-items: flex-start; 
+            justify-content: flex-start; 
         }
         nav ul {
             list-style: none;
@@ -65,21 +64,50 @@
             color: #65B741; 
         }
         h1, h2, p {
-            color: #65B741; /* green text */
+            color: #65B741;
         }
         body {
-            background-color: #FFFFFF; /* white background */
+            background-color: #FFFFFF;
         }
         button {
-            background-color: #FFB534; /* yellow button background */
-            color: #FBF6EE; /* white text on buttons */
+            background-color: #FFB534;
+            color: #FBF6EE;
         }
         @media (max-width: 768px) {
             .services-grid {
-                justify-content: center; /* Centers boxes on smaller screens */
+                justify-content: center;
             }
             .continue-button {
-                text-align: center; /* Centers the button on smaller screens */
+                text-align: center;
+            }
+        }
+
+        .service-selection {
+            text-align: center;
+            margin-bottom: 2rem; 
+        }
+
+        .service-selection h1 {
+            text-align: center; 
+            font-size: 3em; 
+            color: #FFB534; 
+            font-weight: bold; 
+            margin-bottom: 0.25em; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .service-selection p {
+            font-size: 1.25em; 
+            color: green; 
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            .service-selection h1 {
+                font-size: 2em;
             }
         }
 
@@ -89,14 +117,17 @@
 <body>
 
     <?php include 'Views/Components/Nav.php'; ?>
-    <main>
+    <main class="sec">
     <div class="service-container">
         <div class="service-selection">
             <h1>Choisissez votre service</h1>
             <p>Commencez par choisir le service qui correspond à vos besoins. Parcourez nos catégories de services et sélectionnez celui qui vous intéresse.</p>
         </div>
+
+        <section class="services-section">
+        <h2 class="services-title">Nettoyage</h2>
         <div class="services-grid">
-            <!-- Display the services without the database-->
+            
 
             <a href="Services/nettoyagedecanapes" style="text-decoration: none; color: inherit;">
             <div class="service-card">
@@ -118,7 +149,12 @@
                 <h2>Nettoyage général</h2>
             </div>
             </a>
+            </div>
+        </section>
 
+
+        <section class="services-section">
+            <h2 class="services-title">Jardinage</h2>
             <a href="Services/entretiengazon" style="text-decoration: none; color: inherit;">
             <div class="service-card">
                 <img src="Views/public/images/entretienGAZON.webp" alt="Couch Cleaning">
@@ -139,8 +175,10 @@
                 <h2>Plantation pour jardin</h2>
             </div>
             </a>
+            </div>
+        </section>
 
-</div>
+
 </main>
     <?php include 'Views/Components/Footer.php'; ?>
 </body>
