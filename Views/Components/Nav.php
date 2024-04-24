@@ -31,9 +31,9 @@
                 }
             }else if($islogged && !strcmp($type,"partenaire")){
                 echo"    
-                <a href='http://localhost/Bricolini/Partenaire/Historique'><li>Historique</li></a>
-                <a href='http://localhost/Bricolini/Partenaire/Interventions'><li>Mes Interventions</li></a>
-                <a href='http://localhost/Bricolini/Partenaire/commentaires'><li>Commentaires</li></a>";
+                <a href='http://localhost/Bricolini/Partenaires/Historique'><li>Historique</li></a>
+                <a href='http://localhost/Bricolini/Partenaires/Interventions'><li>Mes Interventions</li></a>
+                <a href='http://localhost/Bricolini/Partenaires/commentaires/0/DESC'><li>Commentaires</li></a>";
             }
             ?>
         </ul>
@@ -44,7 +44,7 @@
                 echo "
                     <a href='http://localhost/Bricolini/Clients'><button>Profile</button></a>";
             else if($islogged && !strcmp($type,"partenaire"))
-                echo "<a href='http://localhost/Bricolini/Partenaire'><button>Profile</button></a>";
+                echo "<a href='http://localhost/Bricolini/Partenaires'><button>Profile</button></a>";
         ?>
         <?php
         if(!$islogged){
