@@ -6,6 +6,7 @@
     <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
+    <script src="http://localhost/Bricolini/Views/public/js/Functions.js"></script>
     <title>Profile</title>
 </head>
 <body>
@@ -13,6 +14,7 @@
         require('Views/Components/Nav.php');
     ?>
     <section class="sec">
+        <?php require('Views/Components/Reclam.php') ?>
         <div class="informations">
             <div class="image">
                 <img src="Views/public/clientPic/icon-admin.png"/>
@@ -33,7 +35,7 @@
             </div>
             <div class="edit">
                 <a href="Clients/editProfile" style="color:white"><i class="fa-solid fa-pen-to-square fa-xl"></i></a>
-                <i class='fa-solid fa-flag fa-xl'></i>
+                <i class='fa-solid fa-flag fa-xl' onClick=<?php echo "showReclam(1,'client','profile','".$profile->infos->id."')"?>></i>
             </div>
         </div>
         <div class="reservationsWrapper">
@@ -83,7 +85,7 @@
                         <div class='rat'>
                             <p class='note'>$comment->rating</p>
                             <p class='date'>$comment->datePost</p>
-                            <p class='report'><i class='fa-solid fa-flag fa-lg'></i></p>
+                            <p class='report' onclick=\"showReclam(1,'client','commentaire',".$comment->id.")\"><i class='fa-solid fa-flag fa-lg'></i></p>
                         </div> 
                     </div>";
                 }

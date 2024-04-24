@@ -138,3 +138,85 @@ footer .end p{
 footer .end i{
     color: var(--green);
 }
+.reclaBanner{
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 25px;
+    background-color: var(--orange);
+    width: 40%;
+    border-radius: 15px;
+    border: solid 3px red;
+    padding-bottom: 40px;
+    display: none;
+}
+.reclaBanner h1{
+    color: white;
+    font-family:var(--fontBig);
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.reclaBanner div{
+    margin-bottom: 10px;
+    width: 75%;
+    margin-left: 12.5%;
+    display: flex;
+    flex-direction: column;
+}
+.reclaBanner div label{
+    margin-bottom: 10px;
+    font-family: var(--fontSmall);
+    font-size: 18px;
+}
+.reclaBanner div input{
+    border: none;
+    padding: 5px;
+    font-family: var(--fontSmall);
+    font-size: 20px;
+}
+.reclaBanner .radios{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.reclaBanner .radios label{
+    display: flex;
+    flex-direction:row;
+}
+.reclaBanner .radios input{
+    margin-right: 10px;
+}
+.reclaBanner #autre{
+    display: none;
+}
+.reclaBanner textarea{
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+}
+.reclaBanner button{
+    padding: 8px 15px;
+    font-family: var(--fontBig);
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: red;
+    color: var(--white);
+    margin-left: 75%;
+    margin-top: 15px;
+}
+.reclaBanner .header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.reclaBanner .header h1{
+    padding: 10px;
+    background-color: red;
+    border-radius: 5px;
+}
