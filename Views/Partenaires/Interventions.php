@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
     <title>Interactions</title>
@@ -17,19 +18,22 @@ require("navbar.php");
 <div class="Traitement">
     <h1>Waiting : </h1>
     <?php
-    foreach ($commandesnontraitees as $commande) {
-        echo "<div class='commande'>";
-        echo "<h2>Commande ID: {$commande['ID_reserv']}</h2>";
-        echo "<p>Date: {$commande['Date_reserv']}</p>";
-        echo "<p>Client Name: {$commande['FirstName']} {$commande['LastName']}</p>";
-        echo "<p>Service Name: {$commande['Nom']}</p>";
-        echo "<p>Note: {$commande['Note']}</p>";
-        echo "<p>Subcategory: {$commande['sousCategorie']}</p>";
-        echo "<button class='accept'>Accept</button>";
-        echo "<button class='refuse'>Refuse</button>";
-        echo "</div>";
-    }
-    ?>
+foreach ($commandesnontraitees as $commande) {
+    echo "
+    <form id='form-{$commande['ID_reserv']}' method='post' class='ajax-form'>
+        <div class='commande'>
+            <p style='display:none'>{$commande['ID_reserv']}</p>
+            <h2>Commande: {$commande['ID_reserv']}</h2>
+            <p>Service: {$commande['Nom']}</p>
+            <p>Date: {$commande['Date_reserv']}</p>
+            <p>Client: {$commande['FirstName']} {$commande['LastName']}</p>
+            <button class='accept'>Accepter</button>
+            <button class='refuse'>Refuser</button>
+        </div>
+    </form>
+    ";
+}
+?>
 </div>
 <section class="sec">
     <div class="reservationsWrapper">
@@ -106,24 +110,25 @@ require("Views/Components/Footer.php");
     color: white;
 }
 </style>
-<script>
-    document.querySelectorAll('.accept, .refuse').forEach(button => {
-        button.addEventListener('click', function() {
-            var id = this.parentElement.querySelector('h2').textContent.split(': ')[1];
-            var status = this.classList.contains('accept') ? 1 : 2;
 
-            fetch('updateStatus.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `id=${id}&status=${status}`,
-            })
-            .then(response => response.text())
-            .then(data => console.log(data))
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+<script>
+    $(document).ready(function() {
+    $('.ajax-form button').on('click', function(e) {
+        e.preventDefault();
+        var form = $(this).closest('ajax-form');
+        var id = form.find('p').text();
+        var status = $(this).hasClass('accept') ? 1 : 2;
+        $.ajax({
+            url: 'http://localhost/Bricolini/Views/Partenaires/updateStatus.php',
+            method: 'POST',
+            data: {
+                id: id,
+                status: status
+            },
+            success: function(response) {
+                console.log(response);
+                form.remove();
+            }
         });
-    });
+});
 </script>
