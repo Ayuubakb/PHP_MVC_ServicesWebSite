@@ -45,10 +45,12 @@
                 <?php
                 foreach($partenaires as $partenaire ){
                     echo "
+                    
                     <div class='partenaireCard'>
+                        <a href='http://localhost/Bricolini/Partenaires/index/".$partenaire['id']."'>
                         <div class='header'>
                             <div class='imageContainer'>
-                                <img src='../Views/public/clientPic/icon-admin.png'/>
+                                <img src='../Views/public/images/".$partenaire['image']."'/>
                             </div>
                             <div class='note'>
                                 <p>".$partenaire['Note']."/5</p>
@@ -64,6 +66,7 @@
                                 <p><span>Ville : </span>".$partenaire['Ville']."</p>
                             </div>
                         </div>
+                        </a>
                     </div>";
                 }
                 ?>

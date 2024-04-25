@@ -67,7 +67,7 @@
                         echo "
                         <div class='reservationCard'>
                             <div class='image'>
-                                <img src='http://localhost/Bricolini/Views/public/servicePic/menageDefault.jpg'>
+                                <img src='http://localhost/Bricolini/Views/public/images/".$commande->image."'>
                             </div>
                             <div class='nameOfservice'>
                                 <h1>$commande->Nom</h1>
@@ -81,7 +81,7 @@
                                     <p style='color:$color'>$status</p>
                                 </div>   
                             </div>
-                        </div> ";
+                        </div>";
                     }
                 }else{
                     echo "<div></div><p class='err'>Pas De Commandes</p>";

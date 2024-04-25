@@ -6,6 +6,7 @@
     <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
+    <script src="http://localhost/Bricolini/Views/public/js/Functions.js"></script>
     <title>Profile</title>
 </head>
 <body>
@@ -13,9 +14,10 @@
 require("Views/Components/Nav.php");
 ?>
 <section class="sec">
+<?php require('Views/Components/Reclam.php') ?>
     <div class="informations">
         <div class="image">
-            <img src="Views/public/clientPic/icon-admin.png"/>
+            <img src="http://localhost/Bricolini/Views/public/images/<?=$profile['image']?>"/>
         </div>
         <div class="fields">
             <div>
@@ -62,7 +64,12 @@ require("Views/Components/Nav.php");
         </div>
 
         <div class="edit">
-            <a href="Partenaires/updateprofile" style="color: white" ><i class="fa-solid fa-pen-to-square fa-xl"></i></a>
+            <?php
+                if($islogged && !strcmp($type,"partenaire"))
+                    echo "<a href='http://localhost/Bricolini/Partenaires/updateprofile' style='color: white' ><i class='fa-solid fa-pen-to-square fa-xl'></i></a>";
+                else 
+                    echo "<i class='fa-solid fa-flag fa-xl' onClick=\"showReclam(".$_SESSION['user_id'].",'client','profile','".$profile['id']."')\"></i>";
+                ?>
         </div>
     </div>
     </div>
@@ -74,7 +81,7 @@ foreach ($services as $service) {
     $status = "";
     $service['Note'] ? $status = "Faite" : $status = "En Attente";
     $color = "white"; // Change color to white
-    $image = $service['image'] ? 'Views/public/images/'.$service['image'] : 'Views/public/servicePic/menageDefault.jpg'; // Use a default image if none is provided
+    $image = $service['image'] ? 'http://localhost/Bricolini/Views/public/images/'.$service['image'] : 'http://localhost/Bricolini/Views/public/servicePic/menageDefault.jpg'; // Use a default image if none is provided
 
     $fullStars = floor($service['Note']);
     $halfStar = ($service['Note'] - $fullStars) >= 0.5 ? 1 : 0;
@@ -126,22 +133,41 @@ if (count($services) < 3) {
 ?>
         </div>
 </div>
-    <div class="reservationsWrapper">
+<?php
+if($islogged && !strcmp($type,"partenaire")){
+echo"
+    <div class='reservationsWrapper'>
         <h1>Commandes :</h1>
-        <div class="reservations">
-            <?php // Debugging
+        <div class='reservations'>
+            ";
 foreach ($commandes as $commande) {
-    $status = "";
-    $commande['Statuts'] ? $status = "Faite" : $status = "En Attente";
-    $commande['Statuts'] ? $color = "#65B741" : $color = "gray";
+    $status='';
+    switch ($commande['Statuts']){
+        case 0:
+            $status="En Attente";
+            $color="gray";
+            break;
+        case 1:
+            $status="Accepté";
+            $color="lightgreen";
+            break;
+        case 2:
+            $status="Refusé";
+            $color="red";
+            break;
+        case 3:
+            $status="Faite";
+            $color="#65B741";
+            break;
+    }
     echo "
         <div class='reservationCard'>
             <div class='image'>
-                <img src='Views/public/servicePic/menageDefault.jpg'>
+                <img src='http://localhost/Bricolini/Views/public/servicePic/menageDefault.jpg'>
             </div>
             <div class='nameOfservice'>
                 <h1>{$commande['Nom']}</h1> <!-- Assuming 'id' is the name of the service -->
-                <p>par : {$commande['FirstName']} {$commande['LastName']}</p> <!-- Now using the client's first and last names -->
+                <p>pour : {$commande['FirstName']} {$commande['LastName']}</p> <!-- Now using the client's first and last names -->
             </div>
             <div class='additional'>
                 <div>
@@ -153,13 +179,15 @@ foreach ($commandes as $commande) {
             </div>
         </div> ";
 }
-?>
-            <div class="reservationCard allRes">
-                <a href="http://localhost/Bricolini/Partenaires/interventions" style="color:white"><i
-                            class="fa-solid fa-ellipsis fa-xl"></i></a>
+        echo "
+            <div class='reservationCard allRes'>
+                <a href='http://localhost/Bricolini/Partenaires/interventions' style='color:white'><i
+                            class='fa-solid fa-ellipsis fa-xl'></i></a>
             </div>
         </div>
-    </div>
+    </div>";
+    }
+    ?>
     <div class="commentaire">
         <h1 style="color:#FFB534">Commentaire :</h1>
         <div class="commentaires">

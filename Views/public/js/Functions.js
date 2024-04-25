@@ -50,4 +50,5 @@ const sendReclamation=async()=>{
     /*const data=await response.text().then((data)=>{
         console.log(data);
     })*/
+    closeReclam();
 }

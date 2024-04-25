@@ -62,7 +62,7 @@ foreach ($interventions as $commande) {
             </div>
             <div class='nameOfservice'>
                 <h1>{$commande['Nom']}</h1> 
-                <p>par : {$commande['FirstName']} {$commande['LastName']}</p> <!-- Now using the client's first and last names -->
+                <p>pour : {$commande['FirstName']} {$commande['LastName']}</p> <!-- Now using the client's first and last names -->
             </div>
             <div class='additional'>
                 <div>

@@ -58,7 +58,7 @@ class Authentification extends Controller {
                 if (!strcmp($_SESSION['user_type'],'client')) {
                     header('Location:http://localhost/Bricolini/Clients'); // Redirect to client dashboard
                 } else if(!strcmp($_SESSION['user_type'],'partenaire')) {
-                    header('Location:http://localhost/Bricolini/Partenaires'); // Redirect to partenaire dashboard
+                    header('Location:http://localhost/Bricolini/Partenaires/index/'.$_SESSION['user_id'].''); // Redirect to partenaire dashboard
                 }else{
                     header('Location:http://localhost/Bricolini/Admin');
                 }
@@ -82,6 +82,12 @@ class Authentification extends Controller {
         $this->loadView("login");
     }
 
+    public function logout(){
+        session_start();
+        session_unset();
+        session_destroy();
+        $this->loadView("login");
+    }
 
 
 

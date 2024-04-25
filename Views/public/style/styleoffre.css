@@ -1,10 +1,14 @@
         body {
             background-color: #FFFFFF; /* Very light yellowish-white */
         }
+        .sec{
+            min-height: 100vh;
+            position: relative;
+        }
 
         .services-section {
-            max-width: 700px;
-            margin: 0 auto;
+            width: 70%;
+            margin-left: 15%;
             padding: 20px;
         }
 
@@ -37,14 +41,31 @@
             flex: 1;
             color: #333;
         }
-
+        .service-description h2{
+            font-family: 'Trebuchet MS';
+            font-size: 23px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .service-description p{
+            font-family: 'Trebuchet MS';
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
         .service-price {
             color: #FFB534;
             font-weight: bold;
             margin-right: 16px;
-            font-size: 1.2rem;
+            font-size: 22px;
+            margin-top: 15px;
+            font-family: 'Trebuchet MS';
         }
-
+        .priceReserve{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex: 0 0 25%;
+        }
         .reserve-button {
             padding: 8px 16px;
             background-color: #65B741; /* Green background */
@@ -54,6 +75,9 @@
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
+            margin-top: 15px;
+            font-size: 20px;
+            font-family: 'Franklin Gothic Medium';
         }
 
         /* Adjusting button for better visibility */
@@ -81,6 +105,9 @@
             width: 100%;
             border-top: 1px solid #FFB534;
             border-bottom: 1px solid #FFB534;
+            font-size: 25px;
+            font-family: 'Franklin Gothic Medium';
+            
         }
         .dropdown:after {
             content: '\25B2'; /* CSS code for the up arrow */

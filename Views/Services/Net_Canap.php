@@ -10,7 +10,7 @@
 </head>
 <body>
 <?php include 'Views/Components/Nav.php'; ?>
-    <section class="services-section">
+    <section class="services-section sec">
     <div class="dropdown active">Nettoyage de canapés</div>
     <div class="content">
 
@@ -24,12 +24,14 @@
                     <h2 class="service-title"><?= $service['Nom'] ?></h2>
                     <p><?= $service['Description'] ?></p>
                 </div>
-                <p class="service-price"><?= $service['Prix'] ?> DH</p>
-                <input type="hidden" name="Id_S" value="<?= $service['id'] ?>">
-                <input type="hidden" name="Date_reserv" value="<?= date('Y-m-d') ?>">
-                <input type="hidden" name="Id_C" value="1">
-                <input type="hidden" name="Statuts" value="0">
-                <button class="reserve-button">Réserver</button>
+                <div class="priceReserve">
+                    <p class="service-price"><?= $service['Prix'] ?> DH</p>
+                    <input type="hidden" name="Id_S" value="<?= $service['id'] ?>">
+                    <input type="hidden" name="Date_reserv" value="<?= date('Y-m-d') ?>">
+                    <input type="hidden" name="Id_C" value="1">
+                    <input type="hidden" name="Statuts" value="0">
+                    <button class="reserve-button">Réserver</button>
+                </div>
             </div>
         </form>
     <?php endforeach; ?>

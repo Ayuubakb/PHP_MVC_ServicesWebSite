@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../public/style/styleindex.css">
     <style>
         .service-card {
-            width: 200px; 
+            width: 300px; 
             height: 250px;
             text-align: center;
             padding: 1rem;
@@ -84,7 +84,10 @@
 
         .service-selection {
             text-align: center;
-            margin-bottom: 2rem; 
+            margin-bottom: 2rem;
+            width: 90%;
+            margin-left:5%;
+            margin-top:30px;
         }
 
         .service-selection h1 {
@@ -93,16 +96,33 @@
             color: #FFB534; 
             font-weight: bold; 
             margin-bottom: 0.25em; 
-            text-transform: uppercase;
             letter-spacing: 2px;
+            font-family:"Franklin Gothic Medium";
         }
 
         .service-selection p {
             font-size: 1.25em; 
             color: green; 
-            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            font-family:"Trebuchet MS";
+            text-align:center
+        }
+        .services-section{
+            width:60%;
+            margin-left:20%;
+            margin-top:20px;
+        }
+        .services-section h2{
+            font-family:"Franklin Gothic Medium";
+            font-size:28px;
+            margin-bottom:10px;
+            color: #FFB534; 
+        }
+        .service-card h2{
+            font-size:20px;
+            font-family:"Trebuchet MS";
+            color:green
         }
 
         @media (max-width: 768px) {
@@ -120,7 +140,7 @@
     <main class="sec">
     <div class="service-container">
         <div class="service-selection">
-            <h1>Choisissez votre service</h1>
+            <h1>Choisissez Votre Service</h1>
             <p>Commencez par choisir le service qui correspond à vos besoins. Parcourez nos catégories de services et sélectionnez celui qui vous intéresse.</p>
         </div>
 

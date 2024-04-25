@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
-
+    <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
+    <script src="http://localhost/Bricolini/Views/public/js/Functions.js"></script>
     <script src="http://localhost/Bricolini/Views/public/js/Partenaire.js"></script>
     <title>Commentaires</title>
 </head>
@@ -14,6 +15,7 @@
 require __DIR__ . "/../Components/Nav.php";
 ?>
 <section class="sec">
+<?php require('Views/Components/Reclam.php') ?>
     <div class="comments">
         <div class="search" style="color:#65B741">
             <div>
@@ -48,17 +50,18 @@ require __DIR__ . "/../Components/Nav.php";
                         $color = "red";
                     }
                     echo "
-            <div class='commentaireCard'>
-                <div class='mess'>
-                    <h1>{$commentaire['LastName']} {$commentaire['FirstName']}</h1>
-                    <p>{$commentaire['message']}</p>
-                    <p>{$commentaire['Nom']}</p>
-                </div>
-                <div class='rat'>
-                    <p class='note' style='color:$color'>{$commentaire['Rating']}/5</p>
-                    <p class='date'>{$commentaire['Date_post']}</p>
-                </div>
-            </div> ";
+                    <div class='commentaireCard'>
+                    <div class='mess'>
+                        <h1>".$commentaire['LastName']."  ".$commentaire['FirstName']."</h1>
+                        <p>".$commentaire['Nom']."</p>
+                        <p>".$commentaire['message']."</p>
+                    </div> 
+                    <div class='rat'>
+                        <p class='note' style='color:$color'>{$commentaire['Rating']}/5</p>
+                        <p class='date'>{$commentaire['Date_post']}</p>
+                        <p class='report' onclick=\"showReclam(".$_SESSION["user_id"].",'".$type."','commentaire',".$commentaire['id'].")\"><i class='fa-solid fa-flag fa-lg'></i></p>
+                    </div> 
+                </div>  ";
                 }
             } else {
                 echo "<div></div><p class='err'>Pas De Commentaires</p>";

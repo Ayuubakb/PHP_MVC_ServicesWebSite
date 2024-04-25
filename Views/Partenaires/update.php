@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Modifier le Profile </title>
 </head>
 <body>
-<?php require "navbar.php";
+<?php require "Views/Components/Nav.php";
 ?>
 <center>
     <h1>Modifier le Profile </h1>

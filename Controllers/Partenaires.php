@@ -1,11 +1,11 @@
 <?php
 class Partenaires extends Controller{
-    public function index(){
+    public function index($id){
         $this->loadModel("Partenaire");
-        $profile = $this->Partenaire->find(1);
-        $commandes = $this->Partenaire->commandes(1);
-//        $commentaires = $this->Partenaire->commentaires(1);
-        $services = $this->Partenaire->services(1);
+        $profile = $this->Partenaire->find($id);
+        $commandes = $this->Partenaire->commandes($id);
+//        $commentaires = $this->Partenaire->commentaires($id);
+        $services = $this->Partenaire->services($id);
         $this->loadView("index", compact("profile", "commandes","services"));
     }
     public function updateprofile(){

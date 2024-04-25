@@ -22,7 +22,7 @@
                 }
             ?>
             <div class="imageHolder">
-                <img src="<?php echo is_null($profile['image'])?"http://localhost/Bricolini/Views/public/clientPic/icon-admin.png":$profile['image']?>"/>
+                <img src="<?php echo is_null($profile['image'])?"http://localhost/Bricolini/Views/public/clientPic/icon-admin.png":"http://localhost/Bricolini/Views/public/images/".$profile['image'].""?>"/>
             </div>
             <div class="fieldsContainer">
                 <div class="imgLabel">

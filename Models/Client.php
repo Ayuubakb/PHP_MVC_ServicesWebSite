@@ -20,8 +20,8 @@ class Client extends Model{
             $query->execute();
             $objct->commandes=$query->fetchAll();
 
-            $sql="SELECT c.id as id,s.Nom as nom, c.message as message, c.Rating as rating, c.Date_post as datePost
-                  FROM ((services s INNER JOIN reservation r ON s.id=r.Id_S) INNER JOIN commentaire c ON r.id=c.Id_R)
+            $sql="SELECT c.id as id,s.Nom as nom, c.message as message, c.Rating as rating, c.Date_post as datePost, p.LastName as ln, p.FirstName as fn 
+                  FROM (((services s INNER JOIN reservation r ON s.id=r.Id_S) INNER JOIN commentaire c ON r.id=c.Id_R) INNER JOIN partenaire p ON p.id=s.Id_P)
                   WHERE r.Id_C=".$id." AND c.published=1 AND c.publisher='partenaire'";
             $query=self::$instance->prepare($sql);
             $query->execute();
@@ -74,9 +74,9 @@ class Client extends Model{
     public function getComments(int $id,String $rating, String $sort){
         $objct=new stdClass();
         
-        $sql="SELECT s.Nom, c.message, c.Rating, c.Date_post
-                  FROM ((services s INNER JOIN reservation r ON s.id=r.Id_S) INNER JOIN commentaire c ON r.id=c.Id_R)
-                  WHERE r.Id_C=".$id." AND c.published=1 AND c.publisher='partenaire'";
+        $sql="SELECT c.id as id,s.Nom as nom, c.message as message, c.Rating as rating, c.Date_post as datePost, p.LastName as ln, p.FirstName as fn 
+                FROM (((services s INNER JOIN reservation r ON s.id=r.Id_S) INNER JOIN commentaire c ON r.id=c.Id_R) INNER JOIN partenaire p ON p.id=s.Id_P)
+                WHERE r.Id_C=".$id." AND c.published=1 AND c.publisher='partenaire'";
         if($rating!=0){
             $sql.=" AND c.Rating=$rating";
         }
@@ -105,7 +105,7 @@ class Client extends Model{
     }
     public function getPartenaires(String $nom,String $ville, int $rating, String $metier){
         $flag=false;
-        $sql="SELECT LastName , FirstName, Metier, Ville, YearExperience, Note, Telephone FROM partenaire";
+        $sql="SELECT id,image,LastName , FirstName, Metier, Ville, YearExperience, Note, Telephone FROM partenaire";
         if(strcmp($nom,"")!=0){
             if(!$flag)
                 $sql.=" WHERE LastName LIKE '%$nom%' OR FirstName LIKE '%$nom%' ";

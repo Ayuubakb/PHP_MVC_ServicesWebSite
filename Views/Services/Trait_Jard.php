@@ -16,7 +16,7 @@
 
     <?php foreach ($Services as $service): ?>
         <form id="form-<?= $service['id'] ?>" method="post" class="ajax-form">
-            <div class="service-item">
+            <div class="service-item sec">
                 <div class="service-image">
                     <img src="http://<?= $_SERVER['SERVER_NAME'] ?>/Bricolini/Views/public/images/<?= $service['image'] ?>">
                 </div>
@@ -24,12 +24,14 @@
                     <h2 class="service-title"><?= $service['Nom'] ?></h2>
                     <p><?= $service['Description'] ?></p>
                 </div>
+                <div>
                 <p class="service-price"><?= $service['Prix'] ?> DH</p>
                 <input type="hidden" name="Id_S" value="<?= $service['id'] ?>">
                 <input type="hidden" name="Date_reserv" value="<?= date('Y-m-d') ?>">
                 <input type="hidden" name="Id_C" value="1">
                 <input type="hidden" name="Statuts" value="0">
                 <button class="reserve-button">Réserver</button>
+                </div>
             </div>
         </form>
     <?php endforeach; ?>

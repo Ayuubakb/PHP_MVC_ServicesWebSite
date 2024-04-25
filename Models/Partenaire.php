@@ -18,7 +18,7 @@ class Partenaire extends Model
 
     public function services(int $id)
     {
-        $sql = "SELECT * FROM services WHERE Id_P = 1";
+        $sql = "SELECT * FROM services WHERE Id_P = $id";
         $query = self::$instance->prepare($sql);
         $query->execute();
         return $query->fetchAll();
@@ -41,7 +41,7 @@ class Partenaire extends Model
         $sql = "SELECT * FROM reservation 
                 INNER JOIN services ON reservation.Id_S = services.id
              INNER JOIN client ON reservation.Id_C = client.id
-         WHERE Id_S in (SELECT id FROM services WHERE Id_P = 1)";
+         WHERE Id_S in (SELECT id FROM services WHERE Id_P = $id)";
         $query = self::$instance->prepare($sql);
         $query->execute();
         return $query->fetchAll();

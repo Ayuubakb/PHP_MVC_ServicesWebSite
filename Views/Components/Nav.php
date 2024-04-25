@@ -25,15 +25,15 @@
                 if($islogged){
                     echo "
                     <a href='http://localhost/Bricolini/Clients/getAllCommandes/Tous/4/DESC'><li>Commandes</li></a>
-                    <a href='http://localhost/Bricolini/Clients/getAllComments/0/DESC'><li>Commentaires</li></a>
-                    <a href='http://localhost/Bricolini/Clients/partenaires'><span>Partenaires</span></a>";
+                        <a href='http://localhost/Bricolini/Clients/getAllComments/0/DESC'><li>Commentaires</li></a>
+                        <a href='http://localhost/Bricolini/Clients/partenaires'><span>Partenaires</span></a>";
 
                 }
             }else if($islogged && !strcmp($type,"partenaire")){
                 echo"    
-                <a href='http://localhost/Bricolini/Partenaires/Historique'><li>Historique</li></a>
-                <a href='http://localhost/Bricolini/Partenaires/Interventions'><li>Mes Interventions</li></a>
-                <a href='http://localhost/Bricolini/Partenaires/commentaires/0/DESC'><li>Commentaires</li></a>";
+                    <a href='http://localhost/Bricolini/Partenaires/Historique'><li>Historique</li></a>
+                    <a href='http://localhost/Bricolini/Partenaires/Interventions'><li>Mes Interventions</li></a>
+                    <a href='http://localhost/Bricolini/Partenaires/commentaires/0/DESC'><li>Commentaires</li></a>";
             }
             ?>
         </ul>
@@ -44,13 +44,16 @@
                 echo "
                     <a href='http://localhost/Bricolini/Clients'><button>Profile</button></a>";
             else if($islogged && !strcmp($type,"partenaire"))
-                echo "<a href='http://localhost/Bricolini/Partenaires'><button>Profile</button></a>";
+                echo "<a href='http://localhost/Bricolini/Partenaires/index/".$_SESSION['user_id']."'><button>Profile</button></a>";
         ?>
         <?php
         if(!$islogged){
             echo"    
             <a href='http://localhost/Bricolini/Authentification/showLoginForm'><button>Login</button></a>
             <a href='http://localhost/Bricolini/Authentification/showSignupForm'><button>SignUp</button></a>";
+        }else{
+            echo"    
+            <a href='http://localhost/Bricolini/Authentification/logout'><button>Logout</button></a>";
         }
         ?>
     </div>
