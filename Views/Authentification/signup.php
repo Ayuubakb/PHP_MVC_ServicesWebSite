@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
+    <link rel="stylesheet" href="../public/style/Style.css">
 </head>
-<body>
-    <h1>Inscription</h1>
+<body class="signup-body">
+    <h1>Inscrivez Vous a Bricoliini !</h1>
     <form action="/user/signup" method="post" enctype="multipart/form-data">
         <input type="text" name="LastName" placeholder="Nom" required>
         <input type="text" name="FirstName" placeholder="Prénom" required>
