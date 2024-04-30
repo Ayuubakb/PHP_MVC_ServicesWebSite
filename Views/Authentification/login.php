@@ -9,7 +9,7 @@
 
 <body>
 <div class="welcome-message">
-        <h1>Welcome to our Login Page!</h1>
+        <h1>Bricoliini</h1>
         <hr>
     </div>
     
