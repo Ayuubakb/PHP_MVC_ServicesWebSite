@@ -359,3 +359,189 @@ body.signup-body {
 .signup-body form input[type="submit"]:hover {
     background-color: var(--green);
 }
+body.home-page footer {
+    
+    grid-template-columns: 25% 50% 25%; 
+    padding: 20px; 
+    background-color: #f8f9fa; 
+    color: #333;
+    width: 100%; 
+}
+
+body.home-page nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--orange); 
+    padding: 20px; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+}
+
+
+body.home-page nav .logoContainer {
+    width: 150px;
+    height: auto; 
+}
+
+
+body.home-page nav .routes ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+body.home-page nav .routes ul a {
+    text-decoration: none;
+    color: var(--white);
+    padding: 10px; 
+}
+
+body.home-page nav .routes ul a:hover {
+    text-decoration: underline; 
+}
+
+
+body.home-page nav .auth {
+    display: flex;
+    align-items: center;
+}
+
+body.home-page nav .auth span {
+    color: var(--white); 
+    padding-right: 20px; 
+}
+
+body.home-page nav .auth button {
+    background-color: var(--lightGreen); 
+    color: black; 
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 10px; 
+}
+
+body.home-page nav .auth button:hover {
+    background-color: var(--green); 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.introduction {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 80px; 
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1.5;
+    }
+}
+
+.introduction h2 {
+    font-size: 36px;
+    color: var(--orange);
+    animation: fadeIn 3s ease forwards;
+    
+}
+
+.introduction p {
+    font-size: 18px;
+    color: #666;
+    margin-top: 20px;
+}
+
+
+.services {
+    padding: 60px 0;
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+
+.slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.slide {
+    flex: 0 0 auto;
+    width: 300px;
+    padding: 20px;
+    margin-right: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    scroll-snap-align: start;
+}
+
+.slide h3 {
+    font-size: 24px;
+    color: #333;
+}
+
+.slide p {
+    font-size: 16px;
+    color: #666;
+}
+.introduction .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.intro-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+}
+
+.intro-text {
+    flex: 1; 
+    text-align: left;
+}
+
+.logo-container {
+    margin-left: 20px; 
+}
+
+.logo {
+    width: 100px; 
+    height: auto; 
+}
+
+.intro-text h2 {
+    font-size: 36px;
+    color: var(--orange);
+}
+
+.intro-text p {
+    font-size: 18px;
+    color: #333; 
+    line-height: 1.5; 
+}
