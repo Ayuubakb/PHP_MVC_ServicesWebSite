@@ -14,10 +14,10 @@
 require("Views/Components/Nav.php");
 ?>
 <section class="sec">
-<?php require('Views/Components/Reclam.php') ?>
+    <?php require('Views/Components/Reclam.php') ?>
     <div class="informations">
         <div class="image">
-            <img src="http://localhost/Bricolini/Views/public/images/<?=$profile['image']?>"/>
+            <img src="http://localhost/Bricolini/Views/public/images/<?= $profile['image'] ?>"/>
         </div>
         <div class="fields">
             <div>
@@ -65,41 +65,65 @@ require("Views/Components/Nav.php");
 
         <div class="edit">
             <?php
-                if($islogged && !strcmp($type,"partenaire"))
-                    echo "<a href='http://localhost/Bricolini/Partenaires/updateprofile' style='color: white' ><i class='fa-solid fa-pen-to-square fa-xl'></i></a>";
-                else 
-                    echo "<i class='fa-solid fa-flag fa-xl' onClick=\"showReclam(".$_SESSION['user_id'].",'client','profile','".$profile['id']."')\"></i>";
-                ?>
+            if ($islogged && !strcmp($type, "partenaire"))
+                echo "<a href='http://localhost/Bricolini/Partenaires/updateprofile' style='color: white' ><i class='fa-solid fa-pen-to-square fa-xl'></i></a>";
+            else
+                echo "<i class='fa-solid fa-flag fa-xl' onClick=\"showReclam(" . $_SESSION['user_id'] . ",'client','profile','" . $profile['id'] . "')\"></i>";
+            ?>
         </div>
     </div>
     </div>
     <div class="reservationsWrapper">
         <h1>Sevices :</h1>
         <div class="reservations">
-   <?php
-foreach ($services as $service) {
-    $status = "";
-    $service['Note'] ? $status = "Faite" : $status = "En Attente";
-    $color = "white"; // Change color to white
-    $image = $service['image'] ? 'http://localhost/Bricolini/Views/public/images/'.$service['image'] : 'http://localhost/Bricolini/Views/public/servicePic/menageDefault.jpg'; // Use a default image if none is provided
+            <?php
+            foreach ($services as $service) {
+                $status = "";
+                $service['Note'] ? $status = "Faite" : $status = "En Attente";
+                $color = "white"; // Change color to white
+                // Get the path of the image
+                if ($service['image']) {
+                    $image = 'http://localhost/Bricolini/Views/public/images/' . $service['image'];
+                } else {
+                    if ($service['categorie'] == 'jardennage') {
+                        $image = 'http://localhost/Bricolini/Views/public/servicePic/jardennageDefault.jpg';
+                    } else {
+                        $image = 'http://localhost/Bricolini/Views/public/servicePic/menageDefault.jpg';
+                    }
+                } // Use a default image if none is provided
+                //    // Check if the image file exists and is readable
+                //    if (is_readable($image)){
+                //        // If the image file exists and is readable, use it
+                //        $image = 'http://localhost/Bricolini/Views/public/images/'.$service['image'];
+                //    }else {
+                //        // If the image file does not exist or is not readable, use a default image based on the service category
+                //        if ($service['categorie'] == 'jardennage') {
+                //            $image = 'http://localhost/Bricolini/Views/public/servicePic/jardennageDefault.jpg';
+                //        } else if ($service['categorie'] == 'menage') {
+                //            $image = 'http://localhost/Bricolini/Views/public/servicePic/menageDefault.jpg';
+                //        } else {
+                //            // If the service category is not recognized, use a general default image
+                //            $image = 'http://localhost/Bricolini/Views/public/servicePic/jardinageDefault.jpg';
+                //        }
+                //    }
 
-    $fullStars = floor($service['Note']);
-    $halfStar = ($service['Note'] - $fullStars) >= 0.5 ? 1 : 0;
-    $emptyStars = 5 - $fullStars - $halfStar;
+                $fullStars = floor($service['Note']);
+                $halfStar = ($service['Note'] - $fullStars) >= 0.5 ? 1 : 0;
+                $emptyStars = 5 - $fullStars - $halfStar;
 
-    $stars = "<div style='color:$color'>";
-    for ($i = 0; $i < $fullStars; $i++) {
-        $stars .= "&#9733;"; // Full star
-    }
-    if ($halfStar) {
-        $stars .= "&#189;"; // Half star
-    }
-    for ($i = 0; $i < $emptyStars; $i++) {
-        $stars .= "&#9734;"; // Empty star
-    }
-    $stars .= "</div>";
+                $stars = "<div style='color:$color'>";
+                for ($i = 0; $i < $fullStars; $i++) {
+                    $stars .= "&#9733;"; // Full star
+                }
+                if ($halfStar) {
+                    $stars .= "&#189;"; // Half star
+                }
+                for ($i = 0; $i < $emptyStars; $i++) {
+                    $stars .= "&#9734;"; // Empty star
+                }
+                $stars .= "</div>";
 
-    echo "
+                echo "
         <div class='reservationCard'>
             <div class='image'>
                 <img src='$image'>
@@ -120,47 +144,47 @@ foreach ($services as $service) {
                 </div>
             </div>
         </div> ";
-}
-?>
+            }
+            ?>
             <?php
-if (count($services) < 3) {
-        echo "
+            if (count($services) < 3) {
+                echo "
         <div class='reservationCard allRes'>
             <a href='http://localhost/Bricolini/Partenaires/addservice' style='color:white'><p>
                 <i class='fa-solid fa-plus fa-xl'></i></p></a>
         </div>";
-}
-?>
+            }
+            ?>
         </div>
-</div>
-<?php
-if($islogged && !strcmp($type,"partenaire")){
-echo"
+    </div>
+    <?php
+    if ($islogged && !strcmp($type, "partenaire")) {
+        echo "
     <div class='reservationsWrapper'>
         <h1>Commandes :</h1>
         <div class='reservations'>
             ";
-foreach ($commandes as $commande) {
-    $status='';
-    switch ($commande['Statuts']){
-        case 0:
-            $status="En Attente";
-            $color="gray";
-            break;
-        case 1:
-            $status="Accepté";
-            $color="lightgreen";
-            break;
-        case 2:
-            $status="Refusé";
-            $color="red";
-            break;
-        case 3:
-            $status="Faite";
-            $color="#65B741";
-            break;
-    }
-    echo "
+        foreach ($commandes as $commande) {
+            $status = '';
+            switch ($commande['Statuts']) {
+                case 0:
+                    $status = "En Attente";
+                    $color = "gray";
+                    break;
+                case 1:
+                    $status = "Accepté";
+                    $color = "lightgreen";
+                    break;
+                case 2:
+                    $status = "Refusé";
+                    $color = "red";
+                    break;
+                case 3:
+                    $status = "Faite";
+                    $color = "#65B741";
+                    break;
+            }
+            echo "
         <div class='reservationCard'>
             <div class='image'>
                 <img src='http://localhost/Bricolini/Views/public/servicePic/menageDefault.jpg'>
@@ -178,7 +202,7 @@ foreach ($commandes as $commande) {
                 </div>   
             </div>
         </div> ";
-}
+        }
         echo "
             <div class='reservationCard allRes'>
                 <a href='http://localhost/Bricolini/Partenaires/interventions' style='color:white'><i
