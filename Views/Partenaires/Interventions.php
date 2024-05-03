@@ -55,7 +55,9 @@ foreach ($interventions as $commande) {
                     $color="#65B741";
                     break;
             }
-    echo "
+//            show only the accepted or refused commands
+            if($commande['Statuts']!=0){
+                echo "
         <div class='reservationCard'>
             <div class='image'>
                 <img src='http://localhost/Bricolini/Views/public/servicePic/menageDefault.jpg'/>
@@ -73,6 +75,8 @@ foreach ($interventions as $commande) {
                 </div>   
             </div>
         </div> ";
+            }
+
 }
 ?>
 

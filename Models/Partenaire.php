@@ -41,7 +41,8 @@ class Partenaire extends Model
         $sql = "SELECT * FROM reservation 
                 INNER JOIN services ON reservation.Id_S = services.id
              INNER JOIN client ON reservation.Id_C = client.id
-         WHERE Id_S in (SELECT id FROM services WHERE Id_P = $id)";
+         WHERE Id_S in (SELECT id FROM services WHERE Id_P = $id)
+        ORDER BY Date_reserv DESC";
         $query = self::$instance->prepare($sql);
         $query->execute();
         return $query->fetchAll();
@@ -116,6 +117,21 @@ class Partenaire extends Model
         $query = self::$instance->prepare($sql);
         $query->execute();
     }
+    public function addService($service)
+{
+    $sql = "INSERT INTO services (Id_P, Nom,Description ,Prix , categorie, sousCategorie, image) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $params = [
+        $service['id'],
+        $service['serviceName'],
+        $service['serviceDescription'],
+        $service['servicePrice'],
+        $service['serviceCategory'],
+        $service['servicesousCategory'],
+        $service['serviceImage']
+    ];
+    $query = self::$instance->prepare($sql);
+    $query->execute($params);
+}
 
 }
 
