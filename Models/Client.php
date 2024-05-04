@@ -92,7 +92,7 @@ class Client extends Model{
         // Perform database insertion
         // Ensure that you properly escape or prepare data to prevent SQL injection
         // Example:
-        $query = "INSERT INTO client (LastName, FirstName, Address, Telephone, email, password) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO client (LastName, FirstName, Address, Telephone, email, password) VALUES (?, ?, ?, ?, ?, ?)";
         $params = [
             $data['LastName'],
             $data['FirstName'],
@@ -101,7 +101,8 @@ class Client extends Model{
             $data['Email'], // Adjust to use 'Email' instead of 'email'
             $data['password'] // Adjust to use 'password' instead of 'password'
         ];
-        $this->db->execute($query, $params);
+        $query=self::$instance->prepare($sql);
+        $query->execute($params);
     }
     public function getPartenaires(String $nom,String $ville, int $rating, String $metier){
         $flag=false;

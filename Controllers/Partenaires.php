@@ -112,8 +112,8 @@ class Partenaires extends Controller
         $this->loadView("interventions", compact("Partenaire", "interventions", "commandesnontraitees"));
     }
 
-
     public function addservice()
+
     {
         $this->loadModel("Partenaire");
         $this->loadView("addservice");

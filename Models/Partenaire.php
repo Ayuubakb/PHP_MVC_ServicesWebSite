@@ -51,7 +51,7 @@ class Partenaire extends Model
         // Perform database insertion
         // Ensure that you properly escape or prepare data to prevent SQL injection
 
-        $query = "INSERT INTO partenaire (LastName, FirstName, Metier, Ville, Creneaux, YearExperience, Email, Telephone, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO partenaire (LastName, FirstName, Metier, Ville, Creneaux, YearExperience, Email, Telephone, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $params = [
             $data['LastName'],
             $data['FirstName'],
@@ -63,7 +63,8 @@ class Partenaire extends Model
             $data['Telephone'],
             $data['password']
         ];
-        $this->db->execute($query, $params);
+        $query=self::$instance->prepare($sql);
+        $query->execute($params);
     }
 
     public function getallcomments(int $id, int $note, string $order)

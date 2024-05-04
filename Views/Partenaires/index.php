@@ -147,8 +147,8 @@ require("Views/Components/Nav.php");
             }
             ?>
             <?php
-            if (count($services) < 3) {
-                echo "
+if (count($services) < 3) {
+        echo "
         <div class='reservationCard allRes'>
             <a href='http://localhost/Bricolini/Partenaires/addservice/$profile[id]' style='color:white'><p>Add Service
                 <i class='fa-solid fa-plus fa-xl'></i></p></a>
