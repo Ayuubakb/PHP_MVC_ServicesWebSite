@@ -132,22 +132,17 @@ class Partenaire extends Model
     $query = self::$instance->prepare($sql);
     $query->execute($params);
 }
+public function getNotCommented(int $id)
+{
+    $sql = "SELECT reservation.*, client.*,services.* FROM reservation 
+            INNER JOIN services ON reservation.Id_S = services.id
+            INNER JOIN client ON reservation.Id_C = client.id 
+            WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = $id) AND reservation.id NOT IN (SELECT Id_R FROM commentaire)";
+    $query = self::$instance->prepare($sql);
+    $query->execute();
+    return $query->fetchAll();
+}
 
-    public function addService($service)
-    {
-        $sql = "INSERT INTO services (Id_P, Nom,Description ,Prix , categorie, sousCategorie, image) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $params = [
-            $service['id'],
-            $service['serviceName'],
-            $service['serviceDescription'],
-            $service['servicePrice'],
-            $service['serviceCategory'],
-            $service['servicesousCategory'],
-            $service['serviceImage']
-        ];
-        $query = self::$instance->prepare($sql);
-        $query->execute($params);
-    }
 
 }
 

@@ -1,56 +1,65 @@
-<DOCTYPE HTML >
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Modifier le Profile </title>
+    <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
+    <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
+    <title>Edit</title>
 </head>
 <body>
-<?php require "Views/Components/Nav.php";
+<?php
+require("Views/Components/Nav.php");
+print_r($profile);
 ?>
-<center>
-    <h1>Modifier le Profile </h1>
-</center>
-
-<form>
-<!-- LastName , FirstName, Metier, Ville ,Creneaux, YearExperience ,Email,Telephone-->
-    <div class="form-group">
-        <label for="LastName">Nom</label>
-        <input type="text" class="form-control" id="LastName" name="LastName" value="<?php echo $Partenaire['LastName']; ?>">
-    </div>
-    <div class="form-group
-    ">
-        <label for="FirstName">Prenom</label>
-        <input type="text" class="form-control" id="FirstName" name="FirstName" value="<?php echo $Partenaire['FirstName']; ?>">
-    </div>
-    <div class="form-group">
-        <label for="Metier">Metier</label>
-        <input type="text" class="form-control" id="Metier" name="Metier" value="<?php echo $Partenaire['Metier']; ?>">
-    </div>
-    <div class="form-group">
-        <label for="Ville">Ville</label>
-        <input type="text" class="form-control" id="Ville" name="Ville" value="<?php echo $Partenaire['Ville']; ?>">
-    </div>
-    <div class="form-group">
-        <label for="Creneaux">Creneaux</label>
-        <input type="text" class="form-control" id="Creneaux" name="Creneaux" value="<?php echo $Partenaire['Creneaux']; ?>">
-    </div>
-    <div class="form-group">
-        <label for="YearExperience">YearExperience</label>
-        <input type="text" class="form-control" id="YearExperience" name="YearExperience" value="<?php echo $Partenaire['YearExperience']; ?>">
-    </div>
-    <div class="form-group">
-        <label for="Email">Email</label>
-        <input type="text" class="form-control" id="Email" name="Email" value="<?php echo $Partenaire['Email']; ?>">
-    </div>
-    <div class="form-group">
-        <label for="Telephone">Telephone</label>
-        <input type="text" class="form-control" id="Telephone" name="Telephone" value="<?php echo $Partenaire['Telephone']; ?>">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-<!--    cancel button -->
-    <a href="profil" class="btn btn-danger">Cancel</a>
-</form>
+<section class="sec">
+    <form method="POST" action="http://localhost/Bricolini/Clients/updateInfos" class="modifier" enctype="multipart/form-data">
+        <h1>Modifier Votre Profile</h1>
+        <div class="imageHolder">
+            <img src="<?php echo is_null($profile['image'])?"http://localhost/Bricolini/Views/public/clientPic/icon-admin.png":"http://localhost/Bricolini/Views/public/images/".$profile['image'].""?>"/>
+        </div>
+        <div class="fieldsContainer">
+            <div class="imgLabel">
+                <label>
+                    <i class="fa-solid fa-upload fa-lg"></i>
+                    <input type="file" accept="image/*" name="pic" value=<?=$profile['image']?> />
+                </label>
+            </div>
+            <div>
+                <label>Prenom :</label>
+                <input type="text" name="firstName" value="<?=$profile['FirstName']?>"/>
+            </div>
+            <div>
+                <label>Nom :</label>
+                <input type="text" name="lastName" value="<?=$profile['LastName']?>"/>
+            </div>
+            <div>
+                <label>Metier :</label>
+                <input type="text" name="Metier" value="<?=$profile['Metier']?>"/>
+            </div>
+            <div>
+                <label>Ville :</label>
+                <input type="text" name="Ville" value="<?=$profile['Ville']?>"/>
+            </div>
+            <div>
+                <label>Year Experience :</label>
+                <input type="number" name="YearExperience" value="<?=$profile['YearExperience']?>"/>
+            </div>
+            <div>
+                <label>Email :</label>
+                <input type="email" name="Email" value="<?=$profile['Email']?>"/>
+            </div>
+            <div>
+                <label>Telephone :</label>
+                <input type="tel" name="Telephone" value="<?=$profile['Telephone']?>"/>
+            </div>
+        </div>
+        <button name="subButton" type="submit">Modifier</button>
+    </form>
+</section>
+<?php
+require("Views/Components/Footer.php")
+?>
 </body>
-
+</html>

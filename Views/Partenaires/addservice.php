@@ -18,22 +18,25 @@ require("Views/Components/Nav.php");
     <form action="http://localhost/Bricolini/Partenaires/handleAddService" method="post" enctype="multipart/form-data">
         <label for="serviceName">Service Name:</label><br>
         <input type="hidden" id="id" name="id" value="<?php echo $_SESSION['user_id'] ?>">
-        <input type="text" id="serviceName" name="serviceName"><br>
+        <input type="text" id="serviceName" name="serviceName" required><br>
         <label for="serviceDescription">Service Description:</label><br>
-        <textarea id="serviceDescription" name="serviceDescription"></textarea><br>
+        <textarea id="serviceDescription" name="serviceDescription"required></textarea><br>
         <label for="servicePrice">Service Price:</label><br>
-        <input type="number" id="servicePrice" name="servicePrice" min="0" step="0.01"><br>
+        <input type="number" id="servicePrice" name="servicePrice" min="0" step="0.01" required><br>
         <label for="serviceImage">Service Image:</label><br>
-        <input type="file" id="serviceImage" name="serviceImage"><br>
+        <input type="file" id="serviceImage" name="serviceImage" style="display: none;">
+        <label for="serviceImage" class="custom-file-upload">
+            <i class="fa fa-cloud-upload"></i> Upload Image
+        </label>
         <label for="serviceCategory">Service Category:</label><br>
 <!--        jardennage or menage -->
-        <select id="serviceCategory" name="serviceCategory">
+        <select id="serviceCategory" name="serviceCategory" required>
             <option value="jardennage">Jardinage</option>
             <option value="menage">Nettoyage</option>
         </select><br>
         <label for="servicesousCategory">Service Sous Category:</label><br>
 <!--        depend if he selected jardinage or menage-->
-        <select id="servicesousCategory" name="servicesousCategory">
+        <select id="servicesousCategory" name="servicesousCategory" required>
             <option value="Nettoyage de canapés">Nettoyage de canapés</option>
             <option value="Nettoyage des surfaces">Nettoyage des surfaces</option>
             <option value="Nettoyage général">Nettoyage général</option>
@@ -41,7 +44,8 @@ require("Views/Components/Nav.php");
             <option value="Traitement de jardin">Traitement de jardin</option>
             <option value="Plantation pour jardin">Plantation pour jardin</option>
         </select><br>
-        <button onclick="addService()" type="submit">Add Service</button>
+        <button onclick="addService()" type="submit" id="submit">Add Service</button>
+        <button id="Cancel" type="button" onclick="window.location.href='http://localhost/Bricolini/Partenaires/index/<?php echo $_SESSION['user_id'] ?>';">Cancel</button>
     </form>
 </div>
 </body>
@@ -85,3 +89,102 @@ categorySelect.addEventListener("change", function() {
 // Trigger the change event to populate the sous category select box on page load
 categorySelect.dispatchEvent(new Event("change"));
 </script>
+<style>
+/*    style for the file input and the submit button*/
+    input[type="file"]{
+        margin-top: 10px;
+    }
+    #submit{
+        margin-top: 10px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 80px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+    #submit:hover {
+        opacity: 0.8;
+    }
+    /*    style for the form*/
+    .container {
+        padding: 16px;
+        background-color: white;
+        margin-top: 20px;
+        margin-left: 10%;
+        margin-right: 10%;
+        border-radius: 10px;
+    }
+    /*    style for the form labels*/
+    label{
+        font-size: 30px;
+        font-family: var(--fontBig);
+
+    }
+    /*    style for the form inputs*/
+    input[type="text"], input[type="number"], textarea, select{
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
+    /*    style for the form inputs when focused*/
+    input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:focus{
+        background-color: #f3f3f3;
+    }
+    /*    style for the form button*/
+    button{
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+    /*    style for the form button when hovered*/
+    button:hover {
+        opacity: 0.8;
+    }
+    /*    style for the form button when disabled*/
+    button:disabled{
+        background-color: #cccccc;
+    }
+    /*    style for the form button when disabled and hovered*/
+    button:disabled:hover{
+        opacity: 1;
+    }
+    /*    style for the form button when disabled and focused*/
+    button:disabled:focus{
+        background-color: #cccccc;
+    }
+    /*    style for the form button when disabled and active*/
+    button:disabled:active{
+        background-color: #cccccc
+    }
+    .custom-file-upload {
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+}
+    #Cancel{
+        background-color: #f44336;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+
+
+</style>

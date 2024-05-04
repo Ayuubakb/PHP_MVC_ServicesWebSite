@@ -66,7 +66,7 @@ require("Views/Components/Nav.php");
         <div class="edit">
             <?php
             if ($islogged && !strcmp($type, "partenaire"))
-                echo "<a href='http://localhost/Bricolini/Partenaires/updateprofile' style='color: white' ><i class='fa-solid fa-pen-to-square fa-xl'></i></a>";
+                echo "<a href='http://localhost/Bricolini/Partenaires/updateprofile/" . $profile['id'] . "' style='color: white'><i class='fa-solid fa-pen-to-square fa-xl'></i></a>";
             else
                 echo "<i class='fa-solid fa-flag fa-xl' onClick=\"showReclam(" . $_SESSION['user_id'] . ",'client','profile','" . $profile['id'] . "')\"></i>";
             ?>
@@ -150,7 +150,7 @@ require("Views/Components/Nav.php");
             if (count($services) < 3) {
                 echo "
         <div class='reservationCard allRes'>
-            <a href='http://localhost/Bricolini/Partenaires/addservice' style='color:white'><p>
+            <a href='http://localhost/Bricolini/Partenaires/addservice/$profile[id]' style='color:white'><p>Add Service
                 <i class='fa-solid fa-plus fa-xl'></i></p></a>
         </div>";
             }
