@@ -11,6 +11,189 @@
     --fontSmall:'Trebuchet MS';
     --fontBig:'Franklin Gothic Medium';
 }
+.horaire{
+    display: none;
+}
+.errlog{
+    width: 75%;
+    margin-left: 12.5%;
+    padding: 10px;
+    font-family: var(--fontSmall);
+    color: white;
+    background-color: rgb(101, 2, 2);
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+.log{
+    height: 100vh;
+}
+.signup .holder{
+    margin-top: 25px;
+    width: 60%;
+    margin-left: 20%;
+    background-color: var(--orange);
+    padding: 15px;
+    border-radius: 20px;
+    padding-bottom: 30px;
+}
+.signup .holder h1{
+    text-align: center;
+    background-color: var(--white);
+    color: #65B741;
+    width: 50%;
+    margin-left: 25%;
+    font-family: var(--fontBig);
+    padding: 7px;
+    border-radius: 7px;
+    margin-bottom: 25px;
+}
+.signup .holder .ins{
+    padding: 10px;
+    margin-bottom: 15px;
+}
+.signup .holder .ins input, .signup .holder .champClient input, .signup .holder .partenaireInfos input{
+    padding: 5px;
+    font-family: var(--fontSmall);
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 10px;
+    width: 45%;
+    outline: none;
+}
+.signup .holder .clientType{
+    padding: 10px;
+}
+.signup .holder .clientType label{
+    margin-left: 25px;
+    font-family: var(--fontSmall);
+    font-size: 22px;
+    font-weight:bold;
+    color: rgb(67, 66, 66);
+}
+.signup .holder .champClient,.signup .holder .champsPartenaire{
+    padding: 15px;
+    background-color: #65B741;
+    width: 95%;
+    margin-left: 2.5%;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.signup .holder .champClient div{
+    margin-bottom: 20px;
+}
+.signup .holder .partenaireInfos{
+    margin-bottom: 15px;
+
+}
+.signup .holder .partenaireInfos input{
+    width: 30%;
+}
+.signup .holder .creneaux{
+    display: flex;
+    gap: 20px;
+    margin-top: 25px;
+}
+.signup .holder .creneaux div{
+    flex: 0 0 39%;
+}
+.signup .holder .creneaux div div{
+    margin-bottom: 10px;
+    text-align: start;
+    font-family: var(--fontSmall);
+    font-size: 18px;
+    background-color: #FFB534;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+}
+.signup .holder .creneaux div div div{ 
+    flex: 0 0 50%;
+}
+.signup .holder .creneaux .jour label{
+   margin-right: 15px;
+}
+.signup .holder .creneaux .horaire input{
+    border: none;
+    width: 45%;
+    margin-left: 2px;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: var(--fontSmall);
+    font-size: 16px;
+}
+.signup .holder .creneaux .jour input{
+    padding: 0;
+}
+.signup  .btnSubmit, .signup .holder .champsPartenaire .btnSubmit{
+    padding: 8px 12px;
+    width: 30%;
+    margin-left: 70%;
+    margin-top: 35px;
+    font-family: var(--fontBig);
+    font-size: 20px;
+    background-color: var(--orange);
+    border: none;
+    border-radius: 15px;
+}
+.log .container{
+    width: 40%;
+    margin-left: 30%;
+    padding: 15px;
+    border-radius: 25px;
+    background-color: var(--orange);
+    margin-top: 65px;
+    padding-bottom: 35px;
+    padding-top: 25px;
+}
+.log .container h1{
+    font-family: var(--fontBig);
+    color: var(--green);
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: var(--white);
+    width: 50%;
+    margin-left: 25%;
+    padding: 10px;
+    border-radius: 7px;
+}
+.log .container form div{
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.log .container label{
+    margin-bottom: 10px;
+    font-family: var(--fontSmall);
+    font-size: 17px;
+}
+.log div input{
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    font-family: var(--fontSmall);
+    font-size: 17px;
+    color: rgb(43, 43, 43);
+}
+.log .btn{
+    padding: 10px 18px;
+    background-color: var(--green);
+    color: white;
+    font-family: var(--fontBig);
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 70%;
+    width: 20%;
+    margin-top: 25px;
+}
 nav{
     background-color: var(--orange);
     padding: 0px 40px;

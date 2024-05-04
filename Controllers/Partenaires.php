@@ -91,14 +91,6 @@ class Partenaires extends Controller
 }
     
 
-    public function Historique()
-    {
-        $this->loadModel("Partenaire");
-        $Partenaire = $this->Partenaire->find(1);
-        $interventions = $this->Partenaire->interventions(1);
-        $this->loadView("Historique", compact("Partenaire", "interventions"));
-    }
-
     public function interventions()
     {
         $this->loadModel("Partenaire");
@@ -106,46 +98,6 @@ class Partenaires extends Controller
         $interventions = $this->Partenaire->interventions(1);
         $commandesnontraitees = $this->Partenaire->commandesnontraitees(1);
         $this->loadView("interventions", compact("Partenaire", "interventions", "commandesnontraitees"));
-    }
-
-    public function handleAddService()
-    {
-        $this->loadModel("Partenaire");
-
-        // Check if the file was uploaded without errors
-        if (isset($_FILES['serviceImage']) && $_FILES['serviceImage']['error'] == 0) {
-            // The path of the upload destination
-            $uploadDir = 'http://localhost/Bricolini/Views/public/images/';
-
-            // Get the service name from the form data
-            $serviceName = $_POST['serviceName'];
-            //remove spaces from the service name and replace them with underscores
-            $serviceName = str_replace(' ', '_', $serviceName);
-            //save the file in uploads directory
-            $uploadFile = $uploadDir . basename($serviceName . $_FILES['serviceImage']['name']);
-            // Move the file to the upload directory
-            if (move_uploaded_file($_FILES['serviceImage']['tmp_name'], $uploadFile)) {
-                echo "The file has been uploaded successfully.";
-            } else {
-                echo "An error occurred during the file upload.";
-            }
-        } else {
-            echo "An error occurred.";
-        }
-
-        $service = [
-            "id" => $_POST['id'],
-            "serviceName" => $serviceName,
-            "serviceDescription" => $_POST['serviceDescription'],
-            "servicePrice" => $_POST['servicePrice'],
-            "serviceCategory" => $_POST['serviceCategory'],
-            "servicesousCategory" => $_POST['servicesousCategory'],
-            "serviceImage" => $serviceName . $_FILES['serviceImage']['name']
-        ];
-
-        $this->Partenaire->addService($service);
-        echo "Service added successfully";
-        header("Location: http://localhost/Bricolini/Partenaires/index/" . $_POST['id']);
     }
 
     public function addservice($id)
