@@ -123,7 +123,7 @@ foreach ($services as $service) {
 }
 ?>
             <?php
-if (count($services) < 3) {
+if (count($services) < 3 && !strcmp($type,"partenaire")) {
         echo "
         <div class='reservationCard allRes'>
             <a href='http://localhost/Bricolini/Partenaires/addservice' style='color:white'><p>
