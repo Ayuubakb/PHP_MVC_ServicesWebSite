@@ -55,7 +55,7 @@
                             <div>
                                 <div class="jour">
                                     <label>Lundi </label>
-                                    <input id="jourLundi" type="checkbox" name="days[]" value="Lundi"/>
+                                    <input id="jourLundi" type="checkbox" name="days[]" value="Monday"/>
                                 </div>
                                 <div  style="display: none;" class="horaire" id="lundiHoraire">
                                     <input max=23 min=0 placeholder="De" type="number" name="lundifrom" id="horaireFromlundi"/>
@@ -65,7 +65,7 @@
                             <div>
                                 <div class="jour">
                                     <label>Mardi </label>
-                                    <input id="jourMardi" type="checkbox" name="days[]" value="Mardi"/>
+                                    <input id="jourMardi" type="checkbox" name="days[]" value="Tuesday"/>
                                 </div>
                                 <div  style="display: none;" class="horaire" id="mardiHoraire">
                                     <input max=23 min=0 placeholder="De" type="number" name="mardifrom" id="horaireFrommardi"/>
@@ -75,7 +75,7 @@
                             <div>
                                 <div class="jour">
                                     <label>Mercredi </label>
-                                    <input id="jourMercredi" type="checkbox" name="days[]" value="Mercredi"/>
+                                    <input id="jourMercredi" type="checkbox" name="days[]" value="Wednesday"/>
                                 </div>
                                 <div  style="display: none;" class="horaire" id="mercrediHoraire">
                                     <input max=23 min=0 placeholder="De" type="number" name="mercredifrom" id="horaireFrommercredi"/>
@@ -85,7 +85,7 @@
                             <div>
                                 <div class="jour">
                                     <label>Jeudi </label>
-                                    <input id="jourJeudi" type="checkbox" name="days[]" value="Jeudi"/>
+                                    <input id="jourJeudi" type="checkbox" name="days[]" value="Thursday"/>
                                 </div>
                                 <div  style="display: none;" class="horaire" id="jeudiHoraire">
                                     <input max=23 min=0 placeholder="De" type="number" name="jeudifrom" id="horaireFromjeudi"/>
@@ -97,7 +97,7 @@
                             <div>
                                 <div class="jour">
                                     <label>Vendredi </label>
-                                    <input id="jourVendredi" type="checkbox" name="days[]" value="Vendredi"/>
+                                    <input id="jourVendredi" type="checkbox" name="days[]" value="Friday"/>
                                 </div>
                                 <div  style="display: none;" class="horaire" id="vendrediHoraire">
                                     <input max=23 min=0 placeholder="De" type="number" name="vendredifrom" id="horaireFromvendredi"/>
@@ -107,7 +107,7 @@
                             <div>
                                 <div class="jour">
                                     <label>Samedi </label>
-                                    <input id="jourSamedi" type="checkbox" name="days[]" value="Samedi"/>
+                                    <input id="jourSamedi" type="checkbox" name="days[]" value="Saturday"/>
                                 </div> 
                                 <div  style="display: none;" class="horaire" id="samediHoraire">
                                     <input max=23 min=0 placeholder="De" type="number" name="samedifrom" id="horaireFromsamedi"/>
@@ -117,7 +117,7 @@
                             <div>
                                 <div class="jour">
                                     <label>Dimanche </label>
-                                    <input id="jourDimanche" type="checkbox" name="days[]" value="Dimanche"/>
+                                    <input id="jourDimanche" type="checkbox" name="days[]" value="Sunday"/>
                                 </div>
                                 <div  style="display: none;" class="horaire" id="dimancheHoraire">
                                     <input max=23 min=0 placeholder="De" type="number" name="dimanchefrom" id="horaireFromdimanche"/>
