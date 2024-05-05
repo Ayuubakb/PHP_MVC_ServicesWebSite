@@ -30,7 +30,6 @@ class Partenaires extends Controller
 
     public function updateStatus()
     {
-
         $this->loadModel("Partenaire");
         if (isset($_POST['id']) && isset($_POST['status'])) {
             $id = $_POST['id'];
@@ -41,6 +40,16 @@ class Partenaires extends Controller
             echo "Error";
         }
     }
+<<<<<<< HEAD
+    public function Historique($status, $order)
+    {
+        session_start();
+        $id=$_SESSION['user_id'];
+        $this->loadModel("Partenaire");
+        $historique = $this->Partenaire->historique($id, $status, $order);
+        $notcommented = $this->Partenaire->getNotCommented($id);
+        $this->loadView("Historique", compact("historique", "notcommented"));
+=======
     public function Historique(){
         if(isset($_POST['order']) && isset($_POST['status'])) {
             $status = $_POST['status'];
@@ -51,6 +60,7 @@ class Partenaires extends Controller
             $order = "DESC";
         }
         $commandes=$this->Partenaire->Historique(1,$status,$order);
+>>>>>>> bc96381deba5381d90f94d9cdd825e5302306541
     }
 
     public function handleAddService(){
@@ -103,9 +113,9 @@ class Partenaires extends Controller
     {
         session_start();
         $this->loadModel("Partenaire");
-        $Partenaire = $this->Partenaire->find(1);
-        $interventions = $this->Partenaire->interventions(1);
-        $commandesnontraitees = $this->Partenaire->commandesnontraitees(1);
+        $Partenaire = $this->Partenaire->find($_SESSION['user_id']);
+        $interventions = $this->Partenaire->interventions($_SESSION['user_id']);
+        $commandesnontraitees = $this->Partenaire->commandesnontraitees($_SESSION['user_id']);
         $this->loadView("interventions", compact("Partenaire", "interventions", "commandesnontraitees"));
     }
 
