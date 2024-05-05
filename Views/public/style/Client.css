@@ -476,10 +476,10 @@ a{
     color: var(--white);
     font-family: var(--fontSmall);
     font-size: 20px;
+    margin-bottom: 15px;
 }
 .partenaireCard .infoContainer span{
     color: black;
-    margin-bottom: 15px;
 }
 .partenaireCard .header .note{
     width: 55px;

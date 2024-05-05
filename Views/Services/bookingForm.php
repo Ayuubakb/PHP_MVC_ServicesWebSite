@@ -65,7 +65,6 @@
     </script>
 </head>
 <body>
-    <?php include 'Views/Components/Nav.php'; ?>
 
     <div class="container">
     <form method="post" action="http://localhost/Bricolini/Views/Services/reservationHandler.php" class="ajax-form">
@@ -88,6 +87,5 @@
 </div>
 
 
-    <?php include 'Views/Components/Footer.php'; ?>
 </body>
 </html>
