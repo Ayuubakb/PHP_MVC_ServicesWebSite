@@ -107,9 +107,9 @@ require("Views/Components/Nav.php");
                 //        }
                 //    }
 
-                $fullStars = floor($service['Note']);
+                $fullStars = round($service['Note']);
                 $halfStar = ($service['Note'] - $fullStars) >= 0.5 ? 1 : 0;
-                $emptyStars = 5 - $fullStars - $halfStar;
+                $emptyStars = 5 - $fullStars ;
 
                 $stars = "<div style='color:$color'>";
                 for ($i = 0; $i < $fullStars; $i++) {
