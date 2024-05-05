@@ -38,6 +38,12 @@ $commented = array_filter($historique, function($element) use ($notcommented) {
             </select>
         </div>
         <div>
+<!--      not commented only -->
+            <button onClick="function Historique() {
+            }
+            Historique()">OK</button>
+        </div>
+        <div>
             <button onClick="function Historique() {
                 var status = document.getElementById('status').value;
                 var sort = document.getElementById('sort').value;
