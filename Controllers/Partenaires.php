@@ -2,9 +2,13 @@
 
 class Partenaires extends Controller
 {
-    public function index($id)
+    public function index()
     {
         session_start();
+<<<<<<< HEAD
+=======
+        $id = $_SESSION['user_id'];
+>>>>>>> bb51795a97bcc50908f1b0ad129a6da316ddec8b
         $this->loadModel("Partenaire");
         $profile = $this->Partenaire->find($id);
         $commandes = $this->Partenaire->commandes($id);
@@ -32,7 +36,10 @@ class Partenaires extends Controller
 
     public function updateStatus()
     {
+<<<<<<< HEAD
         session_start();
+=======
+>>>>>>> bb51795a97bcc50908f1b0ad129a6da316ddec8b
         $this->loadModel("Partenaire");
         if (isset($_POST['id']) && isset($_POST['status'])) {
             $id = $_POST['id'];
@@ -43,6 +50,7 @@ class Partenaires extends Controller
             echo "Error";
         }
     }
+<<<<<<< HEAD
     public function Historique(){
         session_start();
         if(isset($_POST['order']) && isset($_POST['status'])) {
@@ -54,6 +62,16 @@ class Partenaires extends Controller
             $order = "DESC";
         }
         $commandes=$this->Partenaire->Historique(1,$status,$order);
+=======
+    public function Historique($status, $order)
+    {
+        session_start();
+        $id=$_SESSION['user_id'];
+        $this->loadModel("Partenaire");
+        $historique = $this->Partenaire->historique($id, $status, $order);
+        $notcommented = $this->Partenaire->getNotCommented($id);
+        $this->loadView("Historique", compact("historique", "notcommented"));
+>>>>>>> bb51795a97bcc50908f1b0ad129a6da316ddec8b
     }
 
     public function handleAddService(){
@@ -106,9 +124,9 @@ class Partenaires extends Controller
     {
         session_start();
         $this->loadModel("Partenaire");
-        $Partenaire = $this->Partenaire->find(1);
-        $interventions = $this->Partenaire->interventions(1);
-        $commandesnontraitees = $this->Partenaire->commandesnontraitees(1);
+        $Partenaire = $this->Partenaire->find($_SESSION['user_id']);
+        $interventions = $this->Partenaire->interventions($_SESSION['user_id']);
+        $commandesnontraitees = $this->Partenaire->commandesnontraitees($_SESSION['user_id']);
         $this->loadView("interventions", compact("Partenaire", "interventions", "commandesnontraitees"));
     }
 

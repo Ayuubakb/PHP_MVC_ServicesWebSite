@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 
     <title>Interactions</title>
@@ -14,6 +15,10 @@
 <body>
 <?php
 require __DIR__ . "/../Components/Nav.php";
+//print_r($notcommented);
+$commented = array_filter($historique, function($element) use ($notcommented) {
+    return !in_array($element, $notcommented);
+});
 ?>
 <section class="sec">
     <div class="search">
@@ -31,6 +36,12 @@ require __DIR__ . "/../Components/Nav.php";
                 <option value="DESC" default>Plus Recent</option>
                 <option value="ASC">Plus Ancien</option>
             </select>
+        </div>
+        <div>
+<!--      not commented only -->
+            <button onClick="function Historique() {
+            }
+            Historique()">OK</button>
         </div>
         <div>
             <button onClick="function Historique() {
@@ -85,10 +96,19 @@ require __DIR__ . "/../Components/Nav.php";
                 </div>
                 <div>
                     <p style='color:$color'>$status</p>
-                </div>   
+                </div>   ";
+                if (!in_array($commande, $commented) && $commande['Statuts'] == 3) {
+                    echo "
+                <div class='icon_div'>
+                    <button onClick=\"showCommentForm({$commande['id']})\"><i class='fas fa-comment'></i></button>
+                </div>";
+                        }
+                        echo "
             </div>
         </div> ";
-                }
+
+                    }
+
 
             }
             ?>
@@ -99,6 +119,47 @@ require __DIR__ . "/../Components/Footer.php";
 ?>
 </body>
 </html>
+<style>
+    .reservationCard {
+    position: relative;
+}
+
+.icon_div {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.icon_div button {
+    background: none;
+    border: none;
+    color: #3584ed;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 8px;
+}
+}
+</style>
+<script>
+    function showCommentForm(id) {
+        //make a form appear to comment on the service selected ,the fomr cover the whole page
+        var form = document.createElement('div');
+        form.style.position = 'fixed';
+        form.id = 'commentForm';
+
+        form.innerHTML = `
+                    <h1>Commenter le service</h1>
+                    <form action="http://localhost/Bricolini/Partenaires/Commenter/${id}" method="post">
+                        <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+                        <button type="submit">Commenter</button>
+                    </form>
+                    <button onClick="this.parentElement.remove()">Fermer</button>
+                `;
+        document.body.appendChild(form);
+
+
+    }
+</script>
 
 
 

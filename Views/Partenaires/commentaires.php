@@ -15,7 +15,7 @@
 require __DIR__ . "/../Components/Nav.php";
 ?>
 <section class="sec">
-<?php require('Views/Components/Reclam.php') ?>
+    <?php require('Views/Components/Reclam.php') ?>
     <div class="comments">
         <div class="search" style="color:#65B741">
             <div>
@@ -52,14 +52,14 @@ require __DIR__ . "/../Components/Nav.php";
                     echo "
                     <div class='commentaireCard'>
                     <div class='mess'>
-                        <h1>".$commentaire['LastName']."  ".$commentaire['FirstName']."</h1>
-                        <p>".$commentaire['Nom']."</p>
-                        <p>".$commentaire['message']."</p>
+                        <h1>" . $commentaire['LastName'] . "  " . $commentaire['FirstName'] . "</h1>
+                        <p>" . $commentaire['Nom'] . "</p>
+                        <p>" . $commentaire['message'] . "</p>
                     </div> 
                     <div class='rat'>
                         <p class='note' style='color:$color'>{$commentaire['Rating']}/5</p>
                         <p class='date'>{$commentaire['Date_post']}</p>
-                        <p class='report' onclick=\"showReclam(".$_SESSION["user_id"].",'".$type."','commentaire',".$commentaire['id'].")\"><i class='fa-solid fa-flag fa-lg'></i></p>
+                        <p class='report' onclick=\"showReclam(" . $_SESSION["user_id"] . ",'" . $type . "','commentaire'," . $commentaire['id'] . ")\"><i class='fa-solid fa-flag fa-lg'></i></p>
                     </div> 
                 </div>  ";
                 }
