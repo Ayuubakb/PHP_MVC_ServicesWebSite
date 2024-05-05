@@ -30,7 +30,7 @@
                 }
             }else if($islogged && !strcmp($type,"partenaire")){
                 echo"    
-                    <a href='http://localhost/Bricolini/Partenaires/Historique'><li>Historique</li></a>
+                    <a href='http://localhost/Bricolini/Partenaires/Historique/4/DESC'><li>Historique</li></a>
                     <a href='http://localhost/Bricolini/Partenaires/Interventions'><li>Mes Interventions</li></a>
                     <a href='http://localhost/Bricolini/Partenaires/commentaires/0/DESC'><li>Commentaires</li></a>";
             }

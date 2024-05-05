@@ -35,6 +35,7 @@ class Partenaire extends Model
         $query = self::$instance->prepare($sql);
         $query->execute();
     }
+
     public function interventions(int $id)
     {
         $sql = "SELECT * FROM reservation 
@@ -46,6 +47,7 @@ class Partenaire extends Model
         $query->execute();
         return $query->fetchAll();
     }
+
     public function creerPartenaire($data)
     {
         // Perform database insertion
@@ -63,28 +65,19 @@ class Partenaire extends Model
             $data['Telephone'],
             $data['password']
         ];
-        $query=self::$instance->prepare($sql);
+        $query = self::$instance->prepare($sql);
         $query->execute($params);
     }
 
     public function getallcomments(int $id, int $note, string $order)
     {
-        //check if the order is DESC or ASC
-        if ($order == "DESC" || $order == "ASC") {
-            $sql = "SELECT commentaire.* ,services.*,reservation.*,client.*
-                    FROM commentaire 
-                    INNER JOIN reservation ON commentaire.Id_R = reservation.id
-                    INNER JOIN services ON reservation.Id_S = services.id
-                    INNER JOIN client ON reservation.Id_C = client.id
-                    WHERE services.Id_P = 1 AND commentaire.Rating >= $note and commentaire.publisher = 'client'
-                    ORDER BY commentaire.Date_post $order";
-        } else {
-            $sql = "SELECT commentaire.* FROM commentaire 
-                    INNER JOIN reservation ON commentaire.Id_R = reservation.id
-                    INNER JOIN services ON reservation.Id_S = services.id
-                    WHERE services.Id_P = 1 AND commentaire.Rating >= $note AND commentaire.publisher = 'client' ";
-
-        }
+        $sql = "SELECT commentaire.* ,services.*,reservation.*,client.*
+                FROM commentaire 
+                INNER JOIN reservation ON commentaire.Id_R = reservation.id
+                INNER JOIN services ON reservation.Id_S = services.id
+                INNER JOIN client ON reservation.Id_C = client.id
+                WHERE services.Id_P = $id AND commentaire.publisher = 'client' AND commentaire.Rating >= $note
+                ORDER BY commentaire.Date_post $order";
         $query = self::$instance->prepare($sql);
         $query->execute();
         return $query->fetchAll();
@@ -111,40 +104,71 @@ class Partenaire extends Model
         $query->execute();
         return $query->fetchAll();
     }
-
     public function updateStatus($id, $status)
     {
         $sql = "UPDATE reservation SET Statuts = $status WHERE id = $id";
         $query = self::$instance->prepare($sql);
         $query->execute();
     }
+
     public function addService($service)
-{
-    $sql = "INSERT INTO services (Id_P, Nom,Description ,Prix , categorie, sousCategorie, image) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $params = [
-        $service['id'],
-        $service['serviceName'],
-        $service['serviceDescription'],
-        $service['servicePrice'],
-        $service['serviceCategory'],
-        $service['servicesousCategory'],
-        $service['serviceImage']
-    ];
-    $query = self::$instance->prepare($sql);
-    $query->execute($params);
-}
-public function getNotCommented(int $id)
-{
-    $sql = "SELECT reservation.*, client.*,services.* FROM reservation 
-            INNER JOIN services ON reservation.Id_S = services.id
-            INNER JOIN client ON reservation.Id_C = client.id 
-            WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = $id) AND reservation.id NOT IN (SELECT Id_R FROM commentaire)";
-    $query = self::$instance->prepare($sql);
-    $query->execute();
-    return $query->fetchAll();
-}
+    {
+        $sql = "INSERT INTO services (Id_P, Nom,Description ,Prix , categorie, sousCategorie, image) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $params = [
+            $service['id'],
+            $service['serviceName'],
+            $service['serviceDescription'],
+            $service['servicePrice'],
+            $service['serviceCategory'],
+            $service['servicesousCategory'],
+            $service['serviceImage']
+        ];
+        $query = self::$instance->prepare($sql);
+        $query->execute($params);
+    }
 
-
+    public function getNotCommented(int $id)
+    {
+        $sql = "SELECT reservation.*, client.*,services.* FROM reservation 
+                INNER JOIN services ON reservation.Id_S = services.id
+                INNER JOIN client ON reservation.Id_C = client.id 
+                WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = $id) AND reservation.id NOT IN (SELECT Id_R FROM commentaire)";
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+    public function historique($id, $status, $order)
+    {
+        //if statuts 4 is selected then show all the interventions
+        if ($status == 4) {
+            $sql = "SELECT reservation.*, client.*,services.* FROM reservation 
+                    INNER JOIN services ON reservation.Id_S = services.id
+                    INNER JOIN client ON reservation.Id_C = client.id 
+                    WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = $id) ORDER BY Date_reserv $order";
+        } else {
+            $sql = "SELECT reservation.*, client.*,services.* FROM reservation 
+                    INNER JOIN services ON reservation.Id_S = services.id
+                    INNER JOIN client ON reservation.Id_C = client.id 
+                    WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = $id) AND reservation.Statuts = $status ORDER BY Date_reserv $order";
+        }
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+    public function commentaires(int $id)
+    {
+        $sql = "SELECT commentaire.* ,services.*,reservation.*,client.*
+                FROM commentaire 
+                INNER JOIN reservation ON commentaire.Id_R = reservation.id
+                INNER JOIN services ON reservation.Id_S = services.id
+                INNER JOIN client ON reservation.Id_C = client.id
+                WHERE services.Id_P = $id AND commentaire.publisher = 'client'
+                ORDER BY commentaire.Rating DESC";
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+        
+    }
 }
 
 ?>
