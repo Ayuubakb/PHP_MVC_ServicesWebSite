@@ -93,8 +93,8 @@ $commented = array_filter($historique, function($element) use ($notcommented) {
                 </div>   ";
                 if (!in_array($commande, $commented) && $commande['Statuts'] == 3) {
                     echo "
-                <div class='icon_div'>
-                    <button onClick=\"showCommentForm({$commande['id']})\"><i class='fas fa-comment'></i></button>
+                <div class='comment'>
+                    <button onClick=\"showCommentForm({$commande['id']})\"><i class='fas fa-comment fa-lg'></i></button>
                 </div>";
                         }
                         echo "
@@ -105,6 +105,24 @@ $commented = array_filter($historique, function($element) use ($notcommented) {
             ?>
 
 </section>
+<script>
+    function showCommentForm(id) {
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', 'http://localhost/Bricolini/Partenaires/Commentaire');
+
+        var input = document.createElement('input');
+        input.setAttribute('type', 'hidden');
+        input.setAttribute('name', 'id');
+        input.setAttribute('value', id);
+
+        
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        
+    }
+</script>
 <?php
 require __DIR__ . "/../Components/Footer.php";
 ?>
@@ -115,20 +133,20 @@ require __DIR__ . "/../Components/Footer.php";
     position: relative;
 }
 
-.icon_div {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-}
 
-.icon_div button {
-    background: none;
-    border: none;
-    color: #3584ed;
-    font-size: 2em;
-    cursor: pointer;
-    padding: 8px;
+.comment{
+    position: absolute;
+    right: -25px;
+    bottom: -25px;
 }
+.comment button{
+    background-color: var(--orange);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
 }
 </style>
 
