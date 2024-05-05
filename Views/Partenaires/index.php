@@ -66,7 +66,7 @@ require("Views/Components/Nav.php");
         <div class="edit">
             <?php
             if ($islogged && !strcmp($type, "partenaire"))
-                echo "<a href='http://localhost/Bricolini/Partenaires/updateprofile' style='color: white' ><i class='fa-solid fa-pen-to-square fa-xl'></i></a>";
+                echo "<a href='http://localhost/Bricolini/Partenaires/updateprofile/" . $profile['id'] . "' style='color: white'><i class='fa-solid fa-pen-to-square fa-xl'></i></a>";
             else
                 echo "<i class='fa-solid fa-flag fa-xl' onClick=\"showReclam(" . $_SESSION['user_id'] . ",'client','profile','" . $profile['id'] . "')\"></i>";
             ?>
@@ -147,10 +147,10 @@ require("Views/Components/Nav.php");
             }
             ?>
             <?php
-if (count($services) < 3) {
-        echo "
+            if (count($services) < 3 && $islogged && !strcmp($type, "partenaire")) {
+                echo "
         <div class='reservationCard allRes'>
-            <a href='http://localhost/Bricolini/Partenaires/addservice' style='color:white'><p>
+            <a href='http://localhost/Bricolini/Partenaires/addservice/$profile[id]' style='color:white'><p>Add Service
                 <i class='fa-solid fa-plus fa-xl'></i></p></a>
         </div>";
             }
@@ -215,56 +215,26 @@ if (count($services) < 3) {
     <div class="commentaire">
         <h1 style="color:#FFB534">Commentaire :</h1>
         <div class="commentaires">
-            <div class="commentaireCard">
-                <div class="mess">
-                    <h1>Nettoyage Genaral</h1>
-                    <p>Bon Client</p>
-                </div>
-                <div class="rat">
-                    <p class="note">3/5</p>
-                    <p class="date">28/11/2023</p>
-                </div>
-            </div>
-            <div class="commentaireCard">
-                <div class="mess">
-                    <h1>Nettoyage Genaral</h1>
-                    <p>Bon Client</p>
-                </div>
-                <div class="rat">
-                    <p class="note">3/5</p>
-                    <p class="date">28/11/2023</p>
-                </div>
-            </div>
-            <div class="commentaireCard">
-                <div class="mess">
-                    <h1>Nettoyage Genaral</h1>
-                    <p>Bon Client</p>
-                </div>
-                <div class="rat">
-                    <p class="note">3/5</p>
-                    <p class="date">28/11/2023</p>
-                </div>
-            </div>
-            <div class="commentaireCard">
-                <div class="mess">
-                    <h1>Nettoyage Genaral</h1>
-                    <p>Bon Client</p>
-                </div>
-                <div class="rat">
-                    <p class="note">3/5</p>
-                    <p class="date">28/11/2023</p>
-                </div>
-            </div>
-            <div class="commentaireCard">
-                <div class="mess">
-                    <h1>Nettoyage Genaral</h1>
-                    <p>Bon Client</p>
-                </div>
-                <div class="rat">
-                    <p class="note">3/5</p>
-                    <p class="date">28/11/2023</p>
-                </div>
-            </div>
+            <?php
+            $counter = 0;
+            foreach ($commentaires as $commentaire) {
+                if ($counter == 5) {
+                    break;
+                }
+                echo "
+    <div class='commentaireCard'>
+        <div class='mess'>
+            <h1>{$commentaire['Nom']}</h1>
+            <p>{$commentaire['message']}</p>
+        </div>
+        <div class='rat'>
+            <p class='note'>{$commentaire['Rating']}/5</p>
+            <p class='date'>{$commentaire['Date_post']}</p>
+        </div>
+    </div>";
+                $counter++;
+            }
+            ?>
         </div>
         <a href="http://localhost/Bricolini/Partenaires/commentaires/0/DESC" style="color:white"><p class="allComments">
                 Voir Plus <i class="fa-solid fa-arrow-right"></i></p></a></div>
