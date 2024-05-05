@@ -32,7 +32,6 @@ class Partenaires extends Controller
 
     public function updateStatus()
     {
-
         $this->loadModel("Partenaire");
         if (isset($_POST['id']) && isset($_POST['status'])) {
             $id = $_POST['id'];
@@ -49,9 +48,8 @@ class Partenaires extends Controller
         $id=$_SESSION['user_id'];
         $this->loadModel("Partenaire");
         $historique = $this->Partenaire->historique($id, $status, $order);
-        //add the var in a array and send it to the view
-        $var= array("parametre1"=>$status,"parametre2"=>$order,"parametre3"=>$id);
-        $this->loadView("Historique", compact("historique","var"));
+        $notcommented = $this->Partenaire->getNotCommented($id);
+        $this->loadView("Historique", compact("historique", "notcommented"));
     }
 
     public function handleAddService(){
@@ -103,9 +101,9 @@ class Partenaires extends Controller
     {
         session_start();
         $this->loadModel("Partenaire");
-        $Partenaire = $this->Partenaire->find(1);
-        $interventions = $this->Partenaire->interventions(1);
-        $commandesnontraitees = $this->Partenaire->commandesnontraitees(1);
+        $Partenaire = $this->Partenaire->find($_SESSION['user_id']);
+        $interventions = $this->Partenaire->interventions($_SESSION['user_id']);
+        $commandesnontraitees = $this->Partenaire->commandesnontraitees($_SESSION['user_id']);
         $this->loadView("interventions", compact("Partenaire", "interventions", "commandesnontraitees"));
     }
 

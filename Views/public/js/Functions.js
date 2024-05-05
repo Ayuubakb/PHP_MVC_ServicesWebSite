@@ -19,7 +19,6 @@ const closeReclam=()=>{
     document.getElementById("recBanner").style.display="none";
 }
 const sendReclamation=async()=>{
-    
     let id_reclamateur=document.getElementById("id_reclamateur").value;
     let id_T=document.getElementById("id_T").value;
     let type_reclamation=document.getElementById("type_reclamation").value;
