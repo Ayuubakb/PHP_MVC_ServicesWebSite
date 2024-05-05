@@ -2,26 +2,28 @@
 
 class Clients extends Controller{
    public function index(){
+        session_start();
         $this->loadModel("Client");
-        $profile=json_decode($this->Client->getProfile(1));
+        $profile=json_decode($this->Client->getProfile($_SESSION['user_id']));
         $this->loadView("index",compact('profile'));
    }
    public function editProfile(){
+         session_start();
          $this->loadModel("Client");
-         $profile=$this->Client->getInfos(1);
+         $profile=$this->Client->getInfos($_SESSION['user_id']);
          $this->loadView("edit",compact('profile'));
    }
    public function updateInfos(){
+      session_start();
       if(isset($_POST['subButton'])){
          $this->loadModel("Client");
          if(filesize($_FILES["pic"]["size"]) == 0){
-            $updated=$this->Client->updateInfos("null",$_POST['firstName'],$_POST['lastName'],$_POST['address'],$_POST['telephone'],1);
+            $updated=$this->Client->updateInfos("null",$_POST['firstName'],$_POST['lastName'],$_POST['address'],$_POST['telephone'],$_SESSION['user_id']);
          }else{
-            $updated=$this->Client->updateInfos(basename($_FILES["pic"]["name"]),$_POST['firstName'],$_POST['lastName'],$_POST['address'],$_POST['telephone'],1);
-            echo "heree";
-            $target_dir = "../Views/public/clientPic/";
+            $updated=$this->Client->updateInfos(basename($_FILES["pic"]["name"]),$_POST['firstName'],$_POST['lastName'],$_POST['address'],$_POST['telephone'],$_SESSION['user_id']);
+            $target_dir = "../Views/public/images/";
             $target_file = $target_dir . basename($_FILES["pic"]["name"]);
-            $updated=$this->Client->updateInfos(basename($_FILES["pic"]["name"]),$_POST['firstName'],$_POST['lastName'],$_POST['address'],$_POST['telephone'],1);
+            $updated=$this->Client->updateInfos(basename($_FILES["pic"]["name"]),$_POST['firstName'],$_POST['lastName'],$_POST['address'],$_POST['telephone'],$_SESSION['user_id']);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
             if (file_exists($target_file)) {
@@ -37,7 +39,7 @@ class Clients extends Controller{
                }
             }
          }
-         $profile=$this->Client->getInfos(1);
+         $profile=$this->Client->getInfos($_SESSION['user_id']);
          if($updated){
             header("Location:http://localhost/Bricolini/Clients/editProfile?msg=Modifier Avec Success");
          }else{
@@ -46,13 +48,15 @@ class Clients extends Controller{
       }
    }
    public function getAllCommandes($type,$status,$sort){
+      session_start();
       $this->loadModel("Client");
-      $profile=json_decode($this->Client->getCommandes(1,$type,$status,$sort));
+      $profile=json_decode($this->Client->getCommandes($_SESSION['user_id'],$type,$status,$sort));
       $this->loadView("commandes",compact('profile'));
    }
    public function getAllComments($rating,$sort){
+      session_start();
       $this->loadModel("Client");
-      $profile=json_decode($this->Client->getComments(1,$rating,$sort));
+      $profile=json_decode($this->Client->getComments($_SESSION['user_id'],$rating,$sort));
       $this->loadView("commentaires",compact('profile'));
    }
    /*public function report($id_t,$type,$motif){
@@ -65,6 +69,7 @@ class Clients extends Controller{
       $this->Reclamations->reportFromClient($_POST["id_reclamateur"],$_POST["id_T"],$_POST["type_reclamation"],$_POST["type_reclamateur"],$_POST["motif"]);
    }
    public function partenaires(){
+      session_start();
       $this->loadModel("Client");
       if(isset($_POST["subBtn"])){
          $partenaires=$this->Client->getPartenaires($_POST['nom'],$_POST['ville'],$_POST['rating'],$_POST['metier']);

@@ -1,5 +1,4 @@
 <?php
-    session_start();
     if(isset($_SESSION['user_id'])){
         $islogged=true;
         if(!strcmp($_SESSION['user_type'],'client')){
