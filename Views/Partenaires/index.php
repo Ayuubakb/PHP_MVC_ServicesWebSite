@@ -76,7 +76,30 @@ foreach($new_creneaux as $creneaux){
         if(count($time_parts) == 2) {
             $from = $time_parts[0];
             $to = $time_parts[1];
-            echo " Le :".$day." De : ".$from." à ".$to."\n";
+            switch($day){
+                case "Monday":
+                    $day="Lundi";
+                    break;
+                case "Tuesday":
+                    $day="Mardi";
+                    break;
+                case "Thursday":
+                    $day="Jeudi";
+                    break;
+                case "Wednesday":
+                    $day="Mercredi";
+                    break;
+                case "Friday":
+                    $day="Vendredi";
+                    break;
+                case "Saturday":
+                    $day="Samedi";
+                    break;
+                case "Sunday":
+                    $day="Dimanche";
+                    break;
+            }
+            echo " ".$day." De : ".$from." à ".$to."\n";
         }
     }
 }

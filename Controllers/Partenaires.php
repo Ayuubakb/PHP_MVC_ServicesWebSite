@@ -32,13 +32,7 @@ class Partenaires extends Controller
 
     public function updateStatus()
     {
-<<<<<<< HEAD
-
         session_start();
-
-=======
-        session_start();
->>>>>>> 28bac14be9a9d65b9cb3db166a61de374d243f1f
         $this->loadModel("Partenaire");
         if (isset($_POST['id']) && isset($_POST['status'])) {
             $id = $_POST['id'];
@@ -49,11 +43,6 @@ class Partenaires extends Controller
             echo "Error";
         }
     }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 28bac14be9a9d65b9cb3db166a61de374d243f1f
     public function Historique($status, $order)
     {
         session_start();
@@ -62,10 +51,6 @@ class Partenaires extends Controller
         $historique = $this->Partenaire->historique($id, $status, $order);
         $notcommented = $this->Partenaire->getNotCommented($id);
         $this->loadView("Historique", compact("historique", "notcommented"));
-<<<<<<< HEAD
-
-=======
->>>>>>> 28bac14be9a9d65b9cb3db166a61de374d243f1f
     }
 
     public function handleAddService(){
@@ -177,6 +162,4 @@ echo $Creneaux; // Outputs: Lundi:8-17/Mardi:8-17/Mercredi:8-12/Jeudi:8-17/Vendr
         header("Location: http://localhost/Bricolini/Partenaires/index/" . $_SESSION['user_id']);
 
     }
-
-
 }
