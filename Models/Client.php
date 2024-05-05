@@ -39,7 +39,7 @@ class Client extends Model{
     public function updateInfos(String $image, String $firstName, String $LastName, String $Address, String $Telephone ,int $id){
         if(!strcmp($image,"null")){
             $sql="UPDATE client SET 
-                LastName='$LastName', FirstName='$firstName', Address='$Address', Telephone='$Telephone' ,image=null
+                LastName='$LastName', FirstName='$firstName', Address='$Address', Telephone='$Telephone'
                 WHERE id=$id";
         }else{
             $sql="UPDATE client SET 

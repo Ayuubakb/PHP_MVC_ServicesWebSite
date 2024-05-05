@@ -4,7 +4,6 @@ class Partenaires extends Controller
 {
     public function index($id)
     {
-        session_start() ;
         $this->loadModel("Partenaire");
         $profile = $this->Partenaire->find($id);
         $commandes = $this->Partenaire->commandes($id);
@@ -15,7 +14,6 @@ class Partenaires extends Controller
 
     public function updateprofile($id)
     {
-        session_start();
         $this->loadModel("Partenaire");
         $profile = $this->Partenaire->find($id);
         $this->loadView("update", compact("profile"));
@@ -43,18 +41,20 @@ class Partenaires extends Controller
             echo "Error";
         }
     }
-    public function Historique($status, $order)
-    {
-        session_start();
-        $id=$_SESSION['user_id'];
-        $this->loadModel("Partenaire");
-        $historique = $this->Partenaire->historique($id, $status, $order);
-        //add the var in a array and send it to the view
-        $var= array("parametre1"=>$status,"parametre2"=>$order,"parametre3"=>$id);
-        $this->loadView("Historique", compact("historique","var"));
+    public function Historique(){
+        if(isset($_POST['order']) && isset($_POST['status'])) {
+            $status = $_POST['status'];
+            $order = $_POST['order'];
+        }else
+        {
+            $status = 5;
+            $order = "DESC";
+        }
+        $commandes=$this->Partenaire->Historique(1,$status,$order);
     }
 
     public function handleAddService(){
+        session_start();
     $this->loadModel("Partenaire");
 
     // Check if the file was uploaded without errors
@@ -112,6 +112,7 @@ class Partenaires extends Controller
     public function addservice()
 
     {
+        session_start();
         $this->loadModel("Partenaire");
         $this->loadView("addservice");
     }
