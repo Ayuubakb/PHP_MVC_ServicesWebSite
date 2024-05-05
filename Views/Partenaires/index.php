@@ -61,6 +61,28 @@ require("Views/Components/Nav.php");
             <div>
                 <p><span>Telephone:</span> <?= $profile['Telephone'] ?></p>
             </div>
+            <div>
+    <span>Creneaux:</span>
+    <pre>
+    <?php
+    echo "\n";
+    echo "\n";
+    $new_creneaux = explode("/", $profile['Creneaux']);
+foreach($new_creneaux as $creneaux){
+    $parts = explode(":", $creneaux);
+    if(count($parts) == 2) {
+        $day = $parts[0];
+        $time_parts = explode("-", $parts[1]);
+        if(count($time_parts) == 2) {
+            $from = $time_parts[0];
+            $to = $time_parts[1];
+            echo " Le :".$day." De : ".$from." à ".$to."\n";
+        }
+    }
+}
+    ?>
+    </pre>
+</div>
         </div>
 
         <div class="edit">
@@ -107,9 +129,9 @@ require("Views/Components/Nav.php");
                 //        }
                 //    }
 
-                $fullStars = floor($service['Note']);
+                $fullStars = round($service['Note']);
                 $halfStar = ($service['Note'] - $fullStars) >= 0.5 ? 1 : 0;
-                $emptyStars = 5 - $fullStars - $halfStar;
+                $emptyStars = 5 - $fullStars ;
 
                 $stars = "<div style='color:$color'>";
                 for ($i = 0; $i < $fullStars; $i++) {

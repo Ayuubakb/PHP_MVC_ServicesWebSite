@@ -17,7 +17,11 @@ require __DIR__ . "/../Components/Nav.php";
 ?>
 <div class="Traitement">
     <h1>Waiting : </h1>
-    <?php foreach ($commandesnontraitees as $commande): ?>
+    <?php
+    if(count($commandesnontraitees) == 0) {
+        echo "<p>No commands to show.</p>";
+    }
+    foreach ($commandesnontraitees as $commande): ?>
         <div class='commande'>
             <h2>Commande: <?= $commande['ID_reserv'] ?></h2>
             <p>Service: <?= $commande['Nom'] ?></p>

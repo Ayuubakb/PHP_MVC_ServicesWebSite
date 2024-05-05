@@ -9,12 +9,12 @@
         body {
             background-color: #FBF6EE; 
             color: #65B741; 
+            min-height: 100vh;
         }
         .container {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
             padding: 20px;
         }
         form {
@@ -24,6 +24,10 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             width: 100%;
             max-width: 500px;
+        }
+        h1 {
+            text-align: center;
+            color: #65B741; 
         }
         label {
             font-weight: bold;
@@ -49,6 +53,10 @@
         button:hover {
             background-color: #65B741; 
         }
+        .errPlace {
+            color: red;
+            text-align: center;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
@@ -65,27 +73,39 @@
     </script>
 </head>
 <body>
-
+    <h1>Page de reservation</h1>
+    <p id="errorP" class="errPlace"></p>
     <div class="container">
-    <form method="post" action="http://localhost/Bricolini/Views/Services/reservationHandler.php" class="ajax-form">
-        <div class="form-group">
-            <label for="date">Date:</label>
-            <input type="date" name="Date_reserv" id="date" required>
-        </div>
-        <div class="form-group">
-            <label for="hours-from">Heure de début:</label>
-            <input type="time" name="hours_from" id="hours-from" required>
-        </div>
-        <div class="form-group">
-            <label for="hours-to">Heure de fin:</label>
-            <input type="time" name="hours_to" id="hours-to" required>
-        </div>
-        <input type="hidden" name="Id_S" value="<?= htmlspecialchars($_POST['Id_S']); ?>">
-        <input type="hidden" name="Statuts" value="0">
-        <button type="submit" class="submit-button">Reserver</button>
-    </form>
-</div>
-
-
+        <form method="post" action="http://localhost/Bricolini/Views/Services/reservationHandler.php" class="ajax-form" id="formres">
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" name="Date_reserv" id="date" required>
+            </div>
+            <div class="form-group">
+                <label for="hours-from">Heure de début:</label>
+                <input type="time" name="hours_from" id="hours-from" required>
+            </div>
+            <div class="form-group">
+                <label for="hours-to">Heure de fin:</label>
+                <input type="time" name="hours_to" id="hours-to" required>
+            </div>
+            <input type="hidden" name="Id_S" value="<?= htmlspecialchars($_POST['Id_S']); ?>">
+            <input type="hidden" name="Statuts" value="0">
+            <button type="submit" class="submit-button">Reserver</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById("formres").addEventListener("submit",async function(e) {
+            e.preventDefault();
+            const response = await fetch("http://localhost/Bricolini/Views/Services/reservationHandler.php", {
+                method: "POST",
+                body: new FormData(this)
+            });
+            await response.text().then(
+                (data)=>{
+                    document.getElementById("errorP").innerHTML=data;
+                })
+        });
+    </script>
 </body>
 </html>
