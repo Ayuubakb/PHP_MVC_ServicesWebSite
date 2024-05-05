@@ -2,13 +2,9 @@
 
 class Partenaires extends Controller
 {
-    public function index()
+    public function index($id)
     {
         session_start();
-<<<<<<< HEAD
-=======
-        $id = $_SESSION['user_id'];
->>>>>>> bb51795a97bcc50908f1b0ad129a6da316ddec8b
         $this->loadModel("Partenaire");
         $profile = $this->Partenaire->find($id);
         $commandes = $this->Partenaire->commandes($id);
@@ -36,10 +32,9 @@ class Partenaires extends Controller
 
     public function updateStatus()
     {
-<<<<<<< HEAD
+
         session_start();
-=======
->>>>>>> bb51795a97bcc50908f1b0ad129a6da316ddec8b
+
         $this->loadModel("Partenaire");
         if (isset($_POST['id']) && isset($_POST['status'])) {
             $id = $_POST['id'];
@@ -50,19 +45,8 @@ class Partenaires extends Controller
             echo "Error";
         }
     }
-<<<<<<< HEAD
-    public function Historique(){
-        session_start();
-        if(isset($_POST['order']) && isset($_POST['status'])) {
-            $status = $_POST['status'];
-            $order = $_POST['order'];
-        }else
-        {
-            $status = 5;
-            $order = "DESC";
-        }
-        $commandes=$this->Partenaire->Historique(1,$status,$order);
-=======
+
+
     public function Historique($status, $order)
     {
         session_start();
@@ -71,7 +55,7 @@ class Partenaires extends Controller
         $historique = $this->Partenaire->historique($id, $status, $order);
         $notcommented = $this->Partenaire->getNotCommented($id);
         $this->loadView("Historique", compact("historique", "notcommented"));
->>>>>>> bb51795a97bcc50908f1b0ad129a6da316ddec8b
+
     }
 
     public function handleAddService(){

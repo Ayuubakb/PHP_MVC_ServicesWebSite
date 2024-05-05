@@ -138,7 +138,7 @@ require __DIR__ . "/../Components/Footer.php";
     cursor: pointer;
     padding: 8px;
 }
-}
+
 </style>
 <script>
     function showCommentForm(id) {
@@ -156,8 +156,6 @@ require __DIR__ . "/../Components/Footer.php";
                     <button onClick="this.parentElement.remove()">Fermer</button>
                 `;
         document.body.appendChild(form);
-
-
     }
 </script>
 
