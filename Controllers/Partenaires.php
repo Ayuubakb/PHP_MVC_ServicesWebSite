@@ -4,16 +4,18 @@ class Partenaires extends Controller
 {
     public function index($id)
     {
+        session_start() ;
         $this->loadModel("Partenaire");
         $profile = $this->Partenaire->find($id);
         $commandes = $this->Partenaire->commandes($id);
-//        $commentaires = $this->Partenaire->commentaires($id);
+        $commentaires = $this->Partenaire->commentaires($id);
         $services = $this->Partenaire->services($id);
-        $this->loadView("index", compact("profile", "commandes", "services"));
+        $this->loadView("index", compact("profile", "commandes", "services", "commentaires"));
     }
 
     public function updateprofile($id)
     {
+        session_start();
         $this->loadModel("Partenaire");
         $profile = $this->Partenaire->find($id);
         $this->loadView("update", compact("profile"));
@@ -21,22 +23,16 @@ class Partenaires extends Controller
 
     public function commentaires($rating, $order)
     {
+        session_start();
         $this->loadModel("Partenaire");
-        if (isset($_POST['rating']) && isset($_POST['sort'])) {
-            $rating = $_POST['rating'];
-            $order = $_POST['sort'];
-            $id=$_SESSION['user_id'];
-        } else {
-            $rating = 0;
-            $order = "DESC";
-            $id=$_SESSION['user_id'];
-        }
+        $id = $_SESSION['user_id'];
         $commentaires = $this->Partenaire->getallcomments($id, $rating, $order);
         $this->loadView("commentaires", compact("commentaires"));
     }
 
     public function updateStatus()
     {
+
         $this->loadModel("Partenaire");
         if (isset($_POST['id']) && isset($_POST['status'])) {
             $id = $_POST['id'];
@@ -47,17 +43,17 @@ class Partenaires extends Controller
             echo "Error";
         }
     }
-    public function Historique(){
-        if(isset($_POST['order']) && isset($_POST['status'])) {
-            $status = $_POST['status'];
-            $order = $_POST['order'];
-        }else
-        {
-            $status = 5;
-            $order = "DESC";
-        }
-        $commandes=$this->Partenaire->Historique(1,$status,$order);
+    public function Historique($status, $order)
+    {
+        session_start();
+        $id=$_SESSION['user_id'];
+        $this->loadModel("Partenaire");
+        $historique = $this->Partenaire->historique($id, $status, $order);
+        //add the var in a array and send it to the view
+        $var= array("parametre1"=>$status,"parametre2"=>$order,"parametre3"=>$id);
+        $this->loadView("Historique", compact("historique","var"));
     }
+
     public function handleAddService(){
     $this->loadModel("Partenaire");
 
@@ -105,6 +101,7 @@ class Partenaires extends Controller
 
     public function interventions()
     {
+        session_start();
         $this->loadModel("Partenaire");
         $Partenaire = $this->Partenaire->find(1);
         $interventions = $this->Partenaire->interventions(1);
