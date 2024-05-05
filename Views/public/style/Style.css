@@ -52,7 +52,7 @@
     padding: 10px;
     margin-bottom: 15px;
 }
-.signup .holder .ins input, .signup .holder .champClient input, .signup .holder .partenaireInfos input{
+.signup .holder .ins input, .signup .holder .champClient input, .signup .holder .partenaireInfos input, .signup select{
     padding: 5px;
     font-family: var(--fontSmall);
     font-size: 18px;
@@ -88,7 +88,7 @@
     margin-bottom: 15px;
 
 }
-.signup .holder .partenaireInfos input{
+.signup .holder .partenaireInfos input, .signup select{
     width: 30%;
 }
 .signup .holder .creneaux{

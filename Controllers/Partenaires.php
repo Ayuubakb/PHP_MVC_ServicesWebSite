@@ -4,6 +4,7 @@ class Partenaires extends Controller
 {
     public function index($id)
     {
+        session_start();
         $this->loadModel("Partenaire");
         $profile = $this->Partenaire->find($id);
         $commandes = $this->Partenaire->commandes($id);
@@ -14,6 +15,7 @@ class Partenaires extends Controller
 
     public function updateprofile($id)
     {
+        session_start();
         $this->loadModel("Partenaire");
         $profile = $this->Partenaire->find($id);
         $this->loadView("update", compact("profile"));
@@ -30,7 +32,7 @@ class Partenaires extends Controller
 
     public function updateStatus()
     {
-
+        session_start();
         $this->loadModel("Partenaire");
         if (isset($_POST['id']) && isset($_POST['status'])) {
             $id = $_POST['id'];
@@ -42,6 +44,7 @@ class Partenaires extends Controller
         }
     }
     public function Historique(){
+        session_start();
         if(isset($_POST['order']) && isset($_POST['status'])) {
             $status = $_POST['status'];
             $order = $_POST['order'];

@@ -40,9 +40,12 @@
                 </div>
                 <div id="champsPartenaire" class="champsPartenaire" style="display: none;">
                     <div class="partenaireInfos">
-                        <input type="text" name="Metier" placeholder="Métier">
+                        <select name="Metier">
+                            <option value="Jardinage" selected>Jardinage</option>
+                            <option value="Menage">Menage</option>
+                        </select>
                         <input type="text" name="Ville" placeholder="Ville">
-                        <input type="number" name="YearExperience" placeholder="Années d'expérience">
+                        <input type="number" name="YearExperience" placeholder="Années d'expérience" min=0>
                     </div>
                     <div class="creneaux">
                         <h1 style="width:20%;margin-left:0;font-size:18px;display:flex;align-items:center;justify-content:space-around;">
