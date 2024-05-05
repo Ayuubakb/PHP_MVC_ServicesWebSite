@@ -11,10 +11,9 @@
 <body>
 <?php
 require("Views/Components/Nav.php");
-print_r($profile);
 ?>
 <section class="sec">
-    <form method="POST" action="http://localhost/Bricolini/Clients/updateInfos" class="modifier" enctype="multipart/form-data">
+    <form method="POST" action="http://localhost/Bricolini/Partenaires/updateInfos" class="modifier" enctype="multipart/form-data">
         <h1>Modifier Votre Profile</h1>
         <div class="imageHolder">
             <img src="<?php echo is_null($profile['image'])?"http://localhost/Bricolini/Views/public/clientPic/icon-admin.png":"http://localhost/Bricolini/Views/public/images/".$profile['image'].""?>"/>
@@ -54,8 +53,46 @@ print_r($profile);
                 <label>Telephone :</label>
                 <input type="tel" name="Telephone" value="<?=$profile['Telephone']?>"/>
             </div>
+<!--            Update creneaux-->
+            <div>
+                <label>Creneaux :</label>
+                <div class="creneaux">
+                  <?php
+$Creaneaux = explode("/",$profile['Creneaux']);
+foreach($Creaneaux as $creneaux){
+    $parts = explode(":", $creneaux);
+    if(count($parts) == 2) {
+        $day = $parts[0];
+        $time_parts = explode("-", $parts[1]);
+        if(count($time_parts) == 2) {
+            $from = strlen($time_parts[0]) <= 2 ? $time_parts[0].":00" : $time_parts[0];
+            $to = strlen($time_parts[1]) <= 2 ? $time_parts[1].":00" : $time_parts[1];
+            $from = date("H:i", strtotime($from));
+            $to = date("H:i", strtotime($to));
+            echo "<div class='time-slot'>
+                    <div>
+                        <label>Day:</label>
+                        <input type='text' name='day[]' value='".$day."'/>
+                    </div>
+                    <div>
+                        <label>From:</label>
+                        <input type='time' name='from[]' value='".$from."'/>
+                    </div>
+                    <div>
+                        <label>To:</label>
+                        <input type='time' name='to[]' value='".$to."'/>
+                    </div>
+                  </div>";
+        }
+    }
+}
+?>
+                </div>
+            </div>
+
         </div>
         <button name="subButton" type="submit">Modifier</button>
+        <button name="Cancel" id="Cancel" type="button" onclick="window.location.href='http://localhost/Bricolini/Partenaires/index/<?php echo $_SESSION['user_id']?>'">Annuler</button>
     </form>
 </section>
 <?php
@@ -63,3 +100,13 @@ require("Views/Components/Footer.php")
 ?>
 </body>
 </html>
+<style>
+    .time-slot {
+    display: flex;
+    justify-content: space-between;
+}
+    #Cancel {
+    background-color: red;
+    }
+
+</style>

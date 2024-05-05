@@ -169,6 +169,39 @@ class Partenaire extends Model
         return $query->fetchAll();
         
     }
+    public function updateInfos($data)
+    {
+        if($data['image']==""){
+            $sql = "UPDATE partenaire SET LastName = ?, FirstName = ?, Metier = ?, Ville = ?, Creneaux = ?, YearExperience = ?, Email = ?, Telephone = ? WHERE id = ?";
+            $params = [
+                $data['LastName'],
+                $data['FirstName'],
+                $data['Metier'],
+                $data['Ville'],
+                $data['Creneaux'],
+                $data['YearExperience'],
+                $data['Email'],
+                $data['Telephone'],
+                $data['id']
+            ];
+        }else{
+            $sql = "UPDATE partenaire SET LastName = ?, FirstName = ?, Metier = ?, Ville = ?, Creneaux = ?, YearExperience = ?, Email = ?, Telephone = ?, image = ? WHERE id = ?";
+            $params = [
+                $data['LastName'],
+                $data['FirstName'],
+                $data['Metier'],
+                $data['Ville'],
+                $data['Creneaux'],
+                $data['YearExperience'],
+                $data['Email'],
+                $data['Telephone'],
+                $data['image'],
+                $data['id']
+            ];
+        }
+        $query = self::$instance->prepare($sql);
+        $query->execute($params);
+    }
 }
 
 ?>

@@ -38,12 +38,6 @@ $commented = array_filter($historique, function($element) use ($notcommented) {
             </select>
         </div>
         <div>
-<!--      not commented only -->
-            <button onClick="function Historique() {
-            }
-            Historique()">OK</button>
-        </div>
-        <div>
             <button onClick="function Historique() {
                 var status = document.getElementById('status').value;
                 var sort = document.getElementById('sort').value;
@@ -106,10 +100,7 @@ $commented = array_filter($historique, function($element) use ($notcommented) {
                         echo "
             </div>
         </div> ";
-
                     }
-
-
             }
             ?>
 
@@ -140,26 +131,6 @@ require __DIR__ . "/../Components/Footer.php";
 }
 }
 </style>
-<script>
-    function showCommentForm(id) {
-        //make a form appear to comment on the service selected ,the fomr cover the whole page
-        var form = document.createElement('div');
-        form.style.position = 'fixed';
-        form.id = 'commentForm';
-
-        form.innerHTML = `
-                    <h1>Commenter le service</h1>
-                    <form action="http://localhost/Bricolini/Partenaires/Commenter/${id}" method="post">
-                        <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
-                        <button type="submit">Commenter</button>
-                    </form>
-                    <button onClick="this.parentElement.remove()">Fermer</button>
-                `;
-        document.body.appendChild(form);
-
-
-    }
-</script>
 
 
 

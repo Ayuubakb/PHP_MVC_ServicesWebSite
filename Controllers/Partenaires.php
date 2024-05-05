@@ -2,13 +2,9 @@
 
 class Partenaires extends Controller
 {
-    public function index()
+    public function index($id)
     {
         session_start();
-<<<<<<< HEAD
-=======
-        $id = $_SESSION['user_id'];
->>>>>>> bb51795a97bcc50908f1b0ad129a6da316ddec8b
         $this->loadModel("Partenaire");
         $profile = $this->Partenaire->find($id);
         $commandes = $this->Partenaire->commandes($id);
@@ -36,10 +32,7 @@ class Partenaires extends Controller
 
     public function updateStatus()
     {
-<<<<<<< HEAD
         session_start();
-=======
->>>>>>> bb51795a97bcc50908f1b0ad129a6da316ddec8b
         $this->loadModel("Partenaire");
         if (isset($_POST['id']) && isset($_POST['status'])) {
             $id = $_POST['id'];
@@ -50,19 +43,6 @@ class Partenaires extends Controller
             echo "Error";
         }
     }
-<<<<<<< HEAD
-    public function Historique(){
-        session_start();
-        if(isset($_POST['order']) && isset($_POST['status'])) {
-            $status = $_POST['status'];
-            $order = $_POST['order'];
-        }else
-        {
-            $status = 5;
-            $order = "DESC";
-        }
-        $commandes=$this->Partenaire->Historique(1,$status,$order);
-=======
     public function Historique($status, $order)
     {
         session_start();
@@ -71,7 +51,6 @@ class Partenaires extends Controller
         $historique = $this->Partenaire->historique($id, $status, $order);
         $notcommented = $this->Partenaire->getNotCommented($id);
         $this->loadView("Historique", compact("historique", "notcommented"));
->>>>>>> bb51795a97bcc50908f1b0ad129a6da316ddec8b
     }
 
     public function handleAddService(){
@@ -136,6 +115,52 @@ class Partenaires extends Controller
         session_start();
         $this->loadModel("Partenaire");
         $this->loadView("addservice");
+    }
+    public function updateInfos()
+    {
+        session_start();
+        $this->loadModel("Partenaire");
+        //check for img upload
+        if (isset($_FILES['pic']) && $_FILES['pic']['error'] == 0) {
+            $uploadDir = '../Views/public/images/';
+            $uploadFile = $uploadDir . basename($_FILES['pic']['name']);
+            if (move_uploaded_file($_FILES['pic']['tmp_name'], $uploadFile)) {
+                echo "The file has been uploaded successfully.";
+            } else {
+                echo "An error occurred during the file upload.";
+            }
+        } else {
+            echo "An error occurred.";
+        }
+        print_r($_POST);
+        $days = $_POST['day'];
+$fromTimes = $_POST['from'];
+$toTimes = $_POST['to'];
+
+$Creneaux = "";
+
+for($i = 0; $i < count($days); $i++) {
+    // Remove the ":00" from the times
+    $from = str_replace(":00", "", $fromTimes[$i]);
+    $to = str_replace(":00", "", $toTimes[$i]);
+    $Creneaux .= $days[$i] . ":" . $from . "-" . $to . "/";
+}
+echo $Creneaux; // Outputs: Lundi:8-17/Mardi:8-17/Mercredi:8-12/Jeudi:8-17/Vendredi:8-17
+        $profile = [
+            "id" => $_SESSION['user_id'],
+            "FirstName" => $_POST['firstName'],
+            "LastName" => $_POST['lastName'],
+            "Metier" => $_POST['Metier'],
+            "Ville" => $_POST['Ville'],
+            "YearExperience" => $_POST['YearExperience'],
+            "Email" => $_POST['Email'],
+            "Telephone" => $_POST['Telephone'],
+            "Creneaux" => $Creneaux,
+            "image" => basename($_FILES['pic']['name'])
+        ];
+        $this->Partenaire->updateInfos($profile);
+        header("Location: http://localhost/Bricolini/Partenaires/index/" . $_SESSION['user_id']);
+
     }
 
 
