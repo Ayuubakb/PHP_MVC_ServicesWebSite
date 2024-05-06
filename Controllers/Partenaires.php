@@ -75,7 +75,7 @@ class Partenaires extends Controller
         $uploadFile = $uploadDir . $imageName . basename($_FILES['serviceImage']['name']);
 
         // Check if the file size is 0
-        if(filesize($_FILES['serviceImage']['size']) == 0){
+        if($_FILES['serviceImage']['size'] == 0){
             echo "The file size is zero.";
         }else{
             // Move the file to the upload directory

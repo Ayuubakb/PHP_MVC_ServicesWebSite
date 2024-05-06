@@ -13,10 +13,11 @@
 require("Views/Components/Nav.php");
 ?>
 <section class="sec">
-    <form method="POST" action="http://localhost/Bricolini/Partenaires/updateInfos" class="modifier" enctype="multipart/form-data">
+    <form id="editForm" method="POST" action="http://localhost/Bricolini/Views/Partenaires/editHandler.php" class="modifier" enctype="multipart/form-data">
         <h1>Modifier Votre Profile</h1>
+        <p id="err"></p>
         <div class="imageHolder">
-            <img src="<?php echo is_null($profile['image'])?"http://localhost/Bricolini/Views/public/clientPic/icon-admin.png":"http://localhost/Bricolini/Views/public/images/".$profile['image'].""?>"/>
+            <img id="imgProfile" src="<?php echo is_null($profile['image'])?"http://localhost/Bricolini/Views/public/clientPic/icon-admin.png":"http://localhost/Bricolini/Views/public/images/".$profile['image'].""?>"/>
         </div>
         <div class="fieldsContainer">
             <div class="imgLabel">
@@ -98,9 +99,48 @@ foreach($Creaneaux as $creneaux){
 <?php
 require("Views/Components/Footer.php")
 ?>
+<script>
+    document.getElementById("editForm").addEventListener("submit",async function(e){
+        e.preventDefault();
+        const response=await fetch("http://localhost/Bricolini/Views/Partenaires/editHandler.php",{
+            method:"POST",
+            body:new FormData(this)
+        })
+        await response.json().then((data)=>{
+            console.log(data);
+            const show= [
+                { opacity:'0' },
+                {  opacity:'1' },
+                {  opacity:'0'}
+            ];
+
+            const showTiming = {
+                duration: 3000,
+                iterations: 1,
+            };
+            document.getElementById('err').innerHTML=data.msg
+            document.getElementById('err').animate(show, showTiming);
+            if(data.msg==="Données Modifiés" && data.img!=null){
+                document.getElementById("imgProfile").src="http://localhost/Bricolini/Views/public/images/"+data.img
+            }
+        })
+    })
+</script>
 </body>
 </html>
 <style>
+     #err{
+        padding: 10px;
+        background-color:var(--green);
+        font-family:var(--fontSmall);
+        width:50%;
+        margin-left:25%;
+        border-radius:15px;
+        color:white;
+        margin-bottom:15px;
+        opacity: 0;
+        text-align:center;
+    }
     .time-slot {
     display: flex;
     justify-content: space-between;

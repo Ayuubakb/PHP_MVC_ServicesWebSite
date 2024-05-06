@@ -20,7 +20,7 @@ class Clients extends Controller{
          if(filesize($_FILES["pic"]["size"]) == 0){
             $updated=$this->Client->updateInfos("null",$_POST['firstName'],$_POST['lastName'],$_POST['address'],$_POST['telephone'],$_SESSION['user_id']);
          }else{
-            $updated=$this->Client->updateInfos(basename($_FILES["pic"]["name"]),$_POST['firstName'],$_POST['lastName'],$_POST['address'],$_POST['telephone'],$_SESSION['user_id']);
+            //$updated=$this->Client->updateInfos(basename($_FILES["pic"]["name"]),$_POST['firstName'],$_POST['lastName'],$_POST['address'],$_POST['telephone'],$_SESSION['user_id']);
             $target_dir = "../Views/public/images/";
             $target_file = $target_dir . basename($_FILES["pic"]["name"]);
             $updated=$this->Client->updateInfos(basename($_FILES["pic"]["name"]),$_POST['firstName'],$_POST['lastName'],$_POST['address'],$_POST['telephone'],$_SESSION['user_id']);
