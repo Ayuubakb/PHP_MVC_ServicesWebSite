@@ -83,9 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Creneaux non disponible";
         }
     } else {
-        header('Location: http://localhost/Bricolini/Views/Authentification/login.php');
+        header('Location:http://localhost/Bricolini/Authentification/showLoginForm');
         exit();
-    
     }
 }
 ?>

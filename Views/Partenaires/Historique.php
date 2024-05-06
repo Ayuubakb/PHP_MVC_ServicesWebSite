@@ -117,7 +117,7 @@ $commented = array_filter($historique, function($element) use ($notcommented) {
                 <div>
                     <p style='color:$color'>$status</p>
                 </div>   ";
-                if ($commande['Statuts'] == 3) {
+                if ($commande['Statuts'] == 3 && in_array($commande,$notcommented)) {
                     echo "
                 <div class='comment'>
                     <button onclick=\"showCommentForm({$commande['id']})\"><i class='fas fa-comment fa-lg'></i></button>

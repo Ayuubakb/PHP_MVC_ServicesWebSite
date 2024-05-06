@@ -65,7 +65,7 @@
                         </div> ";
                     }
                 }else{
-                    echo "<div></div><p class='err'>Pas De Commentaires</p>";
+                    echo "<p class='err'>Pas De Commentaires</p>";
                 }
                 ?>
             </div>
@@ -76,3 +76,17 @@
     ?>
 </body>
 </html>
+<style>
+    .err{
+        margin-left:25%;
+        width:50%;
+        margin-top:15%;
+        padding: 10px;
+        background-color:var(--orange);
+        border-radius:10px;
+        text-align:center;
+        font-family:var(--fontBig);
+        font-size:28px;
+        color:white
+    }
+</style>

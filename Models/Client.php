@@ -6,6 +6,19 @@ class Client extends Model{
         self::getModel();
     }
     public function getProfile(int $id){
+            $dateNow=date("Y-m-d");
+            $sql="SELECT id,Date_reserv FROM reservation WHERE Id_C=$id";
+            $query=self::$instance->prepare($sql);
+            $query->execute();
+            $re=$query->fetchAll();
+            foreach($re as $res){
+               if($dateNow > date("Y-m-d",strtotime($res['Date_reserv']))){
+                    $idR=$res['id'];
+                    $sql="UPDATE reservation SET Statuts=3 WHERE id=$idR";
+                    $query=self::$instance->prepare($sql);
+                    $query->execute();
+               }
+            }
             $objct=new stdClass();
             $sql="SELECT id,image,LastName,FirstName,Address,Telephone FROM ".$this->table." WHERE id=".$id;
             $query=self::$instance->prepare($sql);
@@ -54,7 +67,7 @@ class Client extends Model{
     public function getCommandes(int $id,String $type,String $status, String $sort){
         $objct=new stdClass();
         
-        $sql="SELECT r.Date_reserv, r.Statuts, s.Nom, p.FirstName, p.LastName,s.image
+        $sql="SELECT r.id ,r.Date_reserv, r.Statuts, s.Nom, p.FirstName, p.LastName,s.image
         FROM 
         ((services s INNER JOIN reservation r ON r.Id_S=s.id) Inner JOIN partenaire p ON s.Id_P=p.id)
         WHERE r.Id_C=".$id."";
@@ -73,8 +86,33 @@ class Client extends Model{
 
     public function getComments(int $id,String $rating, String $sort){
         $objct=new stdClass();
+        $array=array();
+        $sql="SELECT id,Date_reserv from reservation where Id_C=$id";
+        $query=self::$instance->prepare($sql);
+        $query->execute();
+        $reservations=$query->fetchAll();
+        $flag1=false; 
+        $flag2=false;
+        foreach($reservations as $reservation){
+            $idR=$reservation["id"];
+            $sql="SELECT * from commentaire where Id_R=$idR";
+            $query=self::$instance->prepare($sql);
+            $query->execute();
+            $comments=$query->fetchAll();
+            foreach($comments as $comment){
+                if(!strcmp($comment['publisher'],"client")){
+                    $flag1=true;
+                }
+                if(!strcmp($comment['publisher'],"partenaire")){
+                    $flag2=true;
+                }
+            }
+            if(($flag1 && $flag2) || date("Y-m-d") > date("Y-m-d",strtotime($reservation["Date_reserv"]. ' + 7 days'))){
+                $array[]=$reservation['id'];
+            }
+        }
         
-        $sql="SELECT c.id as id,s.Nom as nom, c.message as message, c.Rating as rating, c.Date_post as datePost, p.LastName as ln, p.FirstName as fn 
+        /*$sql="SELECT c.id as id,s.Nom as nom, c.message as message, c.Rating as rating, c.Date_post as datePost, p.LastName as ln, p.FirstName as fn 
                 FROM (((services s INNER JOIN reservation r ON s.id=r.Id_S) INNER JOIN commentaire c ON r.id=c.Id_R) INNER JOIN partenaire p ON p.id=s.Id_P)
                 WHERE r.Id_C=".$id." AND c.published=1 AND c.publisher='partenaire'";
         if($rating!=0){
@@ -83,8 +121,17 @@ class Client extends Model{
         $sql.=" ORDER BY c.id $sort";
         $query=self::$instance->prepare($sql);
         $query->execute();
-        $objct->commentaire=$query->fetchAll();
-
+        $objct->commentaire=$query->fetchAll();*/
+        if(sizeof($array)!=0){
+            $sql="SELECT c.id as id,s.Nom as nom, c.message as message, c.Rating as rating, c.Date_post as datePost, p.LastName as ln, p.FirstName as fn 
+                    FROM (((services s INNER JOIN reservation r ON s.id=r.Id_S) INNER JOIN commentaire c ON r.id=c.Id_R) INNER JOIN partenaire p ON p.id=s.Id_P)
+                    WHERE c.Id_R IN (" . implode(',', $array) . ") AND c.publisher = 'partenaire'";
+            $query=self::$instance->prepare($sql);
+            $query->execute();
+            $objct->commentaire=$query->fetchAll();
+        }else{
+            $objct->commentaire=array();
+        }
         return json_encode($objct);
     }
     
