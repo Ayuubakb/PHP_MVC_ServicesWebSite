@@ -13,11 +13,9 @@
 </head>
 <body>
 <?php
+
 require __DIR__ . "/../Components/Nav.php";
-//print_r($notcommented);
-$commented = array_filter($historique, function($element) use ($notcommented) {
-    return !in_array($element, $notcommented);
-});
+print_r($commented)
 ?>
 <section class="sec">
     <div  class="formComment" id="formComment">
@@ -117,7 +115,7 @@ $commented = array_filter($historique, function($element) use ($notcommented) {
                 <div>
                     <p style='color:$color'>$status</p>
                 </div>   ";
-                if ($commande['Statuts'] == 3 && in_array($commande,$notcommented)) {
+                if ($commande['Statuts'] == 3 && !in_array($commande['id'],$commented)) {
                     echo "
                 <div class='comment'>
                     <button onclick=\"showCommentForm({$commande['id']})\"><i class='fas fa-comment fa-lg'></i></button>

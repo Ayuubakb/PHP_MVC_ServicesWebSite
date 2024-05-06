@@ -65,7 +65,6 @@ class Partenaire extends Model
     {
         // Perform database insertion
         // Ensure that you properly escape or prepare data to prevent SQL injection
-
         $sql = "INSERT INTO partenaire (LastName, FirstName, Metier, Ville, Creneaux, YearExperience, Email, Telephone, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $params = [
             $data['LastName'],
@@ -81,7 +80,6 @@ class Partenaire extends Model
         $query = self::$instance->prepare($sql);
         $query->execute($params);
     }
-
     public function getallcomments(int $id, int $note, string $order)
     {
         $sql = "SELECT commentaire.* ,services.*,reservation.*,client.*
@@ -147,17 +145,6 @@ class Partenaire extends Model
         $query = self::$instance->prepare($sql);
         $query->execute($params);
     }
-
-    public function getNotCommented(int $id)
-    {
-        $sql = "SELECT reservation.*, client.*,services.* FROM reservation 
-                INNER JOIN services ON reservation.Id_S = services.id
-                INNER JOIN client ON reservation.Id_C = client.id 
-                WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = $id) AND reservation.id NOT IN (SELECT Id_R FROM commentaire)";
-        $query = self::$instance->prepare($sql);
-        $query->execute();
-        return $query->fetchAll();
-    }
     public function historique($id, $status, $order)
     {
         //if statuts 4 is selected then show all the interventions
@@ -188,7 +175,6 @@ class Partenaire extends Model
         $query = self::$instance->prepare($sql);
         $query->execute();
         return $query->fetchAll();
-        
     }
     public function updateInfos($data)
     {
@@ -250,6 +236,23 @@ class Partenaire extends Model
         $query = self::$instance->prepare($sql);
         $query->execute();
         return $query->fetch();
+    }
+    public function commentedbypartenaire($id)
+    {
+        $sql = "SELECT id_R
+                FROM commentaire 
+                INNER JOIN reservation ON commentaire.Id_R = reservation.id
+                INNER JOIN services ON reservation.Id_S = services.id
+                WHERE services.Id_P = $id AND commentaire.publisher = 'partenaire'";
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+    public function deleteservice($id)
+    {
+        $sql="DELETE FROM services WHERE id=$id";
+        $query=self::$instance->prepare($sql);
+        $query->execute();
     }
 }
 

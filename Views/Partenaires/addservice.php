@@ -15,7 +15,7 @@ require("Views/Components/Nav.php");
 ?>
     <h1>Add Service</h1>
 <div class="container">
-    <form action="http://localhost/Bricolini/Partenaires/handleAddService" method="post" enctype="multipart/form-data">
+    <form action="http://localhost/Bricolini/Views/Partenaires/serviceeditHandler.php" method="post" enctype="multipart/form-data">
         <label for="serviceName">Service Name:</label><br>
         <input type="hidden" id="id" name="id" value="<?php echo $_SESSION['user_id'] ?>">
         <input type="text" id="serviceName" name="serviceName" required><br>
@@ -184,7 +184,7 @@ categorySelect.dispatchEvent(new Event("change"));
         cursor: pointer;
         width: 100%;
     }
-
-
-
+    #Cancel:hover {
+        opacity: 0.8;
+    }
 </style>
