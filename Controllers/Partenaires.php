@@ -1,4 +1,9 @@
 <?php
+require 'PHPMAILER/vendor/phpmailer/phpmailer/src/Exception.php';
+require 'PHPMAILER/vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require 'PHPMAILER/vendor/phpmailer/phpmailer/src/SMTP.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class Partenaires extends Controller
 {
@@ -145,7 +150,7 @@ for($i = 0; $i < count($days); $i++) {
     $to = str_replace(":00", "", $toTimes[$i]);
     $Creneaux .= $days[$i] . ":" . $from . "-" . $to . "/";
 }
-echo $Creneaux; // Outputs: Lundi:8-17/Mardi:8-17/Mercredi:8-12/Jeudi:8-17/Vendredi:8-17
+echo $Creneaux;
         $profile = [
             "id" => $_SESSION['user_id'],
             "FirstName" => $_POST['firstName'],
@@ -160,6 +165,44 @@ echo $Creneaux; // Outputs: Lundi:8-17/Mardi:8-17/Mercredi:8-12/Jeudi:8-17/Vendr
         ];
         $this->Partenaire->updateInfos($profile);
         header("Location: http://localhost/Bricolini/Partenaires/index/" . $_SESSION['user_id']);
-
+    }
+    public function sendMail(){
+        $id_R = $_POST['id'];
+        $this->loadModel("Partenaire");
+        $Partenaire = $this->Partenaire->getPartenaireData($id_R);
+        $Client = $this->Partenaire->getClientData($id_R);
+        $Service = $this->Partenaire->getServiceData($id_R);
+        //send the email to the partenaire with the client data
+        $mail = new PHPMailer(true);
+        $mail->SMTPDebug = 3;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'ezzouak2001@gmail.com';
+        $password='tqjjbhowywfsnafr';
+        $mail->Password = $password;
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+        $mail->From = 'ezzouak2001@gmail.com';
+        $mail->FromName = 'Bricolini';
+        $mail->addAddress($Partenaire['Email'], $Partenaire['FirstName'] . ' ' . $Partenaire['LastName']);
+        $mail->isHTML(true);
+        $mail->Subject = 'Reservation Confirmation';
+        $mail->Body = 'Dear ' . $Partenaire['FirstName'] . ' ' . $Partenaire['LastName'] . ',<br><br>Your reservation with ' . $Client['FirstName'] . ' ' . $Client['LastName'] . ' on ' . $Service['Date_reserv'] . '
+           For the service : '.$Service['Nom'].' has been confirmed.
+            <br>
+            The client email is : '.$Client['email'].'
+            <br>
+            The client phone number is : '.$Client['Telephone'].'
+            <br>
+            The client address is : '.$Client['Address'].'
+            <br>
+            <br><br>Best regards,<br>Bricolini';
+            if ($mail->send()) {
+                echo 'Email has been sent';
+            } else {
+                echo 'Email could not be sent.';
+                echo 'Mailer Error: ' . $mail->ErrorInfo;
+            }
     }
 }

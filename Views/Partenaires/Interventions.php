@@ -168,11 +168,24 @@ h1{
                 data: { id: id, status: status },
                 success: function(response) {
                     console.log(response);
-                    
-                    location.reload(); 
+                    location.reload();
                 },
                 error: function() {
                     alert('Error updating status. Please try again.');
+                }
+            });
+            //send the mail with the infos about the Client to the partner
+            $.ajax({
+                url: 'http://localhost/Bricolini/Partenaires/sendMail',
+                method: 'POST',
+                data: { id: id},
+                success: function(response) {
+                    console.log(response);
+                    //reload the page
+
+                },
+                error: function() {
+                    alert('Error sending mail. Please try again.');
                 }
             });
         });

@@ -202,6 +202,34 @@ class Partenaire extends Model
         $query = self::$instance->prepare($sql);
         $query->execute($params);
     }
+    public function getServiceData($id_R){
+        $sql = "SELECT services.*,reservation.*
+                FROM services 
+                INNER JOIN reservation ON services.id = reservation.Id_S
+                WHERE reservation.id = $id_R";
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetch();
+    }
+    public function getClientData($id_R){
+        $sql = "SELECT client.*
+                FROM client 
+                INNER JOIN reservation ON client.id = reservation.Id_C
+                WHERE reservation.id = $id_R";
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetch();
+    }
+    public function getPartenaireData($id_R){
+        $sql = "SELECT partenaire.*
+                FROM partenaire 
+                INNER JOIN services ON partenaire.id = services.Id_P
+                INNER JOIN reservation ON services.id = reservation.Id_S
+                WHERE reservation.id = $id_R";
+        $query = self::$instance->prepare($sql);
+        $query->execute();
+        return $query->fetch();
+    }
 }
 
 ?>
