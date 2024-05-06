@@ -12,7 +12,7 @@
             $stmt->execute();
             echo "Commentaire Ajoute";
         }
-
+        
         $sql="SELECT avg(Rating),id_S FROM commentaire c
             INNER JOIN reservation r ON r.id=c.Id_R
             WHERE r.id='$idRes'  and r.statuts = 3
@@ -25,8 +25,10 @@
                 $newAvg=$new_avg;
                 $idS=$id_S;
             }
-        }
-        $sql="UPDATE services set Note=$newAvg WHERE id=$idS";
-        if($stmt=$conn->prepare($sql)){
-            $stmt->execute();
+            
+            $sql="UPDATE services set Note=$newAvg WHERE id=$idS";
+            if($stmt=$conn->prepare($sql)){
+                $stmt->execute();
+            }
+
         }

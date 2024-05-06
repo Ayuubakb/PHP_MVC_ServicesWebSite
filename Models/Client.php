@@ -6,6 +6,19 @@ class Client extends Model{
         self::getModel();
     }
     public function getProfile(int $id){
+            $dateNow=date("Y-m-d");
+            $sql="SELECT id,Date_reserv FROM reservation WHERE Id_C=$id";
+            $query=self::$instance->prepare($sql);
+            $query->execute();
+            $re=$query->fetchAll();
+            foreach($re as $res){
+               if($dateNow > date("Y-m-d",strtotime($res['Date_reserv']))){
+                    $idR=$res['id'];
+                    $sql="UPDATE reservation SET Statuts=3 WHERE id=$idR";
+                    $query=self::$instance->prepare($sql);
+                    $query->execute();
+               }
+            }
             $objct=new stdClass();
             $sql="SELECT id,image,LastName,FirstName,Address,Telephone FROM ".$this->table." WHERE id=".$id;
             $query=self::$instance->prepare($sql);

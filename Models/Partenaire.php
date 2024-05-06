@@ -10,10 +10,23 @@ class Partenaire extends Model
 
     public function find(int $id)
     {
-        $sql = "SELECT * FROM $this->table WHERE id = $id";
-        $query = self::$instance->prepare($sql);
-        $query->execute();
-        return $query->fetch();
+            $dateNow=date("Y-m-d");
+            $sql="SELECT r.id,r.Date_reserv FROM reservation r INNER JOIN services s ON r.Id_S=s.id WHERE s.Id_P=$id";
+            $query=self::$instance->prepare($sql);
+            $query->execute();
+            $re=$query->fetchAll();
+            foreach($re as $res){
+               if($dateNow > date("Y-m-d",strtotime($res['Date_reserv']))){
+                    $idR=$res['id'];
+                    $sql="UPDATE reservation SET Statuts=3 WHERE id=$idR";
+                    $query=self::$instance->prepare($sql);
+                    $query->execute();
+               }
+            }
+            $sql = "SELECT * FROM $this->table WHERE id = $id";
+            $query = self::$instance->prepare($sql);
+            $query->execute();
+            return $query->fetch();
     }
 
     public function services(int $id)
