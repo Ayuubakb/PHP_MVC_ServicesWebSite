@@ -135,23 +135,10 @@ foreach($new_creneaux as $creneaux){
                     } else {
                         $image = 'http://localhost/Bricolini/Views/public/servicePic/menageDefault.jpg';
                     }
-                } // Use a default image if none is provided
-                //    // Check if the image file exists and is readable
-                //    if (is_readable($image)){
-                //        // If the image file exists and is readable, use it
-                //        $image = 'http://localhost/Bricolini/Views/public/images/'.$service['image'];
-                //    }else {
-                //        // If the image file does not exist or is not readable, use a default image based on the service category
-                //        if ($service['categorie'] == 'jardennage') {
-                //            $image = 'http://localhost/Bricolini/Views/public/servicePic/jardennageDefault.jpg';
-                //        } else if ($service['categorie'] == 'menage') {
-                //            $image = 'http://localhost/Bricolini/Views/public/servicePic/menageDefault.jpg';
-                //        } else {
-                //            // If the service category is not recognized, use a general default image
-                //            $image = 'http://localhost/Bricolini/Views/public/servicePic/jardinageDefault.jpg';
-                //        }
-                //    }
-
+}
+                if($service['Nbr_commande'] == null){
+                    $service['Nbr_commande'] = 0;
+                }
                 $fullStars = round($service['Note']);
                 $halfStar = ($service['Note'] - $fullStars) >= 0.5 ? 1 : 0;
                 $emptyStars = 5 - $fullStars ;
@@ -187,7 +174,12 @@ foreach($new_creneaux as $creneaux){
                 <div>
                     <p>Number of Commands: {$service['Nbr_commande']}</p>
                 </div>
+                 <div class='DeleteService'>
+                    <button onclick='deleteService({$service['id']})' style='background-color:transparent;border:none'><i class='fa-solid fa-trash fa-xl'></i></a>
+                </div>
             </div>
+               
+            
         </div> ";
             }
             ?>
@@ -195,7 +187,7 @@ foreach($new_creneaux as $creneaux){
             if (count($services) < 3 && $islogged && !strcmp($type, "partenaire")) {
                 echo "
         <div class='reservationCard allRes'>
-            <a href='http://localhost/Bricolini/Partenaires/addservice/$profile[id]' style='color:white'><p>Add Service
+            <a id='addService' href='http://localhost/Bricolini/Partenaires/addservice/$profile[id]' style='color:white'><p>Add Service
                 <i class='fa-solid fa-plus fa-xl'></i></p></a>
         </div>";
             }
@@ -289,5 +281,45 @@ require("Views/Components/Footer.php");
 ?>
 </body>
 </html>
+<style>
+    .DeleteService button i {
+    /* Add your styles here */
+    font-size: 20px;
+    transition: transform 0.3s ease;
+        top: -20px;
+        color: red;
+
+}
+
+.DeleteService button:hover i {
+    transform: scale(1.5);
+    color: darkred;
+}
+.reservationCard {
+    position: relative;
+}
+
+.DeleteService {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    /*  add a circle around the icon */
+    background-color: var(--lightGreen);
+    border-radius: 50%;
+    padding: 13px;
+
+}
+</style>
+<script>
+    function deleteService(id) {
+        const message = "Are you sure you want to delete this service? \n " +
+            "This action cannot be undone.";
+        if (confirm(message)) {
+            window.location.href = "http://localhost/Bricolini/Partenaires/deleteservice/" + id;
+        }
+    }
+</script>
+
+
 
 

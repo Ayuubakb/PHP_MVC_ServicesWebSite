@@ -54,55 +54,9 @@ class Partenaires extends Controller
         $id=$_SESSION['user_id'];
         $this->loadModel("Partenaire");
         $historique = $this->Partenaire->historique($id, $status, $order);
-        $notcommented = $this->Partenaire->getNotCommented($id);
-        $this->loadView("Historique", compact("historique", "notcommented"));
+        $commented= $this->Partenaire->commentedbypartenaire($id);
+        $this->loadView("Historique", compact("historique", "commented"));
     }
-
-    public function handleAddService(){
-        session_start();
-    $this->loadModel("Partenaire");
-
-    // Check if the file was uploaded without errors
-    if(isset($_FILES['serviceImage']) && $_FILES['serviceImage']['error'] == 0){
-        // The path of the upload destination
-        $uploadDir = '../Views/public/images/';
-
-        // Get the service name from the form data
-        $serviceName = $_POST['serviceName'];
-        //remove spaces from the service name and replace them with underscores
-        $imageName = str_replace(' ', '_', $serviceName);
-        //save the file in uploads directory
-        $uploadFile = $uploadDir . $imageName . basename($_FILES['serviceImage']['name']);
-
-        // Check if the file size is 0
-        if($_FILES['serviceImage']['size'] == 0){
-            echo "The file size is zero.";
-        }else{
-            // Move the file to the upload directory
-            if(move_uploaded_file($_FILES['serviceImage']['tmp_name'], $uploadFile)){
-                echo "The file has been uploaded successfully.";
-            } else{
-                echo "An error occurred during the file upload.";
-            }
-        }
-    } else{
-        echo "An error occurred.";
-    }
-
-    $service = [
-        "id" => $_POST['id'],
-        "serviceName" => $serviceName,
-        "serviceDescription" => $_POST['serviceDescription'],
-        "servicePrice" => $_POST['servicePrice'],
-        "serviceCategory" => $_POST['serviceCategory'],
-        "servicesousCategory" => $_POST['servicesousCategory'],
-        "serviceImage" => $imageName . basename($_FILES['serviceImage']['name'])
-    ];
-
-    $this->Partenaire->addService($service);
-    echo "Service added successfully";
-    header("Location: http://localhost/Bricolini/Partenaires/index/".$_POST['id']);
-}
 
     public function interventions()
     {
@@ -204,5 +158,12 @@ echo $Creneaux;
                 echo 'Email could not be sent.';
                 echo 'Mailer Error: ' . $mail->ErrorInfo;
             }
+    }
+    public function deleteservice($id){
+        session_start();
+        $this->loadModel("Partenaire");
+        $this->Partenaire->deleteservice($id);
+        echo "delete succcefely ";
+        header("Location: http://localhost/Bricolini/Partenaires/index/" . $_SESSION['user_id']);
     }
 }
