@@ -35,7 +35,7 @@
         }
         input[type="date"],
         input[type="number"],
-        button {
+        .submit-button {
             width: 100%;
             padding: 8px;
             margin-top: 5px;
@@ -43,14 +43,14 @@
             border: 2px solid #65B741; 
             border-radius: 5px;
         }
-        button {
+        .submit-button {
             background-color: #FFB534; 
             color: white;
             border: none;
             cursor: pointer;
             font-size: 16px;
         }
-        button:hover {
+        .submit-button:hover {
             background-color: #65B741; 
         }
         .errPlace {
@@ -89,9 +89,16 @@
                 <label for="hours-to">Heure de fin:</label>
                 <input type="time" name="hours_to" id="hours-to" required>
             </div>
-            <input type="hidden" name="Id_S" value="<?= htmlspecialchars($_POST['Id_S']); ?>">
+            <input type="hidden" name="Id_S" value="<?= $_POST['Id_S'] ?>">
             <input type="hidden" name="Statuts" value="0">
-            <button type="submit" class="submit-button">Reserver</button>
+            <?php
+                session_start();
+                if(isset($_SESSION['user_id'])){
+                    echo "<button type='submit' class='submit-button'>Reserver</button>";
+                }else{
+                    echo "<a href='http://localhost/Bricolini/Authentification/showLoginForm' class='submit-button'>Reserver</a>";
+                }
+            ?>
         </form>
     </div>
     <script>

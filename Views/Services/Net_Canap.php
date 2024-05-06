@@ -14,7 +14,7 @@
     <div class="content">
 
     <?php foreach ($Services as $service): ?>
-        <form id="form-<?= $service['id'] ?>" method="post" action="http://localhost/Bricolini/Views/Services/bookingForm.php">
+        <form id="form-<?= $service['id'] ?>" method="post" action=<?=isset($_SESSION['user_id'])?"http://localhost/Bricolini/Views/Services/bookingForm.php":"http://localhost/Bricolini/Authentification/showLoginForm"?>>
             <div class="service-item">
                 <div class="service-image">
                     <img src="http://<?= $_SERVER['SERVER_NAME'] ?>/Bricolini/Views/public/images/<?= $service['image'] ?>">
@@ -26,6 +26,7 @@
                 <div class="priceReserve">
                     <p class="service-price"><?= $service['Prix'] ?> DH</p>
                     <input type="hidden" name="Id_S" value="<?= $service['id'] ?>">
+                
                     <a href="http://localhost/Bricolini/Views/Services/bookingForm.php" style="text-decoration: none;">
                         <button class="reserve-button">Réserver</button>
                     </a>
