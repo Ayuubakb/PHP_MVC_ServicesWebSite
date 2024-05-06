@@ -122,6 +122,14 @@ class Partenaire extends Model
         $sql = "UPDATE reservation SET Statuts = $status WHERE id = $id";
         $query = self::$instance->prepare($sql);
         $query->execute();
+        if($status==1){
+            $sql="UPDATE services SET Nbr_commande=Nbr_commande+1 WHERE id=(SELECT Id_S FROM reservation WHERE id=$id)";
+            $query= self::$instance->prepare($sql);
+            $query->execute();
+            $sql="UPDATE partenaire SET Nbr_commande=Nbr_commande+1 WHERE id=(SELECT Id_P FROM services WHERE id=(SELECT Id_S FROM reservation WHERE id=$id))";
+            $query= self::$instance->prepare($sql);
+            $query->execute();
+        }
     }
 
     public function addService($service)

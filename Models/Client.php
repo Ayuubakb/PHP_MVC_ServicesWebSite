@@ -7,7 +7,7 @@ class Client extends Model{
     }
     public function getProfile(int $id){
             $dateNow=date("Y-m-d");
-            $sql="SELECT id,Date_reserv FROM reservation WHERE Id_C=$id";
+            $sql="SELECT id,Date_reserv FROM reservation WHERE Id_C=$id and Statuts=1";
             $query=self::$instance->prepare($sql);
             $query->execute();
             $re=$query->fetchAll();
