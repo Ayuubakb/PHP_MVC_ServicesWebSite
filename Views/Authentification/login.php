@@ -14,6 +14,7 @@
     <title>Login</title>
 </head>
 <body>
+    <?php  require('Views/Components/Nav.php'); ?>
     <section class="log">
         <div class="container">
             <h1>Login</h1>

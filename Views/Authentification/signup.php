@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
 </head>
 <body >
+<?php  require('Views/Components/Nav.php'); ?>
     <section class="signup">
         <div class="holder">
             <h1>Inscrivez Vous a Bricoliini !</h1>
