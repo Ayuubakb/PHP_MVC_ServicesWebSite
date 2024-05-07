@@ -64,7 +64,7 @@ foreach ($interventions as $commande) {
                 echo "
         <div class='reservationCard'>
             <div class='image'>
-                <img src='http://localhost/Bricolini/Views/public/servicePic/menageDefault.jpg'/>
+                <img src='http://localhost/Bricolini/Views/public/images/{$commande['image']}'/>
             </div>
             <div class='nameOfservice'>
                 <h1>{$commande['Nom']}</h1> 
@@ -133,6 +133,7 @@ require __DIR__ . "/../Components/Footer.php";
     width: 85%;
     margin-left: 7.5%;
     margin-top: 50px;
+    min-height:250px;
 /*
 */
 }
@@ -145,7 +146,7 @@ require __DIR__ . "/../Components/Footer.php";
     font-size:25px;
     background-color:var(--orange);
     border-radius:15px;
-    margin-top:25px;
+    margin-top:75px;
     color:white;
 }
 h1{

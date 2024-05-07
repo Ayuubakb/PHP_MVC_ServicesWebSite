@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
-    <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/addservice.css">
     <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
 
@@ -13,39 +12,69 @@
 <?php
 require("Views/Components/Nav.php");
 ?>
-    <h1>Add Service</h1>
 <div class="container">
-    <form action="http://localhost/Bricolini/Views/Partenaires/serviceeditHandler.php" method="post" enctype="multipart/form-data">
-        <label for="serviceName">Service Name:</label><br>
-        <input type="hidden" id="id" name="id" value="<?php echo $_SESSION['user_id'] ?>">
-        <input type="text" id="serviceName" name="serviceName" required><br>
-        <label for="serviceDescription">Service Description:</label><br>
-        <textarea id="serviceDescription" name="serviceDescription"required></textarea><br>
-        <label for="servicePrice">Service Price:</label><br>
-        <input type="number" id="servicePrice" name="servicePrice" min="0" step="0.01" required><br>
-        <label for="serviceImage">Service Image:</label><br>
-        <input type="file" id="serviceImage" name="serviceImage" style="display: none;">
-        <label for="serviceImage" class="custom-file-upload">
-            <i class="fa fa-cloud-upload"></i> Upload Image
-        </label>
-        <label for="serviceCategory">Service Category:</label><br>
-<!--        jardennage or menage -->
-        <select id="serviceCategory" name="serviceCategory" required>
-            <option value="jardennage">Jardinage</option>
-            <option value="menage">Nettoyage</option>
-        </select><br>
-        <label for="servicesousCategory">Service Sous Category:</label><br>
-<!--        depend if he selected jardinage or menage-->
-        <select id="servicesousCategory" name="servicesousCategory" required>
-            <option value="Nettoyage de canapés">Nettoyage de canapés</option>
-            <option value="Nettoyage des surfaces">Nettoyage des surfaces</option>
-            <option value="Nettoyage général">Nettoyage général</option>
-            <option value="Entretien de Gazon et Pelouse">Entretien de Gazon et Pelouse</option>
-            <option value="Traitement de jardin">Traitement de jardin</option>
-            <option value="Plantation pour jardin">Plantation pour jardin</option>
-        </select><br>
-        <button onclick="addService()" type="submit" id="submit">Add Service</button>
-        <button id="Cancel" type="button" onclick="window.location.href='http://localhost/Bricolini/Partenaires/index/<?php echo $_SESSION['user_id'] ?>';">Cancel</button>
+    <form id="editForm" class="fromAddService" action="http://localhost/Bricolini/Views/Partenaires/serviceeditHandler.php" method="post" enctype="multipart/form-data">
+        <h1 class="headTitle">Add Service</h1>
+        <p id="err"></p>
+        <div>
+            <label for="serviceName">Service Name:</label>
+            <input type="hidden" id="id" name="id" value="<?php echo $_SESSION['user_id'] ?>">
+            <input type="text" id="serviceName" name="serviceName" required>
+        </div>
+        <div class="price">
+            <div>
+                <label for="servicePrice">Service Price:</label>
+                <input type="number" id="servicePrice" name="servicePrice" min="0" step="0.01" required>
+            </div>
+            <div>
+                <label for="serviceImage">Service Image:</label>
+                <input type="file" id="serviceImage" name="serviceImage" style="display: none;">
+                <label for="serviceImage" class="custom-file-upload">
+                    <i class="fa fa-cloud-upload"></i> Upload Image
+                </label>
+            </div> 
+        </div> 
+        <div class="servicess">
+            <div>
+                <label for="serviceCategory">Service Category:</label>
+        <!--        jardennage or menage -->
+                <select id="serviceCategory" name="serviceCategory" required>
+                    <?php
+                        if(!strcmp($metier,"Menage")){
+                            echo "
+                            <option value='Menage'>Nettoyage</option>";
+                        }else{
+                            echo "
+                            <option value='Jardinage' selected>Jardinage</option>";
+                        }
+                    ?>
+                </select>
+            </div>
+            <div>
+                <label for="servicesousCategory">Service Sous Category:</label>
+        <!--        depend if he selected jardinage or menage-->
+                <select id="servicesousCategory" name="servicesousCategory" required>
+                    <option value="Nettoyage de canapés">Nettoyage de canapés</option>
+                    <option value="Nettoyage des surfaces">Nettoyage des surfaces</option>
+                    <option value="Nettoyage général">Nettoyage général</option>
+                    <option value="Entretien de Gazon et Pelouse">Entretien de Gazon et Pelouse</option>
+                    <option value="Traitement de jardin">Traitement de jardin</option>
+                    <option value="Plantation pour jardin">Plantation pour jardin</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <label for="serviceDescription">Service Description:</label>
+            <textarea id="serviceDescription" name="serviceDescription"required></textarea>
+        </div>
+        <div class="errs">
+            <div class="btn">
+                <button onclick="addService()" type="submit" id="submit">Add Service</button>
+            </div>
+            <div class="btn">
+                <button id="Cancel" type="button" onclick="window.location.href='http://localhost/Bricolini/Partenaires/index/<?php echo $_SESSION['user_id'] ?>';">Cancel</button>
+            </div>
+        </div>
     </form>
 </div>
 </body>
@@ -72,9 +101,9 @@ categorySelect.addEventListener("change", function() {
 
     // Get the corresponding sous categories
     var sousCategories;
-    if (selectedCategory === "jardennage") {
+    if (selectedCategory === "Jardinage") {
         sousCategories = jardennageSousCategories;
-    } else if (selectedCategory === "menage") {
+    } else if (selectedCategory === "Menage") {
         sousCategories = menageSousCategories;
     }
 
@@ -88,24 +117,32 @@ categorySelect.addEventListener("change", function() {
 });
 // Trigger the change event to populate the sous category select box on page load
 categorySelect.dispatchEvent(new Event("change"));
+document.getElementById("editForm").addEventListener("submit",async function(e){
+    e.preventDefault();
+    const response=await fetch("http://localhost/Bricolini/Views/Partenaires/serviceeditHandler.php",{
+        method:"POST",
+        body:new FormData(this)
+    })
+    await response.json().then((data)=>{
+        const show= [
+            { opacity:'0' },
+            {  opacity:'1' },
+            {  opacity:'0'}
+        ];
+
+        const showTiming = {
+            duration: 3000,
+            iterations: 1,
+        };
+        document.getElementById('err').innerHTML=data.msg
+        document.getElementById('err').animate(show, showTiming);
+    })
+})
 </script>
 <style>
-/*    style for the file input and the submit button*/
-    input[type="file"]{
-        margin-top: 10px;
-    }
-    #submit{
-        margin-top: 10px;
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 20px;
-        margin: 80px 0;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-    }
-    #submit:hover {
-        opacity: 0.8;
+    .headTitle{
+        margin-top:5px;
+        color:white
     }
     /*    style for the form*/
     .container {
@@ -118,73 +155,79 @@ categorySelect.dispatchEvent(new Event("change"));
     }
     /*    style for the form labels*/
     label{
-        font-size: 30px;
-        font-family: var(--fontBig);
-
+        font-size: 24px;
+        font-family: var(--fontSmall);
+        color:white
     }
     /*    style for the form inputs*/
     input[type="text"], input[type="number"], textarea, select{
         width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-        border-radius: 5px;
-    }
-    /*    style for the form inputs when focused*/
-    input[type="text"]:focus, input[type="number"]:focus, textarea:focus, select:focus{
-        background-color: #f3f3f3;
-    }
-    /*    style for the form button*/
-    button{
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-    }
-    /*    style for the form button when hovered*/
-    button:hover {
-        opacity: 0.8;
-    }
-    /*    style for the form button when disabled*/
-    button:disabled{
-        background-color: #cccccc;
-    }
-    /*    style for the form button when disabled and hovered*/
-    button:disabled:hover{
-        opacity: 1;
-    }
-    /*    style for the form button when disabled and focused*/
-    button:disabled:focus{
-        background-color: #cccccc;
-    }
-    /*    style for the form button when disabled and active*/
-    button:disabled:active{
-        background-color: #cccccc
+        padding: 7px;
+        border-radius:15px;
+        border:none;
+        font-size:20px;
+        color:rgb(89,89,89);
+        outline:none
     }
     .custom-file-upload {
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 4px;
-    font-size: 16px;
-}
-    #Cancel{
-        background-color: #f44336;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
+        margin-top:7px;
+        padding:10px 18px;
         cursor: pointer;
-        width: 100%;
+        background-color: var(--lightGreen);
+        color: white;
+        border-radius: 4px;
+        font-size: 16px;
+        text-align:center;
+        border-radius:15px;
+        color:var(--orange);
+        font-family:var(--fontSmall);
+        font-weight:bold
     }
-    #Cancel:hover {
-        opacity: 0.8;
+    .fromAddService{
+        margin-top:0
+    }
+    .fromAddService div:not(.errs,.price,.servicess){
+        display:flex;
+        flex-direction:column;
+        width:90%;
+        margin-left:5%
+    }
+    .fromAddService .servicess, .fromAddService .price{
+        display :flex;
+        flex-direction:row;
+        align-items:center;
+        width :95%;
+    }
+    .errs{
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        justify-content:space-around;
+        width:80%;
+        margin-top:35px
+    }
+    .errs button{
+        background-color:var(--green);
+        border:none;
+        border-radius:15px;
+        padding:10px 18px;
+        font-family:var(--fontBig);
+        font-size:22px;
+        color:white
+    }
+    #Cancel{
+        background-color:red;
+    }
+    #err{
+        padding: 10px;
+        background-color:var(--green);
+        font-family:var(--fontSmall);
+        width:50%;
+        margin-left:10%;
+        border-radius:15px;
+        color:white;
+        margin-bottom:15px;
+        opacity: 0;
+        text-align:center;
     }
 </style>

@@ -53,8 +53,8 @@ require __DIR__ . "/../Components/Nav.php";
                     <div class='commentaireCard'>
                     <div class='mess'>
                         <h1>" . $commentaire['LastName'] . "  " . $commentaire['FirstName'] . "</h1>
-                        <p>" . $commentaire['Nom'] . "</p>
-                        <p>" . $commentaire['message'] . "</p>
+                        <p class='title'>" . $commentaire['Nom'] . "</p>
+                        <p class='msg'>" . $commentaire['message'] . "</p>
                     </div> 
                     <div class='rat'>
                         <p class='note' style='color:$color'>{$commentaire['Rating']}/5</p>

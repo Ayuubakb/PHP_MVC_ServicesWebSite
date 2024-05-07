@@ -21,8 +21,11 @@ a{
 }
 .informations .fields{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 5px;
+    margin-top:15px;
+    padding-bottom: 35px;
 }
 .informations .fields p{
     font-family:var(--fontSmall);
@@ -32,10 +35,19 @@ a{
 .informations .fields span{
     font-family:var(--fontBig);
     font-size: 22px;
-    color: black;
+    color: rgb(50, 50, 50);
+    font-style: italic;
 }
 .informations .fields div{
     margin-bottom: 10px;
+    flex: 0 0 50%;
+    padding-left: 35px;
+}
+.informations .fields .second{
+    border-left: solid 2px var(--green);
+}
+.informations .fields div div{
+    margin-bottom: 15px;
 }
 .informations  .edit{
     background-color: var(--green);
@@ -174,12 +186,21 @@ a{
     color: #a8761f;
     margin-bottom: 9px;
     font-size: 25px;
+    margin-left: 12px;
 }
-.commentaireCard .mess p{
+.commentaireCard .title{
+    color: rgb(36, 36, 36);
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: var(--fontBig);
+    font-size: 22px;
     padding-left: 15px;
+}
+.commentaireCard .mess .msg{
     color: rgb(50, 50, 50);
     font-family: var(--fontSmall);
     font-size: 18px;
+    padding-left: 15px;
 }
 .commentaireCard .rat .note{
     font-family: var(--fontBig);
@@ -255,14 +276,14 @@ a{
     top: -10%;
     z-index: -1;
 }
-.modifier .fieldsContainer div:not(.imgLabel){
+.modifier .fieldsContainer div:not(.imgLabel,.creneauss,.btns,.creneauss div){
     display: flex;
     flex-direction: column;
     width: 75%;
     margin-left: 12.5%;
     margin-bottom: 15px;
 }
-.modifier .fieldsContainer div:not(.imgLabel) label{
+.modifier .fieldsContainer div:not(.imgLabel,.creneauss,.btns) label{
     font-family: var(--fontSmall);
     font-size: 20px;
     color: rgb(39, 38, 38);
@@ -276,7 +297,7 @@ a{
     font-size: 18px;
     font-family: var(--fontSmall);
 }
-.modifier button{
+.modifier button:not(.btns button){
     border: none;
     background-color: var(--green);
     color: var(--white);

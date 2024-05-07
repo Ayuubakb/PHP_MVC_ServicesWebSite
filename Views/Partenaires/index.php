@@ -140,22 +140,25 @@ require("Views/Components/Nav.php");
                 if($service['Nbr_commande'] == null){
                     $service['Nbr_commande'] = 0;
                 }
-                $fullStars = round($service['Note']);
-                $halfStar = ($service['Note'] - $fullStars) >= 0.5 ? 1 : 0;
-                $emptyStars = 5 - $fullStars ;
+                if($service['Note']!=null){
+                    $fullStars = round($service['Note']);
+                    $halfStar = ($service['Note'] - $fullStars) >= 0.5 ? 1 : 0;
+                    $emptyStars = 5 - $fullStars ;
 
-                $stars = "<div style='color:$color'>";
-                for ($i = 0; $i < $fullStars; $i++) {
-                    $stars .= "&#9733;"; // Full star
+                    $stars = "<div style='color:$color'>";
+                    for ($i = 0; $i < $fullStars; $i++) {
+                        $stars .= "&#9733;"; // Full star
+                    }
+                    if ($halfStar) {
+                        $stars .= "&#189;"; // Half star
+                    }
+                    for ($i = 0; $i < $emptyStars; $i++) {
+                        $stars .= "&#9734;"; // Empty star
+                    }
+                    $stars .= "</div>";
+                }else{
+                    $stars="<div  style='color:$color'></div>";
                 }
-                if ($halfStar) {
-                    $stars .= "&#189;"; // Half star
-                }
-                for ($i = 0; $i < $emptyStars; $i++) {
-                    $stars .= "&#9734;"; // Empty star
-                }
-                $stars .= "</div>";
-
                 echo "
         <div class='reservationCard'>
             <div class='image'>
@@ -229,10 +232,10 @@ require("Views/Components/Nav.php");
             echo "
         <div class='reservationCard'>
             <div class='image'>
-                <img src='http://localhost/Bricolini/Views/public/servicePic/menageDefault.jpg'>
+                <img src='http://localhost/Bricolini/Views/public/images/{$commande['image']}'>
             </div>
             <div class='nameOfservice'>
-                <h1>{$commande['Nom']}</h1> <!-- Assuming 'id' is the name of the service -->
+                <h1>{$commande['Nom']}</h1> 
                 <p>pour : {$commande['FirstName']} {$commande['LastName']}</p> <!-- Now using the client's first and last names -->
             </div>
             <div class='additional'>
@@ -263,17 +266,32 @@ require("Views/Components/Nav.php");
                 if ($counter == 5) {
                     break;
                 }
+                if($islogged){
                 echo "
-    <div class='commentaireCard'>
-        <div class='mess'>
-            <h1>{$commentaire['Nom']}</h1>
-            <p>{$commentaire['message']}</p>
-        </div>
-        <div class='rat'>
-            <p class='note'>{$commentaire['Rating']}/5</p>
-            <p class='date'>{$commentaire['Date_post']}</p>
-        </div>
-    </div>";
+                    <div class='commentaireCard'>
+                        <div class='mess'>
+                            <h1>{$commentaire['Nom']}</h1>
+                            <p class='msg'>{$commentaire['message']}</p>
+                        </div>
+                        <div class='rat'>
+                            <p class='note'>{$commentaire['Rating']}/5</p>
+                            <p class='date'>{$commentaire['Date_post']}</p>
+                            <p class='report' onclick=\"showReclam(".$_SESSION["user_id"].",'".$type."','commentaire',".$commentaire['id'].")\"><i class='fa-solid fa-flag fa-lg'></i></p>
+                        </div>
+                    </div>";
+                }else{
+                echo "
+                    <div class='commentaireCard'>
+                        <div class='mess'>
+                            <h1>{$commentaire['Nom']}</h1>
+                            <p class='msg'>{$commentaire['message']}</p>
+                        </div>
+                        <div class='rat'>
+                            <p class='note'>{$commentaire['Rating']}/5</p>
+                            <p class='date'>{$commentaire['Date_post']}</p>
+                        </div>
+                    </div>";
+                }
                 $counter++;
             }
             ?>
@@ -304,7 +322,7 @@ require("Views/Components/Footer.php");
 .field .cr{
     padding-top:25px;
     width:50%;
-    border-left:solid 3px white;
+    border-left:solid 3px var(--green);
 }
 .field .cr div{
     margin-left:10%
@@ -322,6 +340,7 @@ require("Views/Components/Footer.php");
     font-family:var(--fontBig);
     font-size: 22px;
     color: rgb(70,70,70);
+    font-style:italic
 }
     .DeleteService button i {
     /* Add your styles here */

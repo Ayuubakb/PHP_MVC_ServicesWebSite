@@ -21,18 +21,22 @@
                 <img src="Views/public/images/<?= $profile->infos->image?>"/>
             </div>
             <div class="fields">
-                <div> 
-                    <p><span>Nom:</span> <?= $profile->infos->LastName?></p>
+                <div>
+                    <div> 
+                        <p><span>Nom:</span> <?= $profile->infos->LastName?></p>
+                    </div>
+                    <div> 
+                        <p><span>Prenom:</span>  <?= $profile->infos->FirstName?></p>
+                    </div>
                 </div>
-                <div> 
-                    <p><span>Prenom:</span>  <?= $profile->infos->FirstName?></p>
+                <div class="second">
+                    <div> 
+                        <p><span>Telephone:</span>  <?= $profile->infos->Telephone?></p>
+                    </div>
+                    <div> 
+                        <p><span>Adresse:</span>  <?= $profile->infos->Address?></p>
+                    </div> 
                 </div>
-                <div> 
-                    <p><span>Telephone:</span>  <?= $profile->infos->Telephone?></p>
-                </div>
-                <div> 
-                    <p><span>Adresse:</span>  <?= $profile->infos->Address?></p>
-                </div> 
             </div>
             <div class="edit">
                 <?php
@@ -106,7 +110,7 @@
                         <div class='commentaireCard'>
                             <div class='mess'>
                                 <h1>$comment->ln  $comment->fn</h1>
-                                <p>$comment->message</p>
+                                <p  class='msg'>$comment->message</p>
                             </div> 
                             <div class='rat'>
                                 <p class='note'>$comment->rating</p>

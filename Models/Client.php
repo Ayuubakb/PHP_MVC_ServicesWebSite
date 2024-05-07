@@ -112,20 +112,14 @@ class Client extends Model{
             }
         }
         
-        /*$sql="SELECT c.id as id,s.Nom as nom, c.message as message, c.Rating as rating, c.Date_post as datePost, p.LastName as ln, p.FirstName as fn 
-                FROM (((services s INNER JOIN reservation r ON s.id=r.Id_S) INNER JOIN commentaire c ON r.id=c.Id_R) INNER JOIN partenaire p ON p.id=s.Id_P)
-                WHERE r.Id_C=".$id." AND c.published=1 AND c.publisher='partenaire'";
-        if($rating!=0){
-            $sql.=" AND c.Rating=$rating";
-        }
-        $sql.=" ORDER BY c.id $sort";
-        $query=self::$instance->prepare($sql);
-        $query->execute();
-        $objct->commentaire=$query->fetchAll();*/
         if(sizeof($array)!=0){
             $sql="SELECT c.id as id,s.Nom as nom, c.message as message, c.Rating as rating, c.Date_post as datePost, p.LastName as ln, p.FirstName as fn 
                     FROM (((services s INNER JOIN reservation r ON s.id=r.Id_S) INNER JOIN commentaire c ON r.id=c.Id_R) INNER JOIN partenaire p ON p.id=s.Id_P)
                     WHERE c.Id_R IN (" . implode(',', $array) . ") AND c.publisher = 'partenaire'";
+            if($rating!=0){
+                $sql.=" AND c.Rating=$rating";
+            }
+            $sql.=" ORDER BY c.id $sort";
             $query=self::$instance->prepare($sql);
             $query->execute();
             $objct->commentaire=$query->fetchAll();

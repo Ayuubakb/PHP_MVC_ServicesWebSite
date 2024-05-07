@@ -1,6 +1,6 @@
 <?php
 session_start();
-$servername = "localhost";
+/*$servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "db";
@@ -70,4 +70,54 @@ if ($result) {
     echo "result: " . $result . "<br>";
 } else {
     // Handle error
+}*/
+require("../Services/connexion.php");
+$userId = $_POST['id'];
+$serviceName = $_POST['serviceName'];
+$serviceDescription = $_POST['serviceDescription'];
+$servicePrice = $_POST['servicePrice'];
+$serviceCategory = $_POST['serviceCategory'];
+$servicesousCategory = $_POST['servicesousCategory'];
+$serviceImage = "";
+$objct=new stdClass();
+if($_FILES["serviceImage"]["size"] == 0){
+    switch (strtolower($servicesousCategory)) {
+        case strtolower("Nettoyage de canapés"):
+            $serviceImage = "nettoyage_canap.webp";
+            break;
+        case strtolower("Nettoyage des surfaces"):
+            $serviceImage = "nettoyage_surfaces.webp";
+            break;
+        case strtolower("Nettoyage général"):
+            $serviceImage = "nettoyage_g.webp";
+            break;
+        case strtolower("Entretien de Gazon et Pelouse"):
+            $serviceImage = "plantation_gazon_pelouse.webp";
+            break;
+        case strtolower("Traitement de jardin"):
+            $serviceImage = "traitementjardin.webp";
+            break;
+        case strtolower("Plantation pour jardin"):
+            $serviceImage = "plantationjardin.webp";
+            break;
+    }
+    $sql="INSERT INTO services (Id_P,Nom , Description,Prix , categorie, sousCategorie,image) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt=$conn->prepare($sql);
+    $stmt->execute([$userId, $serviceName, $serviceDescription, $servicePrice, $serviceCategory, $servicesousCategory, $serviceImage]);
+    $objct->msg="Service Ajoutée";
+    echo json_encode($objct);
+}else{
+    $target_dir = "../public/images/";
+    $target_file = $target_dir . basename($_FILES["serviceImage"]["name"]);
+    $serviceImage=basename($_FILES["serviceImage"]["name"]);
+    if (move_uploaded_file($_FILES["serviceImage"]["tmp_name"], $target_file)) {
+        $sql="INSERT INTO services (Id_P,Nom , Description,Prix , categorie, sousCategorie,image) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt=$conn->prepare($sql);
+        $stmt->execute([$userId, $serviceName, $serviceDescription, $servicePrice, $serviceCategory, $servicesousCategory, $serviceImage]);
+        $objct->msg="Service Ajoutée";
+        echo json_encode($objct);
+    } else {
+        $objct->msg="Erreur";
+        echo json_encode($objct);
+    }
 }

@@ -54,8 +54,8 @@
                         <div class='commentaireCard'>
                             <div class='mess'>
                                 <h1>$commentaire->fn  $commentaire->ln</h1>
-                                <p>$commentaire->nom</p>
-                                <p>$commentaire->message</p>
+                                <p  class='title'>$commentaire->nom</p>
+                                <p  class='msg'>$commentaire->message</p>
                             </div> 
                             <div class='rat'>
                                 <p class='note' style='color:$color'>$commentaire->rating/5</p>

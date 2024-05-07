@@ -73,7 +73,8 @@ class Partenaires extends Controller
     {
         session_start();
         $this->loadModel("Partenaire");
-        $this->loadView("addservice");
+        $metier=$this->Partenaire->getMetier($_SESSION['user_id']);
+        $this->loadView("addservice",compact("metier"));
     }
     public function updateInfos()
     {

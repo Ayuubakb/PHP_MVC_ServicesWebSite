@@ -51,7 +51,8 @@ class Partenaire extends Model
 
     public function interventions(int $id)
     {
-        $sql = "SELECT * FROM reservation 
+        $sql = "SELECT client.LastName, client.FirstName, services.image, reservation.id, services.Nom, reservation.Statuts, reservation.Date_reserv
+                 FROM reservation 
                 INNER JOIN services ON reservation.Id_S = services.id
                 INNER JOIN client ON reservation.Id_C = client.id
                 WHERE Id_S in (SELECT id FROM services WHERE Id_P = $id)
@@ -99,7 +100,7 @@ class Partenaire extends Model
         $sql = "SELECT reservation.*, client.*,services.* FROM reservation 
               INNER JOIN services ON reservation.Id_S = services.id
            INNER JOIN client ON reservation.Id_C = client.id 
-           WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = 1) limit 3";
+           WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = $id) limit 3";
         $query = self::$instance->prepare($sql);
         $query->execute();
         return $query->fetchAll();
@@ -254,6 +255,11 @@ class Partenaire extends Model
         $query=self::$instance->prepare($sql);
         $query->execute();
     }
-}
+    public function getMetier($id){
+        $sql="SELECT Metier From partenaire Where id=$id";
+        $query=self::$instance->prepare($sql);
+        $query->execute();
+    }
+}   
 
 ?>
