@@ -291,7 +291,6 @@ footer .mainList :not(.title){
 }
 .sec{
     min-height: 100vh;
-    padding-bottom: 25px;
     position: relative;
 }
 footer .end{

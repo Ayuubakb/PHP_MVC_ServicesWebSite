@@ -16,10 +16,10 @@
 require __DIR__ . "/../Components/Nav.php";
 ?>
 <div class="Traitement">
-    <h1>Waiting : </h1>
+    <h1>En Attente : </h1>
     <?php
     if(count($commandesnontraitees) == 0) {
-        echo "<p>No commands to show.</p>";
+        echo "<p class='aucune'>Aucune Commande en attente.</p>";
     }
     foreach ($commandesnontraitees as $commande): ?>
         <div class='commande'>
@@ -34,9 +34,9 @@ require __DIR__ . "/../Components/Nav.php";
 </div>
 
 <section class="sec">
-    <div class="reservationsWrapper">
+    <div class="commande">
         <h1>Commandes :</h1>
-        <div class="reservations">
+        <div class="commandesAll">
             <?php // Debugging
 foreach ($interventions as $commande) {
     $status = "";
@@ -60,7 +60,7 @@ foreach ($interventions as $commande) {
                     break;
             }
 //            show only the accepted or refused commands
-            if($commande['Statuts']!=0){
+            if($commande['Statuts']==1){
                 echo "
         <div class='reservationCard'>
             <div class='image'>
@@ -91,15 +91,11 @@ require __DIR__ . "/../Components/Footer.php";
 </body>
 </html>
 <style>
-    .commande {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 20px;
-    background-color: var(--yellow);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  
+.commande h1{
+    width:85%;
+    margin-left:7.5%
 }
-
 .commande h2 {
     margin-top: 0;
     color: var(--green);
@@ -134,11 +130,23 @@ require __DIR__ . "/../Components/Footer.php";
 }
 .Traitement{
 /*    make the div 70 % of the page and center it */
-    width: 70%;
-    margin: auto;
+    width: 85%;
+    margin-left: 7.5%;
     margin-top: 50px;
 /*
 */
+}
+.aucune{
+    width:50%;
+    margin-left:25%;
+    text-align:center;
+    padding: 10px;
+    font-family:var(--fontSmall);
+    font-size:25px;
+    background-color:var(--orange);
+    border-radius:15px;
+    margin-top:25px;
+    color:white;
 }
 h1{
     margin-bottom: 9px;
@@ -175,19 +183,21 @@ h1{
                 }
             });
             //send the mail with the infos about the Client to the partner
-            $.ajax({
-                url: 'http://localhost/Bricolini/Partenaires/sendMail',
-                method: 'POST',
-                data: { id: id},
-                success: function(response) {
-                    console.log(response);
-                    //reload the page
+            if(status==1){
+                $.ajax({
+                    url: 'http://localhost/Bricolini/Partenaires/sendMail',
+                    method: 'POST',
+                    data: { id: id},
+                    success: function(response) {
+                        console.log(response);
+                        //reload the page
 
-                },
-                error: function() {
-                    alert('Error sending mail. Please try again.');
-                }
-            });
+                    },
+                    error: function() {
+                        alert('Error sending mail. Please try again.');
+                    }
+                });
+            }
         });
     });
 </script>

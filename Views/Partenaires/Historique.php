@@ -15,7 +15,7 @@
 <?php
 
 require __DIR__ . "/../Components/Nav.php";
-print_r($commented)
+
 ?>
 <section class="sec">
     <div  class="formComment" id="formComment">
@@ -70,9 +70,8 @@ print_r($commented)
             Historique()">OK</button>
         </div>
     </div>
-    <div class="reservationsWrapper">
-        <h1>Commandes :</h1>
-        <div class="reservations">
+    <div class="commande">
+        <div class="commandesAll">
 
             <?php // Debugging
             foreach ($historique as $commande) {

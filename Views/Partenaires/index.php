@@ -19,94 +19,95 @@ require("Views/Components/Nav.php");
         <div class="image">
             <img src="http://localhost/Bricolini/Views/public/images/<?= $profile['image'] ?>"/>
         </div>
-        <div class="fields">
-            <div>
-                <p><span>Last Name:</span> <?= $profile['LastName'] ?></p>
-            </div>
-            <div>
-                <p><span>First Name:</span> <?= $profile['FirstName'] ?></p>
-            </div>
-            <div>
-                <p><span>Profession:</span> <?= $profile['Metier'] ?></p>
-            </div>
-            <div>
-                <p><span>City:</span> <?= $profile['Ville'] ?></p>
-            </div>
-            <div>
-                <p><span>Years of Experience:</span> <?= $profile['YearExperience'] ?></p>
-            </div>
-            <div>
-                <p><span>Note:</span>
-                    <?php
-                    for ($i = 0; $i < $profile['Note']; $i++) {
-                        echo "&#9733;";
-                        // This is the HTML entity for a star
-                        //write the number of stars according to the note between 1 and 5
+        <div class="field">
+            <div class="gen">
+                <div>
+                    <p><span>Last Name:</span> <?= $profile['LastName'] ?></p>
+                </div>
+                <div>
+                    <p><span>First Name:</span> <?= $profile['FirstName'] ?></p>
+                </div>
+                <div>
+                    <p><span>Profession:</span> <?= $profile['Metier'] ?></p>
+                </div>
+                <div>
+                    <p><span>City:</span> <?= $profile['Ville'] ?></p>
+                </div>
+                <div>
+                    <p><span>Years of Experience:</span> <?= $profile['YearExperience'] ?></p>
+                </div>
+                <div>
+                    <p><span>Note:</span>
+                        <?php
+                        for ($i = 0; $i < $profile['Note']; $i++) {
+                            echo "&#9733;";
+                            // This is the HTML entity for a star
+                            //write the number of stars according to the note between 1 and 5
 
-                    }
-                    for ($i = $profile['Note']; $i < 5; $i++) {
-                        echo "&#9734;"; // This is the HTML entity for an empty star
+                        }
+                        for ($i = $profile['Note']; $i < 5; $i++) {
+                            echo "&#9734;"; // This is the HTML entity for an empty star
 
+                        }
+                        echo "(" . $profile['Note'] . "/5)";
+                        ?>
+                    </p>
+                </div>
+                <div>
+                    <p><span>Number of Commands:</span> <?= $profile['Nbr_commande'] ?></p>
+                </div>
+                <div>
+                    <p><span>Email:</span> <?= $profile['Email'] ?></p>
+                </div>
+                <div>
+                    <p><span>Telephone:</span> <?= $profile['Telephone'] ?></p>
+                </div>
+            </div> 
+            <div class="cr"> 
+                <div><span>Creneaux:</span><br></br></div>
+                <div>
+                <?php
+                $new_creneaux = explode("/", $profile['Creneaux']);
+                foreach($new_creneaux as $creneaux){
+                    $parts = explode(":", $creneaux);
+                    if(count($parts) == 2) {
+                        $day = $parts[0];
+                        $time_parts = explode("-", $parts[1]);
+                        if(count($time_parts) == 2) {
+                            $from = $time_parts[0];
+                            $to = $time_parts[1];
+                            switch($day){
+                                case "Monday":
+                                    $day="Lundi";
+                                    break;
+                                case "Tuesday":
+                                    $day="Mardi";
+                                    break;
+                                case "Thursday":
+                                    $day="Jeudi";
+                                    break;
+                                case "Wednesday":
+                                    $day="Mercredi";
+                                    break;
+                                case "Friday":
+                                    $day="Vendredi";
+                                    break;
+                                case "Saturday":
+                                    $day="Samedi";
+                                    break;
+                                case "Sunday":
+                                    $day="Dimanche";
+                                    break;
+                            }
+                            echo "<p> ".$day." De : ".$from." à ".$to."</p>";
+                        }
                     }
-                    echo "(" . $profile['Note'] . "/5)";
-                    ?>
-                </p>
+                }
+                ?>
+                </div>
             </div>
-            <div>
-                <p><span>Number of Commands:</span> <?= $profile['Nbr_commande'] ?></p>
-            </div>
-            <div>
-                <p><span>Email:</span> <?= $profile['Email'] ?></p>
-            </div>
-            <div>
-                <p><span>Telephone:</span> <?= $profile['Telephone'] ?></p>
-            </div>
-            <div>
-    <span>Creneaux:</span>
-    <pre>
-    <?php
-    echo "\n";
-    echo "\n";
-    $new_creneaux = explode("/", $profile['Creneaux']);
-foreach($new_creneaux as $creneaux){
-    $parts = explode(":", $creneaux);
-    if(count($parts) == 2) {
-        $day = $parts[0];
-        $time_parts = explode("-", $parts[1]);
-        if(count($time_parts) == 2) {
-            $from = $time_parts[0];
-            $to = $time_parts[1];
-            switch($day){
-                case "Monday":
-                    $day="Lundi";
-                    break;
-                case "Tuesday":
-                    $day="Mardi";
-                    break;
-                case "Thursday":
-                    $day="Jeudi";
-                    break;
-                case "Wednesday":
-                    $day="Mercredi";
-                    break;
-                case "Friday":
-                    $day="Vendredi";
-                    break;
-                case "Saturday":
-                    $day="Samedi";
-                    break;
-                case "Sunday":
-                    $day="Dimanche";
-                    break;
-            }
-            echo " ".$day." De : ".$from." à ".$to."\n";
-        }
-    }
-}
-    ?>
-    </pre>
-</div>
         </div>
+    
 
         <div class="edit">
             <?php
@@ -173,10 +174,14 @@ foreach($new_creneaux as $creneaux){
                 </div>
                 <div>
                     <p>Number of Commands: {$service['Nbr_commande']}</p>
-                </div>
+                </div>";
+                if($islogged && !strcmp($type, "partenaire")){
+                    echo "
                  <div class='DeleteService'>
                     <button onclick='deleteService({$service['id']})' style='background-color:transparent;border:none'><i class='fa-solid fa-trash fa-xl'></i></a>
-                </div>
+                </div>";
+                }
+                echo "
             </div>
                
             
@@ -282,6 +287,42 @@ require("Views/Components/Footer.php");
 </body>
 </html>
 <style>
+
+.field{
+    display:flex;
+    padding: 15px;
+}
+.field .gen{
+    flex:0 0 50%;
+    display: flex;
+    flex-direction:column;
+    gap:0
+}
+.field .gen div{
+    margin-bottom:10px
+}
+.field .cr{
+    padding-top:25px;
+    width:50%;
+    border-left:solid 3px white;
+}
+.field .cr div{
+    margin-left:10%
+}
+.field .cr p{
+    margin-left:15%;
+    margin-bottom:15px;
+}
+ .field p{
+    font-family:var(--fontSmall);
+    font-size: 20px;
+    color: var(--white);
+}
+ .field span{
+    font-family:var(--fontBig);
+    font-size: 22px;
+    color: rgb(70,70,70);
+}
     .DeleteService button i {
     /* Add your styles here */
     font-size: 20px;

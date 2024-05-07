@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $fin=$tmp[1];
                 $selectedDate = date('l', strtotime($Date_reserv));
                
-                if(!strcmp($jour,$selectedDate) && (intval($debut)<=intval($de) && intval($fin)>=intval($a)) ){ 
+                if(!strcmp($jour,$selectedDate) && (intval($debut)<=intval($de) && intval($fin)>=intval($a)) && (intval($fin)>=intval($de) && intval($debut)<=intval($a)) ){ 
                     $inCreneuax=true;
                 }
             }
@@ -46,7 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         WHERE s.id = $Id_S 
         AND r.Date_reserv = '$Date_reserv'
         AND '$de' between r.heureDe and r.heureA 
-        AND '$a' between r.heureDe and r.heureA";
+        AND '$a' between r.heureDe and r.heureA
+        AND r.Statuts!=2";
         //trairtement disponibilite
         if($stmt=$conn->prepare($sql)){
             $stmt->execute();

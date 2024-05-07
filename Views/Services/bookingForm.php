@@ -65,7 +65,7 @@
                 var currentDate = new Date().toISOString().split('T')[0]; 
                 var selectedDate = $('#date').val();
                 if (selectedDate < currentDate) {
-                    alert('vous ne pouvez pas réserver une date passée');
+                    document.getElementById("errorP").innerHTML='Vous ne pouvez pas réserver une date passée'
                     e.preventDefault(); 
                 }
             });
@@ -83,11 +83,11 @@
             </div>
             <div class="form-group">
                 <label for="hours-from">Heure de début:</label>
-                <input type="time" name="hours_from" id="hours-from" required>
+                <input type="time" name="hours_from" id="hours_from" required>
             </div>
             <div class="form-group">
                 <label for="hours-to">Heure de fin:</label>
-                <input type="time" name="hours_to" id="hours-to" required>
+                <input type="time" name="hours_to" id="hours_to" required>
             </div>
             <input type="hidden" name="Id_S" value="<?= $_POST['Id_S'] ?>">
             <input type="hidden" name="Statuts" value="0">
@@ -104,14 +104,22 @@
     <script>
         document.getElementById("formres").addEventListener("submit",async function(e) {
             e.preventDefault();
-            const response = await fetch("http://localhost/Bricolini/Views/Services/reservationHandler.php", {
-                method: "POST",
-                body: new FormData(this)
-            });
-            await response.text().then(
-                (data)=>{
-                    document.getElementById("errorP").innerHTML=data;
-                })
+            let hto=document.getElementById("hours_to").value;
+            let hfrom=document.getElementById("hours_from").value;
+            hto=hto.split(":")[0]
+            hfrom=hfrom.split(":")[0]
+            if(parseInt(hto) > parseInt(hfrom)){
+                const response = await fetch("http://localhost/Bricolini/Views/Services/reservationHandler.php", {
+                    method: "POST",
+                    body: new FormData(this)
+                });
+                await response.text().then(
+                    (data)=>{
+                        document.getElementById("errorP").innerHTML=data;
+                    })
+            }else{
+                document.getElementById("errorP").innerHTML="Creneaux Horarire Absurde"
+            }
         });
     </script>
 </body>
