@@ -6,6 +6,7 @@
     <title>Entretien de Gazon et Pelouse</title>
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/styleoffre.css">
+    <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <?php include 'Views/Components/Nav.php'; ?>
