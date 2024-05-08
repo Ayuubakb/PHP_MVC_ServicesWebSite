@@ -158,7 +158,9 @@ class Partenaire extends Model
             $sql = "SELECT reservation.*, client.*,services.* FROM reservation 
                     INNER JOIN services ON reservation.Id_S = services.id
                     INNER JOIN client ON reservation.Id_C = client.id 
-                    WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = $id) AND reservation.Statuts = $status ORDER BY Date_reserv $order";
+                    WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = $id) AND reservation.Statuts = $status
+                    AND column_name != client.id AND column_name != services.id
+                    ORDER BY Date_reserv $order";
         }
         $query = self::$instance->prepare($sql);
         $query->execute();

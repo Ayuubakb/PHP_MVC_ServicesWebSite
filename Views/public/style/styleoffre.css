@@ -29,17 +29,19 @@
 
         .service-image {
             margin-right: 16px;
+            padding-top: 10px;
         }
 
         .service-image img {
-            width: 100px;
-            height: auto;
+            width: 150px;
+            height: 150px;
             border-radius: 4px;
         }
 
         .service-description {
             flex: 1;
             color: #333;
+            padding-top: 40px;
         }
         .service-description h2{
             font-family: 'Trebuchet MS';
@@ -62,9 +64,19 @@
         }
         .priceReserve{
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-around;
             flex: 0 0 25%;
+        }
+        .priceReserve .note{
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border-radius: 50%;
+            border: solid 2px var(--green);
         }
         .reserve-button {
             padding: 8px 16px;

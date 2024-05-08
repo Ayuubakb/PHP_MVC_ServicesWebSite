@@ -9,7 +9,7 @@ class Service extends Model {
     }
 
     public function getService(String $nom) {
-        $sql = "SELECT * FROM " . $this->table . " WHERE Nom = '" . $nom."'";
+        $sql = "SELECT * FROM " . $this->table . " WHERE s.Nom = '" . $nom."'";
         $query = self::$instance->prepare($sql);
         $query->execute();
         return $query->fetchAll();
@@ -17,7 +17,7 @@ class Service extends Model {
 
     public function get_Offre(String $nom){
         
-        $sql = "SELECT * FROM " . $this->table . " WHERE sousCategorie = '" . $nom."'";
+        $sql = "SELECT s.*, p.LastName, p.FirstName  FROM " . $this->table . " s INNER JOIN partenaire p ON s.Id_P=p.id WHERE sousCategorie = '" . $nom."'";
         
         $query = self::$instance->prepare($sql);
         $query->execute();

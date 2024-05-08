@@ -23,11 +23,12 @@
                 <div class="service-description">
                     <h2 class="service-title"><?= $service['Nom'] ?></h2>
                     <p><?= $service['Description'] ?></p>
+                    <p>Par : <?= $service['FirstName']." ".$service['LastName'] ?></p>
                 </div>
                 <div class="priceReserve">
-                    <p class="service-price"><?= $service['Prix'] ?> DH</p>
+                    <div><p class="service-price note"><?= $service['Note']!=null?$service['Note']:"-" ?> / 5</p></div>
+                    <div><p class="service-price"><?= $service['Prix'] ?> DH</p></div>
                     <input type="hidden" name="Id_S" value="<?= $service['id'] ?>">
-                
                     <a href="http://localhost/Bricolini/Views/Services/bookingForm.php" style="text-decoration: none;">
                         <button class="reserve-button">Réserver</button>
                     </a>

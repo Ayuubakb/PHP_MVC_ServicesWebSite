@@ -27,7 +27,7 @@ require __DIR__ . "/../Components/Nav.php";
             <p id="err" class="err"></p>
             <div>
                 <input type="hidden" id="typeUser" value="<?= $_SESSION["user_type"] ?>"/>
-                <input type="hidden" id="resId"/>
+                <input type="hidden" id="resId" />
                 <label>Evaluation : </label>
                 <select name="rating" required id="rating">
                     <option value=0>0</option>
