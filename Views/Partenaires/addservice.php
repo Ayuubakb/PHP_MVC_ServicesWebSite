@@ -40,7 +40,7 @@ require("Views/Components/Nav.php");
         <!--        jardennage or menage -->
                 <select id="serviceCategory" name="serviceCategory" required>
                     <?php
-                        if(!strcmp($metier,"Menage")){
+                        if(!strcmp($metier[0],"Menage")){
                             echo "
                             <option value='Menage'>Nettoyage</option>";
                         }else{
@@ -223,7 +223,7 @@ document.getElementById("editForm").addEventListener("submit",async function(e){
         background-color:var(--green);
         font-family:var(--fontSmall);
         width:50%;
-        margin-left:10%;
+        margin-left:0%;
         border-radius:15px;
         color:white;
         margin-bottom:15px;

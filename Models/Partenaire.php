@@ -259,6 +259,7 @@ class Partenaire extends Model
         $sql="SELECT Metier From partenaire Where id=$id";
         $query=self::$instance->prepare($sql);
         $query->execute();
+        return $query->fetch();
     }
 }   
 

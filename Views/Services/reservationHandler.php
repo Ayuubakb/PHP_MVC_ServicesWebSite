@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $Cr;
             while ($stmt->fetch()) {
                 $Cr=$creneaux;
+                $Cr=rtrim($Cr,"/");
             }
             $days=explode("/",$Cr);
             foreach ($days as $day) {
@@ -34,7 +35,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $debut=$tmp[0];
                 $fin=$tmp[1];
                 $selectedDate = date('l', strtotime($Date_reserv));
-               
+                switch($selectedDate){
+                    case "Monday":
+                        $selectedDate="Lundi";
+                        break;
+                    case "Tuesday":
+                        $selectedDate="Mardi";
+                        break;
+                    case "Wednesday":
+                        $selectedDate="Mercredi";
+                        break;
+                    case "Thursday":
+                        $selectedDate="Jeudi";
+                        break;
+                    case "Friday":
+                        $selectedDate="Vendredi";
+                        break;
+                    case "Saturday":
+                        $selectedDate="Samedi";
+                        break;
+                    case "Sunday":
+                        $selectedDate="Dimanche";
+                        break;
+                }
                 if(!strcmp($jour,$selectedDate) && (intval($debut)<=intval($de) && intval($fin)>=intval($a)) && (intval($fin)>=intval($de) && intval($debut)<=intval($a)) ){ 
                     $inCreneuax=true;
                 }

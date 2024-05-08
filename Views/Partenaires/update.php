@@ -82,119 +82,119 @@ require("Views/Components/Nav.php");
                     <div class='timeslot'>
                         <div>
                             <label>Lundi :
-                            <input id="lundiDay" type='checkbox' name='day[]' value='Monday' <?= isset($array['Monday'])? 'checked' :null   ?>/>
+                            <input id="lundiDay" type='checkbox' name='day[]' value='Lundi' <?= isset($array['Lundi'])? 'checked' :null   ?>/>
                             </label>
                         </div>
-                        <div <?= !isset($array['Monday'])? "style='display:none;'":null   ?> class="heureContainer" id="lundiHeure">
+                        <div <?= !isset($array['Lundi'])? "style='display:none;'":null   ?> class="heureContainer" id="lundiHeure">
                             <div>
                                 <label>From:</label>
-                                <input type='time' name='from[]' value='<?=isset($array['Monday']->from)?$array['Monday']->from:null ?>'/>
+                                <input type='time' name='from[]' value='<?=isset($array['Lundi']->from)?$array['Lundi']->from:null ?>'/>
                             </div>
                             <div>
                                 <label>To:</label>
-                                <input type='time' name='to[]'  value='<?=isset($array['Monday']->to)?$array['Monday']->to:null ?>'/>
+                                <input type='time' name='to[]'  value='<?=isset($array['Lundi']->to)?$array['Lundi']->to:null ?>'/>
                             </div>
                         </div>
                     </div>
                     <div class='timeslot'>
                         <div>
                             <label>Mardi :
-                            <input id="mardiDay" type='checkbox' name='day[]' value='Tuesday' <?= isset($array['Tuesday'])? 'checked' :null   ?>/>
+                            <input id="mardiDay" type='checkbox' name='day[]' value='Mardi' <?= isset($array['Mardi'])? 'checked' :null   ?>/>
                             </label>
                         </div>
-                        <div <?= !isset($array['Tuesday'])? "style='display:none;'" :null   ?> class="heureContainer" id="mardiHeure">
+                        <div <?= !isset($array['Mardi'])? "style='display:none;'" :null   ?> class="heureContainer" id="mardiHeure">
                             <div>
                                 <label>From:</label>
-                                <input type='time' name='from[]' value='<?=isset($array['Tuesday']->from)?$array['Tuesday']->from:null ?>'/>
+                                <input type='time' name='from[]' value='<?=isset($array['Mardi']->from)?$array['Mardi']->from:null ?>'/>
                             </div>
                             <div>
                                 <label>To:</label>
-                                <input type='time' name='to[]' value='<?=isset($array['Tuesday']->to)?$array['Tuesday']->to:null ?>'/>
+                                <input type='time' name='to[]' value='<?=isset($array['Mardi']->to)?$array['Mardi']->to:null ?>'/>
                             </div>
                         </div>
                     </div>
                     <div class='timeslot'>
                         <div>
                             <label>Mercredi :
-                            <input id="mercrediDay" type='checkbox' name='day[]' value='Wednesday' <?= isset($array['Wednesday'])!=null? 'checked' :null   ?>/>
+                            <input id="mercrediDay" type='checkbox' name='day[]' value='Mercredi' <?= isset($array['Mercredi'])!=null? 'checked' :null   ?>/>
                             </label>
                         </div>
-                        <div <?= !isset($array['Wednesday'])? "style='display:none;'" :null   ?> class="heureContainer" id="mercrediHeure">
+                        <div <?= !isset($array['Mercredi'])? "style='display:none;'" :null   ?> class="heureContainer" id="mercrediHeure">
                             <div>
                                 <label>From:</label>
-                                <input type='time' name='from[]' value='<?=isset($array['Wednesday']->from)?$array['Wednesday']->from:null ?>'/>
+                                <input type='time' name='from[]' value='<?=isset($array['Mercredi']->from)?$array['Mercredi']->from:null ?>'/>
                             </div>
                             <div>
                                 <label>To:</label>
-                                <input type='time' name='to[]' value='<?=isset($array['Wednesday']->to)?$array['Wednesday']->to:null ?>'/>
+                                <input type='time' name='to[]' value='<?=isset($array['Mercredi']->to)?$array['Mercredi']->to:null ?>'/>
                             </div>
                         </div>
                     </div>
                     <div class='timeslot'>
                         <div>
                             <label>Jeudi :
-                            <input id="jeudiDay" type='checkbox' name='day[]' value='Thursday' <?= isset($array['Thursday'])? 'checked' :null   ?>/>
+                            <input id="jeudiDay" type='checkbox' name='day[]' value='Jeudi' <?= isset($array['Jeudi'])? 'checked' :null   ?>/>
                             </label>
                         </div>
-                        <div <?= !isset($array['Thursday'])? "style='display:none;'" :null   ?> class="heureContainer" id="jeudiHeure">
+                        <div <?= !isset($array['Jeudi'])? "style='display:none;'" :null   ?> class="heureContainer" id="jeudiHeure">
                             <div>
                                 <label>From:</label>
-                                <input type='time' name='from[]' value='<?=isset($array['Thursday']->from)?$array['Thursday']->from:null ?>'/>
+                                <input type='time' name='from[]' value='<?=isset($array['Jeudi']->from)?$array['Jeudi']->from:null ?>'/>
                             </div>
                             <div>
                                 <label>To:</label>
-                                <input type='time' name='to[]' value='<?=isset($array['Thursday']->to)?$array['Thursday']->to:null ?>'/>
+                                <input type='time' name='to[]' value='<?=isset($array['Jeudi']->to)?$array['Jeudi']->to:null ?>'/>
                             </div>
                         </div>
                     </div>
                     <div class='timeslot'>
                         <div>
                             <label>Vendredi :
-                            <input id="vendrediDay" type='checkbox' name='day[]' value='Friday' <?= isset($array['Friday'])!=null? 'checked' :null   ?>/>
+                            <input id="vendrediDay" type='checkbox' name='day[]' value='Vendredi' <?= isset($array['Vendredi'])!=null? 'checked' :null   ?>/>
                             </label>
                         </div>
-                        <div <?= !isset($array['Friday'])? "style='display:none;'" :null   ?> class="heureContainer" id="vendrediHeure">
+                        <div <?= !isset($array['Vendredi'])? "style='display:none;'" :null   ?> class="heureContainer" id="vendrediHeure">
                             <div>
                                 <label>From:</label>
-                                <input type='time' name='from[]' value='<?=isset($array['Friday']->from)?$array['Friday']->from:null ?>'/>
+                                <input type='time' name='from[]' value='<?=isset($array['Vendredi']->from)?$array['Vendredi']->from:null ?>'/>
                             </div>
                             <div>
                                 <label>To:</label>
-                                <input type='time' name='to[]' value='<?=isset($array['Friday']->to)?$array['Friday']->to:null ?>'/>
+                                <input type='time' name='to[]' value='<?=isset($array['Vendredi']->to)?$array['Vendredi']->to:null ?>'/>
                             </div>
                         </div>
                     </div>
                     <div class='timeslot'>
                         <div>
                             <label>Samedi :
-                            <input id="samediDay" type='checkbox' name='day[]' value='Saturday' <?= isset($array['Saturday'])? 'checked' :null   ?>/>
+                            <input id="samediDay" type='checkbox' name='day[]' value='Samedi' <?= isset($array['Samedi'])? 'checked' :null   ?>/>
                             </label>
                         </div>
-                        <div <?= !isset($array['Saturday'])? "style='display:none;'" :null   ?> class="heureContainer" id="samediHeure">
+                        <div <?= !isset($array['Samedi'])? "style='display:none;'" :null   ?> class="heureContainer" id="samediHeure">
                             <div>
                                 <label>From:</label>
-                                <input type='time' name='from[]' value='<?=isset($array['Saturday']->from)?$array['Saturday']->from:null ?>'/>
+                                <input type='time' name='from[]' value='<?=isset($array['Samedi']->from)?$array['Samedi']->from:null ?>'/>
                             </div>
                             <div>
                                 <label>To:</label>
-                                <input type='time' name='to[]' value='<?=isset($array['Saturday']->to)?$array['Saturday']->to:null ?>'/>
+                                <input type='time' name='to[]' value='<?=isset($array['Samedi']->to)?$array['Samedi']->to:null ?>'/>
                             </div>
                         </div>
                     </div>
                     <div class='timeslot'>
                         <div>
                             <label>Dimanche :
-                            <input id="dimancheDay" type='checkbox' name='day[]' value='Sunday' <?= isset($array['Sunday'])? 'checked' :null   ?>/>
+                            <input id="dimancheDay" type='checkbox' name='day[]' value='Dimanche' <?= isset($array['Dimanche'])? 'checked' :null   ?>/>
                             </label>
                         </div>
-                        <div <?= !isset($array['Sunday'])? "style='display:none;'" :null ?> class="heureContainer" id="dimacheHeure">
+                        <div <?= !isset($array['Dimanche'])? "style='display:none;'" :null ?> class="heureContainer" id="dimancheHeure">
                             <div>
                                 <label>From:</label>
-                                <input type='time' name='from[]' value='<?=isset($array['Sunday']->from)?$array['Sunday']->from:null ?>'/>
+                                <input type='time' name='from[]' value='<?=isset($array['Dimanche']->from)?$array['Dimanche']->from:null ?>'/>
                             </div>
                             <div>
                                 <label>To:</label>
-                                <input type='time' name='to[]' value='<?=isset($array['Sunday']->to)?$array['Sunday']->to:null ?>'/>
+                                <input type='time' name='to[]' value='<?=isset($array['Dimanche']->to)?$array['Dimanche']->to:null ?>'/>
                             </div>
                         </div>
                     </div>

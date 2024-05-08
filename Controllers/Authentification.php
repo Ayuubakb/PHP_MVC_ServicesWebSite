@@ -25,19 +25,19 @@ class Authentification extends Controller {
                 $days=$_POST["days"];
                 $Creneanux="";
                 foreach($days as $day){
-                    if(!strcmp($day,"Lundi"))
+                    if(!strcmp($day,"Monday"))
                         $Creneanux.="Lundi:".$_POST["lundifrom"]."-".$_POST["lundito"]."/";
-                    if(!strcmp($day,"Mardi"))
+                    if(!strcmp($day,"Tuesday"))
                         $Creneanux.="Mardi:".$_POST["mardifrom"]."-".$_POST["mardito"]."/";
-                    if(!strcmp($day,"Mercredi"))
+                    if(!strcmp($day,"Wednesday"))
                         $Creneanux.="Mercredi:".$_POST["mercredifrom"]."-".$_POST["mercredito"]."/";
-                    if(!strcmp($day,"Jeudi"))
+                    if(!strcmp($day,"Thursday"))
                         $Creneanux.="Jeudi:".$_POST["jeudifrom"]."-".$_POST["jeudito"]."/";
-                    if(!strcmp($day,"Vendredi"))
+                    if(!strcmp($day,"Friday"))
                         $Creneanux.="Vendredi:".$_POST["vendredifrom"]."-".$_POST["vendredito"]."/";
-                    if(!strcmp($day,"Samedi"))
+                    if(!strcmp($day,"Saturday"))
                         $Creneanux.="Samedi:".$_POST["samedifrom"]."-".$_POST["samedito"]."/";
-                    if(!strcmp($day,"Dimanche"))
+                    if(!strcmp($day,"Sunday"))
                         $Creneanux.="Dimanche:".$_POST["dimanchefrom"]."-".$_POST["dimancheto"]."/";
                 }
                 $data["Creneaux"]=$Creneanux;

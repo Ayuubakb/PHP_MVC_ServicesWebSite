@@ -104,33 +104,37 @@
             <h1 style="color:#FFB534">Commentaire :</h1>
             <div class="commentaires">
                 <?php
-                foreach($profile->commentaire as $comment){
-                    if($islogged){
-                        echo "
-                        <div class='commentaireCard'>
-                            <div class='mess'>
-                                <h1>$comment->ln  $comment->fn</h1>
-                                <p  class='msg'>$comment->message</p>
-                            </div> 
-                            <div class='rat'>
-                                <p class='note'>$comment->rating</p>
-                                <p class='date'>$comment->datePost</p>
-                                <p class='report' onclick=\"showReclam(".$_SESSION["user_id"].",'".$type."','commentaire',".$comment->id.")\"><i class='fa-solid fa-flag fa-lg'></i></p>
-                            </div> 
-                        </div>";
-                    }else{
-                        echo "
-                        <div class='commentaireCard'>
-                            <div class='mess'>
-                                <h1>$comment->nom</h1>
-                                <p>$comment->message</p>
-                            </div> 
-                            <div class='rat'>
-                                <p class='note'>$comment->rating</p>
-                                <p class='date'>$comment->datePost</p>
-                            </div> 
-                        </div>";
+                if(count($profile->commentaire)!=0){
+                    foreach($profile->commentaire as $comment){
+                        if($islogged){
+                            echo "
+                            <div class='commentaireCard'>
+                                <div class='mess'>
+                                    <h1>$comment->ln  $comment->fn</h1>
+                                    <p  class='msg'>$comment->message</p>
+                                </div> 
+                                <div class='rat'>
+                                    <p class='note'>$comment->rating</p>
+                                    <p class='date'>$comment->datePost</p>
+                                    <p class='report' onclick=\"showReclam(".$_SESSION["user_id"].",'".$type."','commentaire',".$comment->id.")\"><i class='fa-solid fa-flag fa-lg'></i></p>
+                                </div> 
+                            </div>";
+                        }else{
+                            echo "
+                            <div class='commentaireCard'>
+                                <div class='mess'>
+                                    <h1>$comment->nom</h1>
+                                    <p>$comment->message</p>
+                                </div> 
+                                <div class='rat'>
+                                    <p class='note'>$comment->rating</p>
+                                    <p class='date'>$comment->datePost</p>
+                                </div> 
+                            </div>";
+                        }
                     }
+                }else{
+                    echo "<p class='aucune'>Pas de commentaire pour le moment.</p>";
                 }
                 ?>
             </div>
@@ -141,5 +145,20 @@
     ?>
 </body>
 </html>
+<style>
+.aucune{
+    width:50%;
+    margin-left:25%;
+    text-align:center;
+    padding: 10px;
+    font-family:var(--fontSmall);
+    font-size:25px;
+    background-color:var(--orange);
+    border-radius:15px;
+    margin-top:25px;
+    margin-bottom:25px;
+    color:white;
+}
+</style>
 
 

@@ -37,50 +37,52 @@ require __DIR__ . "/../Components/Nav.php";
         <h1>Commandes :</h1>
         <div class="commandesAll">
             <?php // Debugging
-foreach ($interventions as $commande) {
-    $status = "";
-            $status="";
-            switch ($commande['Statuts']){
-                case 0:
-                    $status="En Attente";
-                    $color="gray";
-                    break;
-                case 1:
-                    $status="Accepté";
-                    $color="lightgreen";
-                    break;
-                case 2:
-                    $status="Refusé";
-                    $color="red";
-                    break;
-                case 3:
-                    $status="Faite";
-                    $color="#65B741";
-                    break;
+            if(count($interventions) == 0) {
+                echo "<h2 class='aucune' style='color:white;'>Aucune Commande Acceptée.</h2>";
             }
-//            show only the accepted or refused commands
-            if($commande['Statuts']==1){
-                echo "
-        <div class='reservationCard'>
-            <div class='image'>
-                <img src='http://localhost/Bricolini/Views/public/images/{$commande['image']}'/>
-            </div>
-            <div class='nameOfservice'>
-                <h1>{$commande['Nom']}</h1> 
-                <p>pour : {$commande['FirstName']} {$commande['LastName']}</p> <!-- Now using the client's first and last names -->
-            </div>
-            <div class='additional'>
-                <div>
-                    <p> {$commande['Date_reserv']}</p>
+    foreach ($interventions as $commande) {
+        $status = "";
+                $status="";
+                switch ($commande['Statuts']){
+                    case 0:
+                        $status="En Attente";
+                        $color="gray";
+                        break;
+                    case 1:
+                        $status="Accepté";
+                        $color="lightgreen";
+                        break;
+                    case 2:
+                        $status="Refusé";
+                        $color="red";
+                        break;
+                    case 3:
+                        $status="Faite";
+                        $color="#65B741";
+                        break;
+                }
+    //            show only the accepted or refused commands
+                if($commande['Statuts']==1){
+                    echo "
+            <div class='reservationCard'>
+                <div class='image'>
+                    <img src='http://localhost/Bricolini/Views/public/images/{$commande['image']}'/>
                 </div>
-                <div>
-                    <p style='color:$color'>$status</p>
-                </div>   
-            </div>
-        </div> ";
-            }
-
-}
+                <div class='nameOfservice'>
+                    <h1>{$commande['Nom']}</h1> 
+                    <p>pour : {$commande['FirstName']} {$commande['LastName']}</p> <!-- Now using the client's first and last names -->
+                </div>
+                <div class='additional'>
+                    <div>
+                        <p> {$commande['Date_reserv']}</p>
+                    </div>
+                    <div>
+                        <p style='color:$color'>$status</p>
+                    </div>   
+                </div>
+            </div> ";
+                }
+    }
 ?>
 
 </section>
@@ -104,7 +106,6 @@ require __DIR__ . "/../Components/Footer.php";
 .commande p {
     color: #666;
     margin: 10px 20px;
-
 }
 
 .accept, .refuse {

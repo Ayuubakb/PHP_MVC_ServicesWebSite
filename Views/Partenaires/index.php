@@ -262,37 +262,41 @@ require("Views/Components/Nav.php");
         <div class="commentaires">
             <?php
             $counter = 0;
-            foreach ($commentaires as $commentaire) {
-                if ($counter == 5) {
-                    break;
+            if(sizeof($commentaires)!=0){
+                foreach ($commentaires as $commentaire) {
+                    if ($counter == 5) {
+                        break;
+                    }
+                    if($islogged){
+                    echo "
+                        <div class='commentaireCard'>
+                            <div class='mess'>
+                                <h1>{$commentaire['Nom']}</h1>
+                                <p class='msg'>{$commentaire['message']}</p>
+                            </div>
+                            <div class='rat'>
+                                <p class='note'>{$commentaire['Rating']}/5</p>
+                                <p class='date'>{$commentaire['Date_post']}</p>
+                                <p class='report' onclick=\"showReclam(".$_SESSION["user_id"].",'".$type."','commentaire',".$commentaire['id'].")\"><i class='fa-solid fa-flag fa-lg'></i></p>
+                            </div>
+                        </div>";
+                    }else{
+                    echo "
+                        <div class='commentaireCard'>
+                            <div class='mess'>
+                                <h1>{$commentaire['Nom']}</h1>
+                                <p class='msg'>{$commentaire['message']}</p>
+                            </div>
+                            <div class='rat'>
+                                <p class='note'>{$commentaire['Rating']}/5</p>
+                                <p class='date'>{$commentaire['Date_post']}</p>
+                            </div>
+                        </div>";
+                    }
+                    $counter++;
                 }
-                if($islogged){
-                echo "
-                    <div class='commentaireCard'>
-                        <div class='mess'>
-                            <h1>{$commentaire['Nom']}</h1>
-                            <p class='msg'>{$commentaire['message']}</p>
-                        </div>
-                        <div class='rat'>
-                            <p class='note'>{$commentaire['Rating']}/5</p>
-                            <p class='date'>{$commentaire['Date_post']}</p>
-                            <p class='report' onclick=\"showReclam(".$_SESSION["user_id"].",'".$type."','commentaire',".$commentaire['id'].")\"><i class='fa-solid fa-flag fa-lg'></i></p>
-                        </div>
-                    </div>";
-                }else{
-                echo "
-                    <div class='commentaireCard'>
-                        <div class='mess'>
-                            <h1>{$commentaire['Nom']}</h1>
-                            <p class='msg'>{$commentaire['message']}</p>
-                        </div>
-                        <div class='rat'>
-                            <p class='note'>{$commentaire['Rating']}/5</p>
-                            <p class='date'>{$commentaire['Date_post']}</p>
-                        </div>
-                    </div>";
-                }
-                $counter++;
+            }else{
+                echo "<p class='aucune'>Pas de commentaire pour le moment.</p>";
             }
             ?>
         </div>
@@ -368,6 +372,19 @@ require("Views/Components/Footer.php");
     border-radius: 50%;
     padding: 13px;
 
+}
+.aucune{
+    width:50%;
+    margin-left:25%;
+    text-align:center;
+    padding: 10px;
+    font-family:var(--fontSmall);
+    font-size:25px;
+    background-color:var(--orange);
+    border-radius:15px;
+    margin-top:25px;
+    margin-bottom:25px;
+    color:white;
 }
 </style>
 <script>

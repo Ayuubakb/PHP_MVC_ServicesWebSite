@@ -68,7 +68,7 @@ class Partenaires extends Controller
         $this->loadView("interventions", compact("Partenaire", "interventions", "commandesnontraitees"));
     }
 
-    public function addservice()
+    public function addservice($id)
 
     {
         session_start();
