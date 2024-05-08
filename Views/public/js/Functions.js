@@ -7,11 +7,19 @@ const showReclam=(id_reclamateur,type_reclamateur,type_reclamation,id_t)=>{
     addEvent();
 }
 const addEvent=()=>{
-    document.getElementById("autreRadio").addEventListener("change",()=>{
+    document.getElementById("autreRadio").addEventListener("change",function(){
         if(document.getElementById("autreRadio").checked){
-            document.getElementById("autre").style.opacity="1";
-        }else{
-            document.getElementById("autre").style.opacity="0";
+            document.getElementById("autre").style.display="flex";
+        }
+    })
+    document.getElementById("bRadio").addEventListener("change",function(){
+        if(document.getElementById("bRadio").checked){
+            document.getElementById("autre").style.display="none";
+        }
+    })
+    document.getElementById("rascismRadio").addEventListener("change",function(){
+        if(document.getElementById("rascismRadio").checked){
+            document.getElementById("autre").style.display="none";
         }
     })
 }

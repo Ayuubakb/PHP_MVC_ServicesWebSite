@@ -338,8 +338,26 @@ footer .end i{
     background-color: var(--orange);
     width: 40%;
     border-radius: 15px;
-    border: solid 3px red;
     padding-bottom: 40px;
+}
+.reclaBanner .close{
+    position: absolute;
+    top: -10px;
+    right: -15px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 50%;
+    background-color: red;
+    margin-bottom: 0;
+    text-align: none;
+}
+.reclaBanner .close p{
+    color: white;
+    font-family:var(--fontBig);
+    font-size: 30px;
 }
 .reclaBanner h1{
     color: white;
@@ -347,6 +365,8 @@ footer .end i{
     font-size: 30px;
     text-align: center;
     margin-bottom: 15px;
+    width: 80%;
+    margin-left: 10%;
 }
 .reclaBanner div{
     margin-bottom: 10px;
@@ -358,9 +378,17 @@ footer .end i{
 .reclaBanner div label{
     margin-bottom: 10px;
     font-family: var(--fontSmall);
-    font-size: 18px;
+    font-size: 22px;
+    font-style: italic;
+}
+.reclaBanner div h2{
+    margin-bottom: 15px;
+    font-family: var(--fontBig);
+    font-size: 22px;
+    margin-left: 25%;
 }
 .reclaBanner div input{
+    margin-left: 25%;
     border: none;
     padding: 5px;
     font-family: var(--fontSmall);
@@ -379,8 +407,7 @@ footer .end i{
     margin-right: 10px;
 }
 .reclaBanner #autre{
-    opacity: 0;
-
+    display: none;
 }
 .reclaBanner textarea{
     outline: none;
@@ -396,8 +423,9 @@ footer .end i{
     border-radius: 10px;
     background-color: red;
     color: var(--white);
-    margin-left: 75%;
+    margin-left: 25%;
     margin-top: 15px;
+    width: 50%;
 }
 .reclaBanner .header{
     display: flex;
@@ -407,8 +435,9 @@ footer .end i{
 }
 .reclaBanner .header h1{
     padding: 10px;
-    background-color: red;
     border-radius: 5px;
+    color: red;
+    font-size: 38px;
 }
 .services-section {
     padding: 80px 0; /* Adjust padding as needed */
