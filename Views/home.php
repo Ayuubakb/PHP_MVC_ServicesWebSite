@@ -3,108 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="public/style/Style.css">
+    <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
+    <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
     <title>Home</title>
 </head>
-<body class="home-page">
-
-    <?php include 'Components/Nav.php'; ?>
-
-    <section class="introduction py-5 bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="intro-text">
-                        <h2 class="text-orange">Bricoliini !!</h2>
-                        <p class="lead">Bricolini est votre application #1 de services à domicile au Maroc !
-                            Nous offrons une variété de services incluant le nettoyage général, le jardinage, 
-                            l'entretien de la pelouse, et bien plus encore. Profitez d'une vie quotidienne sans tracas
-                            avec les services à domicile garantis de Bricolini. 
-                            Vous n'êtes pas satisfait ? Nous le referons !</p>
-                        <a href="#" class="btn btn-primary">Explorez Nos Services</a>
+<body>
+    <?php 
+        session_start();
+        require 'Components/Nav.php'; 
+    ?>
+    <section class="sec home">
+        <div class="premier">
+            <div class="imageHolder">
+                <div>
+                    <img src="Views/public/images/logo.png"/>
+                </div>
+            </div>
+            <div class="description">
+                <h1>Bricolini</h1>
+                <p>"Bienvenue chez Bricolini, votre destination de confiance pour tous vos besoins en entretien domestique. Nous vous connectons avec des partenaires fiables et expérimentés qui vous offriront des services de ménage et de jardinage exceptionnels. Chez Bricolini, nous comprenons l'importance d'un foyer propre et bien entretenu, c'est pourquoi nous nous engageons à fournir des services de qualité supérieure à des prix abordables. Découvrez dès maintenant comment nous pouvons simplifier votre vie et rendre votre maison encore plus accueillante avec Bricolini."</p>
+                <a href="http://localhost/Bricolini/Services"><button>Services</button></a>
+            </div>
+        </div>
+        <div><p class="slogan">Entretien parfait, confiance assurée : Bricolini, votre allié pour un foyer impeccable</p></div>
+        <div class="seconde one">
+            <div class="imageHolder">
+                <div>
+                    <img src="Views/public/servicePic/jardinageDefault.jpg"/>
+                </div>
+            </div>
+            <div class="serContainer">
+                <div class="servi">
+                    <div class="imageContainer">
+                       <div> 
+                            <img src="Views/public/images/entretienGAZON.webp"/>
+                        </div>
+                    </div>
+                    <div class="title">
+                        <h1>Etretien de Gazon Et De Pelouse</h1>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="logo-container text-center">
-                        <img src="Views/public/images/logo.png" alt="Site Logo" class="img-fluid logo">
+                <div class="servi">
+                    <div class="imageContainer">
+                        <div>
+                        <img src="Views/public/images/traitementjardin.webp"/></div>
                     </div>
+                    <div class="title">
+                        <h1>Traitement De Jardin</h1>
+                    </div>
+                </div>
+                <div class="servi">
+                    <div class="imageContainer">
+                        <div><img src="Views/public/images/plantationjardin.webp"/></div>
+                    </div>
+                    <div class="title">
+                        <h1>Plantation du Jardin</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="seconde two">
+            <div class="serContainer">
+                <div class="servi">
+                    <div class="imageContainer">
+                       <div> 
+                            <img src="Views/public/images/nettoyage_canap.webp"/>
+                        </div>
+                    </div>
+                    <div class="title">
+                        <h1>Nettoyage de canapés</h1>
+                    </div>
+                </div>
+                <div class="servi">
+                    <div class="imageContainer">
+                        <div>
+                        <img src="Views/public/images/nettoyage_surfaces.webp"/></div>
+                    </div>
+                    <div class="title">
+                        <h1>Nettoyage des surfaces</h1>
+                    </div>
+                </div>
+                <div class="servi">
+                    <div class="imageContainer">
+                        <div><img src="Views/public/images/nettoyage_g.webp"/></div>
+                    </div>
+                    <div class="title">
+                        <h1>Nettoyage général</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="imageHolder">
+                <div>
+                    <img src="Views/public/servicePic/menageDefault.jpg"/>
+                </div>
+            </div>
+        </div>
+        <div><p class="slogan" style="background-color:#FFB534;color:black">"La simplicité est la sophistication suprême." - Léonard de Vinci</p></div>
+        <div class="steps">
+            <div class="step">
+                <div>
+                   <div  class="num"><p>1</p></div>
+                </div>
+                <div class="des">
+                    <h1>Sélectionnez le service adapté à vos besoins. <i class="fa-solid fa-bell-concierge fa-xl"></i></h1>
+                </div>
+            </div>
+            <div  class="step">
+                <div  class="des">
+                    <h1>Choisissez une date et une plage horaire qui vous conviennent. <i class="fa-solid fa-clock fa-xl"></i></h1>
+                </div>
+                <div>
+                   <div  class="num" style="background-color:#FFB534;"><p>2</p></div>
+                </div>
+            </div>
+            <div  class="step">
+                <div>
+                   <div  class="num" style="background-color:black;"><p>3</p></div>
+                </div>
+                <div  class="des">
+                    <h1>Attendez la confirmation du partenaire. <i class="fa-solid fa-check fa-xl"></i></h1>
                 </div>
             </div>
         </div>
     </section>
-
-
-    <section class="services-section">
-    <div class="container-fluid">
-        <div class="row">
-            
-            <div class="col-md-6 main-service">
-                <h2>Menage</h2>
-                <img src="path_to_menage_image"  class="service-image">
-                <p></p>
-            </div>
-           
-            <div class="col-md-6 sub-services">
-                <div class="slider-container">
-                   
-                    <div class="slide">
-                        <img src="Views\public\images\menage_maison.png" >
-                        <h3>Menage maison</h3>
-                    </div>
-                   
-                    <div class="slide">
-                        <img src="Views\public\images\nettoyage_g.webp" >
-                        <h3>nettoyage general </h3>
-                    </div>
-
-                    <div class="slide">
-                        <img src="Views\public\images\nettoyage_canap.webp" >
-                        <h3>nettoyage canape </h3>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            
-            <div class="col-md-6 main-service">
-                <h2>Jardinage</h2>
-                <img src="path_to_jardinage_image"  class="service-image">
-                <p></p>
-            </div>
-            
-            <div class="col-md-6 sub-services">
-                <div class="slider-container">
-                   
-                    <div class="slide">
-                        <img src="Views\public\images\plantationjardin.webp" >
-                        <h3>plantation jardin </h3>
-                    </div>
-                    
-                    <div class="slide">
-                        <img src="Views\public\images\traitementjardin.webp" >
-                        <h3>traitement jardin </h3>
-                    </div>
-
-                    <div class="slide">
-                        <img src="Views\public\images\entretienGAZON.webp" >
-                        <h3>entretien gazon  </h3>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-
     <?php require("Components/Footer.php"); ?>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

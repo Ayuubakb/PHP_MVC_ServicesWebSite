@@ -19,7 +19,7 @@
             <?php
             if(($islogged && !strcmp($type,"client")) || !$islogged){
                 echo"
-                    <a href='http://localhost/Bricolini'><li>Acceuil</li></a>
+                    <a href='http://localhost/Bricolini'><li><i class='fa-solid fa-house fa-lg'></i></li></a>
                     <a href='http://localhost/Bricolini/Services'><li>Services</li></a>";
                 if($islogged){
                     echo "
@@ -41,9 +41,9 @@
         <?php
             if($islogged && !strcmp($type,"client"))
                 echo "
-                    <a href='http://localhost/Bricolini/Clients'><button>Profile</button></a>";
+                    <a href='http://localhost/Bricolini/Clients'><button><i class='fa-solid fa-user fa-lg' style='color:black'></i></button></a>";
             else if($islogged && !strcmp($type,"partenaire"))
-                echo "<a href='http://localhost/Bricolini/Partenaires/index/".$_SESSION['user_id']."'><button>Profile</button></a>";
+                echo "<a href='http://localhost/Bricolini/Partenaires/index/".$_SESSION['user_id']."'><button><i class='fa-solid fa-user fa-lg' style='color:black'></i></button></a>";
         ?>
         <?php
         if(!$islogged){
@@ -52,7 +52,7 @@
             <a href='http://localhost/Bricolini/Authentification/showSignupForm'><button>SignUp</button></a>";
         }else{
             echo"    
-            <a href='http://localhost/Bricolini/Authentification/logout'><button>Logout</button></a>";
+            <a href='http://localhost/Bricolini/Authentification/logout'><button style='background-color:red;color:white'><i class='fa-solid fa-power-off'></i></button></a>";
         }
         ?>
     </div>

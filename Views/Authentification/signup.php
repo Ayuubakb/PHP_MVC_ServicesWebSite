@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
+    <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
 </head>
 <body >
 <?php  require('Views/Components/Nav.php'); ?>

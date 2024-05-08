@@ -77,7 +77,7 @@
                     echo "
                     <div class='reservationCard'>
                         <div class='image'>
-                            <img src='Views/public/servicePic/menageDefault.jpg'>
+                            <img src='Views/public/images/$commande->image'>
                         </div>
                         <div class='nameOfservice'>
                             <h1>$commande->Nom</h1>
