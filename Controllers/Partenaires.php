@@ -31,8 +31,8 @@ class Partenaires extends Controller
         session_start();
         $this->loadModel("Partenaire");
         $id = $_SESSION['user_id'];
-        $commentaires = $this->Partenaire->getallcomments($id, $rating, $order);
-        $this->loadView("commentaires", compact("commentaires"));
+        $profile = json_decode($this->Partenaire->getComments($id, $rating, $order));
+        $this->loadView("commentaires", compact("profile"));
     }
 
     public function updateStatus()

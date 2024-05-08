@@ -117,7 +117,7 @@ require __DIR__ . "/../Components/Nav.php";
                 if ($commande['Statuts'] == 3 && !in_array($commande['id'],$commented)) {
                     echo "
                 <div class='comment'>
-                    <button onclick=\"showCommentForm({$commande['id']})\"><i class='fas fa-comment fa-lg'></i></button>
+                    <button onclick=\"showCommentForm({$commande[0]})\"><i class='fas fa-comment fa-lg'></i></button>
                 </div>";
                         }
                         echo "

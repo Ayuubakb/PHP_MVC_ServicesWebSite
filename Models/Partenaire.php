@@ -263,6 +263,53 @@ class Partenaire extends Model
         $query->execute();
         return $query->fetch();
     }
+    public function getComments(int $id,String $rating, String $sort){
+        $objct=new stdClass();
+        $array=array();
+        $sql="SELECT id,Date_reserv from reservation where Id_S IN (SELECT id FROM services WHERE Id_P=$id)";
+        $query=self::$instance->prepare($sql);
+        $query->execute();
+        $reservations=$query->fetchAll();
+        $flag1=false;
+        $flag2=false;
+        foreach($reservations as $reservation){
+            $idR=$reservation["id"];
+            $sql="SELECT * from commentaire where Id_R=$idR";
+            $query=self::$instance->prepare($sql);
+            $query->execute();
+            $comments=$query->fetchAll();
+            foreach($comments as $comment){
+                if(!strcmp($comment['publisher'],"client")){
+                    $flag1=true;
+                }
+                if(!strcmp($comment['publisher'],"partenaire")){
+                    $flag2=true;
+                }
+            }
+            if(($flag1 && $flag2) || date("Y-m-d") > date("Y-m-d",strtotime($reservation["Date_reserv"]. ' + 7 days'))){
+                $array[]=$reservation['id'];
+            }
+        }
+
+        if(sizeof($array)!=0){
+            $sql="SELECT c.id as id , s.Nom as nom , c.message as message ,c.Rating as rating ,
+            c.Date_post as datePost, cl.LastName as ln, cl.FirstName as fn 
+            FROM  ((((services s INNER JOIN reservation r ON s.id=r.Id_S)
+            INNER JOIN  commentaire c ON r.id=c.Id_R) INNER JOIN partenaire p ON p.id=s.Id_P)
+            INNER JOIN client cl ON cl.id=r.Id_C)
+            WHERE c.Id_R IN (" . implode(',', $array) . ") AND c.publisher = 'client' ";
+            if($rating!=0){
+                $sql.=" AND c.Rating=$rating";
+            }
+            $sql.=" ORDER BY c.id $sort";
+            $query=self::$instance->prepare($sql);
+            $query->execute();
+            $objct->commentaire=$query->fetchAll();
+        }else{
+            $objct->commentaire=array();
+        }
+        return json_encode($objct);
+    }
 }   
 
 ?>

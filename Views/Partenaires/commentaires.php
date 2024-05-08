@@ -40,30 +40,30 @@ require __DIR__ . "/../Components/Nav.php";
         </div>
         <div class="commandesAll">
             <?php
-            if (count($commentaires) != 0) {
-                foreach ($commentaires as $commentaire) {
-                    if ($commentaire['Rating'] > 3) {
-                        $color = "green";
-                    } else if ($commentaire['Rating'] == 3) {
-                        $color = "orange";
-                    } else {
-                        $color = "red";
+            if(count($profile->commentaire)!=0){
+                foreach($profile->commentaire as $commentaire){
+                    if($commentaire->rating > 3){
+                        $color="green";
+                    }else if($commentaire->rating=3){
+                        $color="orange";
+                    }else{
+                        $color="red";
                     }
                     echo "
-                    <div class='commentaireCard'>
-                    <div class='mess'>
-                        <h1>" . $commentaire['LastName'] . "  " . $commentaire['FirstName'] . "</h1>
-                        <p class='title'>" . $commentaire['Nom'] . "</p>
-                        <p class='msg'>" . $commentaire['message'] . "</p>
-                    </div> 
-                    <div class='rat'>
-                        <p class='note' style='color:$color'>{$commentaire['Rating']}/5</p>
-                        <p class='date'>{$commentaire['Date_post']}</p>
-                        <p class='report' onclick=\"showReclam(" . $_SESSION["user_id"] . ",'" . $type . "','commentaire'," . $commentaire['id'] . ")\"><i class='fa-solid fa-flag fa-lg'></i></p>
-                    </div> 
-                </div>  ";
+                        <div class='commentaireCard'>
+                            <div class='mess'>
+                                <h1>$commentaire->fn  $commentaire->ln</h1>
+                                <p  class='title'>$commentaire->nom</p>
+                                <p  class='msg'>$commentaire->message</p>
+                            </div> 
+                            <div class='rat'>
+                                <p class='note' style='color:$color'>$commentaire->rating/5</p>
+                                <p class='date'>$commentaire->datePost</p>
+                                <p class='report' onclick=\"showReclam(".$_SESSION["user_id"].",'".$type."','commentaire',".$commentaire->id.")\"><i class='fa-solid fa-flag fa-lg'></i></p>
+                            </div> 
+                        </div> ";
                 }
-            } else {
+            }else{
                 echo "<p class='err'>Pas De Commentaires</p>";
             }
             ?>
