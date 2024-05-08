@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
-    <title>Cleaning Services Selection</title>
     <link rel="stylesheet" href="Views/public/style/Style.css">
     <link rel="stylesheet" href="../public/style/styleindex.css">
+    <title>Services</title>
     <style>
         .service-card {
             width: 300px; 

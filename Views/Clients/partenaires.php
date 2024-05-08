@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
     <script src="http://localhost/Bricolini/Views/public/js/Functions.js"></script>
-    <title>Document</title>
+    <title>Partenaire</title>
 </head>
 <body>
     <?php require("Views/Components/Nav.php")  ?>
@@ -22,7 +22,7 @@
                 </div>
                 <div>
                     <select name="rating">
-                        <option value=6 selected>Rating</option>
+                        <option value=6 selected>Note</option>
                         <option value=1>1</option>
                         <option value=2>2</option>
                         <option value=3>3</option>

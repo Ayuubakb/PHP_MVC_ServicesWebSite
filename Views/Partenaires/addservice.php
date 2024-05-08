@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/addservice.css">
     <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
 
-    <title>Add Service</title>
+    <title>Ajouter un service</title>
 </head>
 <body>
 <?php
@@ -14,23 +14,23 @@ require("Views/Components/Nav.php");
 ?>
 <div class="container">
     <form id="editForm" class="fromAddService" action="http://localhost/Bricolini/Views/Partenaires/serviceeditHandler.php" method="post" enctype="multipart/form-data">
-        <h1 class="headTitle">Add Service</h1>
+        <h1 class="headTitle">Ajouter un service</h1>
         <p id="err"></p>
         <div>
-            <label for="serviceName">Service Name:</label>
+            <label for="serviceName">Nom du service: </label>
             <input type="hidden" id="id" name="id" value="<?php echo $_SESSION['user_id'] ?>">
             <input type="text" id="serviceName" name="serviceName" required>
         </div>
         <div class="price">
             <div>
-                <label for="servicePrice">Service Price:</label>
+                <label for="servicePrice">Prix du service:</label>
                 <input type="number" id="servicePrice" name="servicePrice" min="0" step="0.01" required>
             </div>
             <div>
-                <label for="serviceImage">Service Image:</label>
+                <label for="serviceImage">Image du service:</label>
                 <input type="file" id="serviceImage" name="serviceImage" style="display: none;">
                 <label for="serviceImage" class="custom-file-upload">
-                    <i class="fa fa-cloud-upload"></i> Upload Image
+                    <i class="fa fa-cloud-upload"></i> Sélectionner une image
                 </label>
             </div> 
         </div> 
@@ -69,10 +69,12 @@ require("Views/Components/Nav.php");
         </div>
         <div class="errs">
             <div class="btn">
-                <button onclick="addService()" type="submit" id="submit">Add Service</button>
+                <button onclick="addService()" type="submit" id="submit">Ajouter un service</button>
             </div>
             <div class="btn">
-                <button id="Cancel" type="button" onclick="window.location.href='http://localhost/Bricolini/Partenaires/index/<?php echo $_SESSION['user_id'] ?>';">Cancel</button>
+                <button id="Cancel" type="button" onclick="window.location
+                        .href='http://localhost/Bricolini/Partenaires/index/<?php echo $_SESSION['user_id'] ?>';
+                        ">Annuler</button>
             </div>
         </div>
     </form>

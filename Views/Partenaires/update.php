@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
     <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
-    <title>Edit</title>
+    <title>Modifier Profil</title>
 </head>
 <body>
 <?php
@@ -43,15 +43,15 @@ require("Views/Components/Nav.php");
                 <input type="text" name="Ville" value="<?=$profile['Ville']?>"/>
             </div>
             <div>
-                <label>Year Experience :</label>
+                <label>Années d'expérience :</label>
                 <input type="number" name="YearExperience" value="<?=$profile['YearExperience']?>"/>
             </div>
             <div>
-                <label>Email :</label>
+                <label>E-mail :</label>
                 <input type="email" name="Email" value="<?=$profile['Email']?>"/>
             </div>
             <div>
-                <label>Telephone :</label>
+                <label>Téléphone :</label>
                 <input type="tel" name="Telephone" value="<?=$profile['Telephone']?>"/>
             </div>
 <!--            Update creneaux-->

@@ -70,7 +70,7 @@ function generateHeader() {
         <!-- Navigation -->
         <nav>
             <div class="logo">
-                <img src="http://localhost/web/bricolini/Views/public/images/logo.png" alt="Logo">
+                <img src="http://localhost/bricolini/Views/public/images/logo.png" alt="Logo">
             </div>
             <ul>
                 <li><a href="http://localhost/bricolini/admin">Home</a></li>

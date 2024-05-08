@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Style.css">
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
     <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
-    <title>Edit</title>
+    <title>Modifier Profile</title>
 </head>
 <body>
     <?php

@@ -9,7 +9,7 @@
     <script src="http://localhost/Bricolini/Views/public/js/Clients.js"></script>
     <script src="http://localhost/Bricolini/Views/public/js/Functions.js"></script>
     <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Commentaires</title>
 </head>
 <body>
     <?php
@@ -36,7 +36,7 @@
                     </select>
                 </div>
                 <div>
-                    <button onClick="getSearchparm2()">OK</button>
+                    <button onClick="getSearchparm2()">Chercher</button>
                 </div>
             </div>
             <div class="commandesAll">
