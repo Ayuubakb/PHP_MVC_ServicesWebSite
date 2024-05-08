@@ -35,7 +35,7 @@ require __DIR__ . "/../Components/Nav.php";
                 </select>
             </div>
             <div>
-                <button onClick="getSearchparm2()">OK</button>
+                <button onClick="getSearchparm2()">Rechercher</button>
             </div>
         </div>
         <div class="commandesAll">

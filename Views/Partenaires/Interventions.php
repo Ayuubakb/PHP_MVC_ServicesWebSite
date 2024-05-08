@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="http://localhost/Bricolini/Views/public/style/Client.css">
     <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title>Interactions</title>
+    <title>Interventions</title>
     </title>
 </head>
 <body>
@@ -162,7 +162,7 @@ h1{
             e.preventDefault();
 
             
-            var confirmAction = confirm("Est ce que vous etes sure de votre choix?\nCette action est irreversible.");
+            var confirmAction = confirm("Êtes-vous sûr(e) de votre choix ?\n Cette action est irréversible.");
             if (!confirmAction) {
                 return; 
             }

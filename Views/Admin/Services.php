@@ -90,7 +90,7 @@
                     <td><?php echo $service['Prix']; ?></td>
                     <td><?php echo $service['Note']; ?></td>
                     <td><?php echo $service['Nbr_commande']; ?></td>
-                    <td><img src="<?php echo $service['image']; ?>" alt="Service Image" width="100"></td>
+                    <td><img src="http://localhost/bricolini/Views/public/images/<?php echo $service['image']; ?>" alt="Service Image" style="width: 100px; height: auto;"></td>
                     <td><?php echo $service['categorie']; ?></td>
                     <td><?php echo $service['sousCategorie']; ?></td>
                 </tr>

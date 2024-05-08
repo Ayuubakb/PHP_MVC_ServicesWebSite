@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://kit.fontawesome.com/50cf27202e.js" crossorigin="anonymous"></script>
-    <title>Interactions</title>
+    <title>Historique</title>
     </title>
 </head>
 <body>
@@ -67,7 +67,7 @@ require __DIR__ . "/../Components/Nav.php";
                 var sort = document.getElementById('sort').value;
                 window.location.href = 'http://localhost/Bricolini/Partenaires/Historique/' + status + '/' + sort;
             }
-            Historique()">OK</button>
+            Historique()">Rechercher</button>
         </div>
     </div>
     <div class="commande">

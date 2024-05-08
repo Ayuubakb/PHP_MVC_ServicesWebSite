@@ -22,19 +22,19 @@ require("Views/Components/Nav.php");
         <div class="field">
             <div class="gen">
                 <div>
-                    <p><span>Last Name:</span> <?= $profile['LastName'] ?></p>
+                    <p><span>Nom:</span> <?= $profile['LastName'] ?></p>
                 </div>
                 <div>
-                    <p><span>First Name:</span> <?= $profile['FirstName'] ?></p>
+                    <p><span>Prénom:</span> <?= $profile['FirstName'] ?></p>
                 </div>
                 <div>
                     <p><span>Profession:</span> <?= $profile['Metier'] ?></p>
                 </div>
                 <div>
-                    <p><span>City:</span> <?= $profile['Ville'] ?></p>
+                    <p><span>Ville:</span> <?= $profile['Ville'] ?></p>
                 </div>
                 <div>
-                    <p><span>Years of Experience:</span> <?= $profile['YearExperience'] ?></p>
+                    <p><span>Années d'expérience:</span> <?= $profile['YearExperience'] ?></p>
                 </div>
                 <div>
                     <p><span>Note:</span>
@@ -54,13 +54,13 @@ require("Views/Components/Nav.php");
                     </p>
                 </div>
                 <div>
-                    <p><span>Number of Commands:</span> <?= $profile['Nbr_commande'] ?></p>
+                    <p><span>Nombre de commandes: </span> <?= $profile['Nbr_commande'] ?></p>
                 </div>
                 <div>
-                    <p><span>Email:</span> <?= $profile['Email'] ?></p>
+                    <p><span>E-mail: </span> <?= $profile['Email'] ?></p>
                 </div>
                 <div>
-                    <p><span>Telephone:</span> <?= $profile['Telephone'] ?></p>
+                    <p><span>Téléphone: </span> <?= $profile['Telephone'] ?></p>
                 </div>
             </div> 
             <div class="cr"> 
@@ -170,13 +170,13 @@ require("Views/Components/Nav.php");
             </div>
             <div class='additional'>
                 <div>
-                    <p>Price: {$service['Prix']}</p>
+                    <p>Prix: {$service['Prix']}</p>
                 </div>
                 <div>
                     <p style='color:$color'>$stars</p>
                 </div>
                 <div>
-                    <p>Number of Commands: {$service['Nbr_commande']}</p>
+                    <p>Nombre de commandes: {$service['Nbr_commande']}</p>
                 </div>";
                 if($islogged && !strcmp($type, "partenaire")){
                     echo "
@@ -195,7 +195,7 @@ require("Views/Components/Nav.php");
             if (count($services) < 3 && $islogged && !strcmp($type, "partenaire")) {
                 echo "
         <div class='reservationCard allRes'>
-            <a id='addService' href='http://localhost/Bricolini/Partenaires/addservice/$profile[id]' style='color:white'><p>Add Service
+            <a id='addService' href='http://localhost/Bricolini/Partenaires/addservice/$profile[id]' style='color:white'><p>Ajouter un service
                 <i class='fa-solid fa-plus fa-xl'></i></p></a>
         </div>";
             }
@@ -236,7 +236,7 @@ require("Views/Components/Nav.php");
             </div>
             <div class='nameOfservice'>
                 <h1>{$commande['Nom']}</h1> 
-                <p>pour : {$commande['FirstName']} {$commande['LastName']}</p> <!-- Now using the client's first and last names -->
+                <p>pour : {$commande['FirstName']} {$commande['LastName']}</p> 
             </div>
             <div class='additional'>
                 <div>
@@ -372,8 +372,7 @@ require("Views/Components/Footer.php");
 </style>
 <script>
     function deleteService(id) {
-        const message = "Are you sure you want to delete this service? \n " +
-            "This action cannot be undone.";
+        const message = "Êtes-vous sûr de vouloir supprimer ce service? \n Cette action ne peut pas être annulée";
         if (confirm(message)) {
             window.location.href = "http://localhost/Bricolini/Partenaires/deleteservice/" + id;
         }

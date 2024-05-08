@@ -66,7 +66,7 @@
                     </select>
                 </div>
                 <div>
-                    <button onClick="getSearchparm()">OK</button>
+                    <button onClick="getSearchparm()">Chercher</button>
                 </div>
             </div>
             <div class="commandesAll">
