@@ -121,9 +121,9 @@ class Client extends Model{
         $query=self::$instance->prepare($sql);
         $query->execute();
         $reservations=$query->fetchAll();
-        $flag1=false; 
-        $flag2=false;
         foreach($reservations as $reservation){
+            $flag1=false; 
+            $flag2=false;
             $idR=$reservation["id"];
             $sql="SELECT * from commentaire where Id_R=$idR";
             $query=self::$instance->prepare($sql);

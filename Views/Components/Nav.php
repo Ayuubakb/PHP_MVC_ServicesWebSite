@@ -41,7 +41,7 @@
         <?php
             if($islogged && !strcmp($type,"client"))
                 echo "
-                    <a href='http://localhost/Bricolini/Clients'><button><i class='fa-solid fa-user fa-lg' style='color:black'></i></button></a>";
+                    <a href='http://localhost/Bricolini/Clients/index/".$_SESSION['user_id']."'><button><i class='fa-solid fa-user fa-lg' style='color:black'></i></button></a>";
             else if($islogged && !strcmp($type,"partenaire"))
                 echo "<a href='http://localhost/Bricolini/Partenaires/index/".$_SESSION['user_id']."'><button><i class='fa-solid fa-user fa-lg' style='color:black'></i></button></a>";
         ?>

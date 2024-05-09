@@ -32,6 +32,7 @@ class Partenaires extends Controller
         $this->loadModel("Partenaire");
         $id = $_SESSION['user_id'];
         $profile = json_decode($this->Partenaire->getComments($id, $rating, $order));
+        
         $this->loadView("commentaires", compact("profile"));
     }
 
