@@ -16,7 +16,7 @@
                 <h2>Type de Reclamation : </h2>
                 <div class="radios">
                     <label><input id="rascismRadio"type="radio" name="typeReclam" value="Racism" placeholder="Racism" checked/> Rascism</label>
-                    <label><input id="bRadio" type="radio" name="typeReclam" value="Gros mots" placeholder="Gros Mots"/> Gros Mots</label>
+                    <label><input id="bRadio" type="radio" name="typeReclam" value="Gros mots" placeholder="intimidation"/> intimidation</label>
                     <label><input id="autreRadio" type="radio" name="typeReclam" value="Autre" placeholder="Autre"/> Autre</label>
                 </div>
             </div>

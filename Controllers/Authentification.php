@@ -63,7 +63,7 @@ class Authentification extends Controller {
                 $_SESSION['user_type'] = isset($user['Address']) ? 'client' :(isset($user['Ville'])?'partenaire':'admin');
                 
                 if (!strcmp($_SESSION['user_type'],'client')) {
-                    header('Location:http://localhost/Bricolini/Clients'); 
+                    header('Location:http://localhost/Bricolini/Clients/index/'.$_SESSION['user_id'].''); 
                 } else if(!strcmp($_SESSION['user_type'],'partenaire')) {
                     header('Location:http://localhost/Bricolini/Partenaires/index/'.$_SESSION['user_id'].'');
                 }else{

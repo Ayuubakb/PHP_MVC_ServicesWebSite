@@ -1,10 +1,10 @@
 <?php
 
 class Clients extends Controller{
-   public function index(){
+   public function index($id){
         session_start();
         $this->loadModel("Client");
-        $profile=json_decode($this->Client->getProfile($_SESSION['user_id']));
+        $profile=json_decode($this->Client->getProfile($id));
         $this->loadView("index",compact('profile'));
    }
    public function editProfile(){

@@ -18,7 +18,7 @@
     <?php require('Views/Components/Reclam.php') ?>
         <div class="informations">
             <div class="image">
-                <img src="Views/public/images/<?= $profile->infos->image?>"/>
+                <img src="http://localhost/Bricolini/Views/public/images/<?= $profile->infos->image?>"/>
             </div>
             <div class="fields">
                 <div>
@@ -40,15 +40,15 @@
             </div>
             <div class="edit">
                 <?php
-                if($islogged)
-                    echo "<a href='Clients/editProfile' style='color:white'><i class='fa-solid fa-pen-to-square fa-xl'></i></a>";
+                if($islogged && !strcmp($type,"client"))
+                    echo "<a href='http://localhost/Bricolini/Clients/editProfile' style='color:white'><i class='fa-solid fa-pen-to-square fa-xl'></i></a>";
                 else
                     echo "<i class='fa-solid fa-flag fa-xl' onClick=\"showReclam(".$_SESSION['user_id'].",'partenaire','profile','".$profile->infos->id."')\"></i>";
                 ?>
             </div>
         </div>
         <?php
-        if($islogged && !strcmp($type,"client"))
+        if($islogged && !strcmp($type,"client")){
         echo " 
         <div class='reservationsWrapper'>
             <h1>Commandes :</h1>
@@ -77,7 +77,7 @@
                     echo "
                     <div class='reservationCard'>
                         <div class='image'>
-                            <img src='Views/public/images/$commande->image'>
+                            <img src='http://localhost/Bricolini/Views/public/images/$commande->image'>
                         </div>
                         <div class='nameOfservice'>
                             <h1>$commande->Nom</h1>
@@ -99,6 +99,7 @@
                 </div>
             </div>
         </div> ";
+        }
         ?>
         <div class="commentaire">
             <h1 style="color:#FFB534">Commentaire :</h1>
@@ -138,7 +139,12 @@
                 }
                 ?>
             </div>
-            <a href="http://localhost/Bricolini/Clients/getAllComments/0/DESC" style="color:white"><p class="allComments">Voir Plus <i class="fa-solid fa-arrow-right"></i></p></a>        </div>
+            <?php
+            if($islogged && !strcmp($type,"client")){
+               echo "<a href='http://localhost/Bricolini/Clients/getAllComments/0/DESC' style='color:white'><p class='allComments'>Voir Plus <i class='fa-solid fa-arrow-right'></i></p></a> ";
+            }
+            ?>
+        </div>
     </section>
     <?php
          require("Views/Components/Footer.php");

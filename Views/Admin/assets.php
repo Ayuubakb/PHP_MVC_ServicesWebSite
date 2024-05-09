@@ -69,6 +69,20 @@ function generateHeader() {
     <body>
         <!-- Navigation -->
         <nav>
+            <?php
+              if(isset($_SESSION['user_id'])){
+                $islogged=true;
+                if(!strcmp($_SESSION['user_type'],'client')){
+                    $type='client';
+                }else if(!strcmp($_SESSION['user_type'],'partenaire')){
+                    $type="partenaire";
+                }else{
+                    $type="admin";
+                }
+            }else{
+                $islogged=false;
+            }
+            ?>
             <div class="logo">
                 <img src="http://localhost/bricolini/Views/public/images/logo.png" alt="Logo">
             </div>
@@ -79,6 +93,7 @@ function generateHeader() {
                 <li><a href="http://localhost/bricolini/admin/Services">services</a></li>
                 <li><a href="http://localhost/bricolini/admin/Reservations">Reservations</a></li>
                 <li><a href="http://localhost/bricolini/admin/signals">Reclamations</a></li>
+                <li><a href="http://localhost/bricolini/Authentification/logout">LogOut</a></li>
 
             </ul>
         </nav>

@@ -51,7 +51,7 @@ class Partenaire extends Model
 
     public function interventions(int $id)
     {
-        $sql = "SELECT client.LastName, client.FirstName, services.image, reservation.id, services.Nom, reservation.Statuts, reservation.Date_reserv
+        $sql = "SELECT client.id as Cid,client.LastName, client.FirstName, services.image, reservation.id, services.Nom, reservation.Statuts, reservation.Date_reserv
                  FROM reservation 
                 INNER JOIN services ON reservation.Id_S = services.id
                 INNER JOIN client ON reservation.Id_C = client.id
@@ -108,7 +108,7 @@ class Partenaire extends Model
 
     public function commandesnontraitees(int $id)
     {
-        $sql = "SELECT reservation.id as ID_reserv,reservation.*, client.*,services.* FROM reservation 
+        $sql = "SELECT  client.id as Cid,reservation.id as ID_reserv,reservation.*, client.*,services.* FROM reservation 
                 INNER JOIN services ON reservation.Id_S = services.id
                 INNER JOIN client ON reservation.Id_C = client.id 
                 WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = $id) AND reservation.Statuts = 0";

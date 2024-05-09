@@ -26,7 +26,7 @@ require __DIR__ . "/../Components/Nav.php";
             <div class="infos">
                 <p><span class="sp">Service:</span> <?= $commande['Nom'] ?></p>
                 <p><span class="sp">Date: </span><?= $commande['Date_reserv'].'( '.$commande['heureDe'].'h <i class="fa-solid fa-arrow-right"></i> '.$commande["heureA"].'h )'  ?></p>
-                <p><span class="sp">Client: </span><?= $commande['FirstName'] ?> <?= $commande['LastName'] ?></p>
+                <p><span class="sp">Client: </span><a href="http://localhost/Bricolini/Clients/index/<?=$commande['Cid'] ?>"><?= $commande['FirstName'] ?> <?= $commande['LastName'] ?></a></p>
             </div>
             <div class="btns">
                 <button class='accept' data-id='<?= $commande['ID_reserv'] ?>'>Accepter</button>
