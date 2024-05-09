@@ -34,7 +34,7 @@ require("Views/Components/Nav.php");
                     <p><span>Ville:</span> <?= $profile['Ville'] ?></p>
                 </div>
                 <div>
-                    <p><span>Années d'expérience:</span> <?= $profile['YearExperience'] ?></p>
+                    <p><span>Années d'expérience:</span> <?= $profile['YearExperience'] ?> Ans</p>
                 </div>
                 <div>
                     <p><span>Note:</span>
@@ -49,12 +49,11 @@ require("Views/Components/Nav.php");
                             echo "&#9734;"; // This is the HTML entity for an empty star
 
                         }
-                        echo "(" . $profile['Note'] . "/5)";
                         ?>
                     </p>
                 </div>
                 <div>
-                    <p><span>Nombre de commandes: </span> <?= $profile['Nbr_commande'] ?></p>
+                    <p><span>Nombre de commandes: </span> <?= $profile['Nbr_commande'] ?> Commandes</p>
                 </div>
                 <div>
                     <p><span>E-mail: </span> <?= $profile['Email'] ?></p>
@@ -99,7 +98,7 @@ require("Views/Components/Nav.php");
                                     $day="Dimanche";
                                     break;
                             }
-                            echo "<p> ".$day." De : ".$from." à ".$to."</p>";
+                            echo "<p> ".$day." De : ".$from."h à ".$to."h</p>";
                         }
                     }
                 }
@@ -300,8 +299,13 @@ require("Views/Components/Nav.php");
             }
             ?>
         </div>
-        <a href="http://localhost/Bricolini/Partenaires/commentaires/0/DESC" style="color:white"><p class="allComments">
-                Voir Plus <i class="fa-solid fa-arrow-right"></i></p></a></div>
+        <?php
+         if($islogged && !strcmp($type, "partenaire")){
+            echo"
+        <a href='http://localhost/Bricolini/Partenaires/commentaires/0/DESC' style='color:white'><p class='allComments'>
+                Voir Plus <i class='fa-solid fa-arrow-right'></i></p></a></div>";
+         }
+        ?>
 </section>
 <?php
 require("Views/Components/Footer.php");

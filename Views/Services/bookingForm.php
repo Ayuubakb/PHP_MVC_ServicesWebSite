@@ -56,6 +56,9 @@
         .errPlace {
             color: red;
             text-align: center;
+            font-family:var(--fontBig);
+            padding: 10px;
+            border-radius:12px;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

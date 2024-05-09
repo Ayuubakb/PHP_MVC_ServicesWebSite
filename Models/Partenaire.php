@@ -111,7 +111,7 @@ class Partenaire extends Model
         $sql = "SELECT reservation.id as ID_reserv,reservation.*, client.*,services.* FROM reservation 
                 INNER JOIN services ON reservation.Id_S = services.id
                 INNER JOIN client ON reservation.Id_C = client.id 
-                WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = 1) AND reservation.Statuts = 0";
+                WHERE reservation.Id_S in (SELECT id FROM services WHERE Id_P = $id) AND reservation.Statuts = 0";
         $query = self::$instance->prepare($sql);
         $query->execute();
         return $query->fetchAll();

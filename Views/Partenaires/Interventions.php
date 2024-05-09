@@ -21,13 +21,17 @@ require __DIR__ . "/../Components/Nav.php";
         echo "<p class='aucune'>Aucune Commande en attente.</p>";
     }
     foreach ($commandesnontraitees as $commande): ?>
-        <div class='commande'>
-            <h2>Commande: <?= $commande['ID_reserv'] ?></h2>
-            <p>Service: <?= $commande['Nom'] ?></p>
-            <p>Date: <?= $commande['Date_reserv'] ?></p>
-            <p>Client: <?= $commande['FirstName'] ?> <?= $commande['LastName'] ?></p>
-            <button class='accept' data-id='<?= $commande['ID_reserv'] ?>'>Accepter</button>
-            <button class='refuse' data-id='<?= $commande['ID_reserv'] ?>'>Refuser</button>
+        <div class='commande Card'>
+            <h2>Commande: <?= $commande['ID_reserv'] ?></h2>    
+            <div class="infos">
+                <p><span class="sp">Service:</span> <?= $commande['Nom'] ?></p>
+                <p><span class="sp">Date: </span><?= $commande['Date_reserv'].'( '.$commande['heureDe'].'h <i class="fa-solid fa-arrow-right"></i> '.$commande["heureA"].'h )'  ?></p>
+                <p><span class="sp">Client: </span><?= $commande['FirstName'] ?> <?= $commande['LastName'] ?></p>
+            </div>
+            <div class="btns">
+                <button class='accept' data-id='<?= $commande['ID_reserv'] ?>'>Accepter</button>
+                <button class='refuse' data-id='<?= $commande['ID_reserv'] ?>'>Refuser</button>
+            </div>
         </div>
     <?php endforeach; ?>
 </div>
@@ -92,24 +96,41 @@ require __DIR__ . "/../Components/Footer.php";
 </body>
 </html>
 <style>
-  
-.commande h1{
-    width:85%;
-    margin-left:7.5%
+.Card{
+    box-shadow:2px 2px 10px var(--lightGreen);
+    padding-top:15px;
+    padding-bottom:15px;
+    border-radius:25px;
+    margin-top:15px;
+    margin-bottom:15px
 }
-.commande h2 {
-    margin-top: 0;
-    color: var(--green);
-    text-align: center;
+.Card .infos{
+    width:30%;
+    margin-left:35%;
+    text-align:center;
+    margin-top:15px;
+    margin-bottom:15px;
 }
-
-.commande p {
-    color: #666;
-    margin: 10px 20px;
+.Card .infos p{
+    font-family:var(--fontSmall);
+    font-size:20px;
+    
 }
-
-.accept, .refuse {
-    padding: 10px 20px;
+.Card .infos p .sp{
+    font-family:var(--fontSmall);
+    font-weight:bold;
+    color:black;
+}
+.Card .btns{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    width:50%;
+    margin-left:25%;
+}
+.Card .btns button{
+    padding: 15px 22px;
+    width: 35%;
     border: none;
     border-radius: 5px;
     text-transform: uppercase;
@@ -117,25 +138,37 @@ require __DIR__ . "/../Components/Footer.php";
     margin-top: 10px;
     margin-right: 10px;
     text-align: center;
+    font-family:var(--fontBig);
+    font-size:18px;
+    color:white;
+    border-radius:15px
 }
-
-.accept {
-    background-color: #4CAF50;
-    color: white;
+.accept{
+    background-color:var(--green);
 }
-
-.refuse {
-    background-color: #f44336;
-    color: white;
+.refuse{
+    background-color:red;
+}
+.commande h1{
+    width:85%;
+    margin-left:7.5%;
+}
+.commande h2 {
+    margin-top: 0;
+    color: var(--green);
+    text-align: center;
+    font-family:var(--fontBig);
+    font-size:30px
+}
+.commande p {
+    color: #666;
+    margin: 10px 20px;
 }
 .Traitement{
-/*    make the div 70 % of the page and center it */
     width: 85%;
     margin-left: 7.5%;
     margin-top: 50px;
     min-height:250px;
-/*
-*/
 }
 .aucune{
     width:50%;

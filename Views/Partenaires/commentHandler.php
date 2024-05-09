@@ -30,6 +30,21 @@ if ($stmt = $conn->prepare($sql)) {
         if ($stmt = $conn->prepare($sql)) {
             $stmt->execute();
         }
-    }
-
+        $sql="SELECT avg(Note),Id_P FROM services s
+            WHERE Id_P=(SELECT Id_P From services WHERE id=(select Id_S FROM reservation WHERE id=$idRes))";
+        if ($stmt = $conn->prepare($sql)) {
+            $stmt->execute();
+            $stmt->bind_result($new_avg, $id_P);
+            while ($stmt->fetch()) {
+                $newAvg = $new_avg;
+                $idP = $id_P;
+            }
+            if (isset($newAvg) && isset($idP)) {
+                $sql = "UPDATE partenaire set Note=$newAvg WHERE id=$idP";
+                if ($stmt = $conn->prepare($sql)) {
+                    $stmt->execute();
+                }
+            }
         }
+    }
+}

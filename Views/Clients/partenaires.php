@@ -53,7 +53,12 @@
                                 <img src='../Views/public/images/".$partenaire['image']."'/>
                             </div>
                             <div class='note'>
-                                <p>".$partenaire['Note']."/5</p>
+                            ";
+                                if($partenaire['Note']!=null)
+                                    echo "<p>".number_format($partenaire['Note'],1)."/5</p>";
+                                else
+                                    echo "<p>-/5</p>";
+                            echo"
                             </div>
                         </div>
                         <div class='infoContainer'>
