@@ -32,6 +32,7 @@ Un site web pour fournir des services par les partenaires pour les clients. Nous
 ## Conception 📊
 - **MCD :**
 ![Alt text](Assets/ClassD.png)
+********
 - **Outile :**
 ![Alt text](Assets/Tech.png)
 
@@ -40,7 +41,8 @@ Un site web pour fournir des services par les partenaires pour les clients. Nous
 ![Alt text](Assets/home.png)
 ![Alt text](Assets/service.png)
 ![Alt text](Assets/sercices.png)
-- **Client  👤 :**
+****
+- **Client  👤 :** 
 ![Alt text](Assets/clSignup.png)
 ![Alt text](Assets/clientProfile.png)
 ![Alt text](Assets/modifyClient.png)
@@ -48,14 +50,18 @@ Un site web pour fournir des services par les partenaires pour les clients. Nous
 ![Alt text](Assets/commentaires.png)
 - Faire Reservation (cas Creneaux non disponible): 
 ![Alt text](Assets/condition.png)
-![Alt text](Assets/viewPartenaire.png)
+![Alt text](Assets/viewPartenaire.png) 
+*****************
 - **Partenaire 👨‍💼 :**
+
 ![Alt text](Assets/parSignup.png)
 ![Alt text](Assets/partenaireProfile.png)
 ![Alt text](Assets/modifyPartenaire.png)
 ![Alt text](Assets/interventions.png)
 ![Alt text](Assets/commentaires.png)
+
 - 📧 Email de confirmation : 
+
 ![Alt text](Assets/bricoEmail.png)
 
 
